@@ -1,0 +1,5 @@
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|347fd007-e753-45e7-b06a-5020a100b5a3
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|6082d0a6-43b3-4f9d-9312-d2d654c48d08
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|c2e15519-a967-4650-be4a-b21550b2ac9b
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|b5b8bdc3-10a9-4de8-9fb6-f0db1236f96e
+C:\Users\Bryan Orabutt\Documents\GitHub\ARC-Controller\PSoC-Code\ARC-Controller\ARC-EMBED.cydsn\ARC-EMBED.cyprj|1fcf6e4d-a4a0-41b8-b8c8-e68c3283b08d
