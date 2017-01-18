@@ -1,0 +1,1248 @@
+ARM GAS  C:\Users\LAIR\AppData\Local\Temp\ccUBGtb7.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 1
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"USBFS_msc.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.USBFS_DispatchMSCClassRqst,"ax",%progbits
+  18              		.align	2
+  19              		.global	USBFS_DispatchMSCClassRqst
+  20              		.code	16
+  21              		.thumb_func
+  22              		.type	USBFS_DispatchMSCClassRqst, %function
+  23              	USBFS_DispatchMSCClassRqst:
+  24              	.LFB65:
+  25              		.file 1 ".\\Generated_Source\\PSoC4\\USBFS_msc.c"
+   1:.\Generated_Source\PSoC4/USBFS_msc.c **** /***************************************************************************//**
+   2:.\Generated_Source\PSoC4/USBFS_msc.c **** * \file USBFS_cdc.c
+   3:.\Generated_Source\PSoC4/USBFS_msc.c **** * \version 3.0
+   4:.\Generated_Source\PSoC4/USBFS_msc.c **** *
+   5:.\Generated_Source\PSoC4/USBFS_msc.c **** * \brief
+   6:.\Generated_Source\PSoC4/USBFS_msc.c **** *  This file contains the USB MSC Class request handler and global API for MSC 
+   7:.\Generated_Source\PSoC4/USBFS_msc.c **** *  class.
+   8:.\Generated_Source\PSoC4/USBFS_msc.c **** *
+   9:.\Generated_Source\PSoC4/USBFS_msc.c **** * Related Document:
+  10:.\Generated_Source\PSoC4/USBFS_msc.c **** *  Universal Serial Bus Class Definitions for Communication Devices Version 1.1
+  11:.\Generated_Source\PSoC4/USBFS_msc.c **** *
+  12:.\Generated_Source\PSoC4/USBFS_msc.c **** ********************************************************************************
+  13:.\Generated_Source\PSoC4/USBFS_msc.c **** * \copyright
+  14:.\Generated_Source\PSoC4/USBFS_msc.c **** * Copyright 2012-2015, Cypress Semiconductor Corporation.  All rights reserved.
+  15:.\Generated_Source\PSoC4/USBFS_msc.c **** * You may use this file only in accordance with the license, terms, conditions,
+  16:.\Generated_Source\PSoC4/USBFS_msc.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  17:.\Generated_Source\PSoC4/USBFS_msc.c **** * the software package with which this file was provided.
+  18:.\Generated_Source\PSoC4/USBFS_msc.c **** *******************************************************************************/
+  19:.\Generated_Source\PSoC4/USBFS_msc.c **** 
+  20:.\Generated_Source\PSoC4/USBFS_msc.c **** #include "USBFS_msc.h"
+  21:.\Generated_Source\PSoC4/USBFS_msc.c **** #include "USBFS_pvt.h"
+  22:.\Generated_Source\PSoC4/USBFS_msc.c **** #include "cyapicallbacks.h"
+  23:.\Generated_Source\PSoC4/USBFS_msc.c **** 
+  24:.\Generated_Source\PSoC4/USBFS_msc.c **** #if (USBFS_HANDLE_MSC_REQUESTS)
+  25:.\Generated_Source\PSoC4/USBFS_msc.c **** 
+  26:.\Generated_Source\PSoC4/USBFS_msc.c **** /***************************************
+  27:.\Generated_Source\PSoC4/USBFS_msc.c **** *          Internal variables
+  28:.\Generated_Source\PSoC4/USBFS_msc.c **** ***************************************/
+  29:.\Generated_Source\PSoC4/USBFS_msc.c **** 
+  30:.\Generated_Source\PSoC4/USBFS_msc.c **** static uint8 USBFS_lunCount = USBFS_MSC_LUN_NUMBER;
+  31:.\Generated_Source\PSoC4/USBFS_msc.c **** 
+  32:.\Generated_Source\PSoC4/USBFS_msc.c **** 
+ARM GAS  C:\Users\LAIR\AppData\Local\Temp\ccUBGtb7.s 			page 2
+
+
+  33:.\Generated_Source\PSoC4/USBFS_msc.c **** /*******************************************************************************
+  34:.\Generated_Source\PSoC4/USBFS_msc.c **** * Function Name: USBFS_DispatchMSCClassRqst
+  35:.\Generated_Source\PSoC4/USBFS_msc.c **** ****************************************************************************//**
+  36:.\Generated_Source\PSoC4/USBFS_msc.c **** *   
+  37:.\Generated_Source\PSoC4/USBFS_msc.c **** *  \internal 
+  38:.\Generated_Source\PSoC4/USBFS_msc.c **** *  This routine dispatches MSC class requests.
+  39:.\Generated_Source\PSoC4/USBFS_msc.c **** *
+  40:.\Generated_Source\PSoC4/USBFS_msc.c **** * \return
+  41:.\Generated_Source\PSoC4/USBFS_msc.c **** *  Status of request processing: handled or not handled.
+  42:.\Generated_Source\PSoC4/USBFS_msc.c **** *
+  43:.\Generated_Source\PSoC4/USBFS_msc.c **** * \globalvars
+  44:.\Generated_Source\PSoC4/USBFS_msc.c **** *  USBFS_lunCount - stores number of LUN (logical units).
+  45:.\Generated_Source\PSoC4/USBFS_msc.c **** *
+  46:.\Generated_Source\PSoC4/USBFS_msc.c **** * \reentrant
+  47:.\Generated_Source\PSoC4/USBFS_msc.c **** *  No.
+  48:.\Generated_Source\PSoC4/USBFS_msc.c **** *
+  49:.\Generated_Source\PSoC4/USBFS_msc.c **** *******************************************************************************/
+  50:.\Generated_Source\PSoC4/USBFS_msc.c **** uint8 USBFS_DispatchMSCClassRqst(void) 
+  51:.\Generated_Source\PSoC4/USBFS_msc.c **** {
+  26              		.loc 1 51 0
+  27              		.cfi_startproc
+  28 0000 10B5     		push	{r4, lr}
+  29              		.cfi_def_cfa_offset 8
+  30              		.cfi_offset 4, -8
+  31              		.cfi_offset 14, -4
+  32              	.LVL0:
+  52:.\Generated_Source\PSoC4/USBFS_msc.c ****     uint8 requestHandled = USBFS_FALSE;
+  53:.\Generated_Source\PSoC4/USBFS_msc.c ****     
+  54:.\Generated_Source\PSoC4/USBFS_msc.c ****     /* Get request data. */
+  55:.\Generated_Source\PSoC4/USBFS_msc.c ****     uint16 value  = USBFS_GET_UINT16(USBFS_wValueHiReg,  USBFS_wValueLoReg);
+  33              		.loc 1 55 0
+  34 0002 1C48     		ldr	r0, .L9
+  35 0004 C268     		ldr	r2, [r0, #12]
+  36 0006 92B2     		uxth	r2, r2
+  37 0008 1202     		lsl	r2, r2, #8
+  38 000a 92B2     		uxth	r2, r2
+  39 000c 8368     		ldr	r3, [r0, #8]
+  40 000e FF21     		mov	r1, #255
+  41 0010 0B40     		and	r3, r1
+  42 0012 1A43     		orr	r2, r3
+  43 0014 141C     		mov	r4, r2
+  44              	.LVL1:
+  56:.\Generated_Source\PSoC4/USBFS_msc.c ****     uint16 dataLength = USBFS_GET_UINT16(USBFS_wLengthHiReg, USBFS_wLengthLoReg);
+  45              		.loc 1 56 0
+  46 0016 C269     		ldr	r2, [r0, #28]
+  47 0018 93B2     		uxth	r3, r2
+  48 001a 1A02     		lsl	r2, r3, #8
+  49 001c 93B2     		uxth	r3, r2
+  50 001e 8269     		ldr	r2, [r0, #24]
+  51 0020 1140     		and	r1, r2
+  52 0022 1943     		orr	r1, r3
+  53              	.LVL2:
+  57:.\Generated_Source\PSoC4/USBFS_msc.c ****        
+  58:.\Generated_Source\PSoC4/USBFS_msc.c ****     /* Check request direction: D2H or H2D. */
+  59:.\Generated_Source\PSoC4/USBFS_msc.c ****     if (0u != (USBFS_bmRequestTypeReg & USBFS_RQST_DIR_D2H))
+  54              		.loc 1 59 0
+  55 0024 0368     		ldr	r3, [r0]
+ARM GAS  C:\Users\LAIR\AppData\Local\Temp\ccUBGtb7.s 			page 3
+
+
+  56 0026 1B06     		lsl	r3, r3, #24
+  57 0028 0ED5     		bpl	.L2
+  60:.\Generated_Source\PSoC4/USBFS_msc.c ****     {
+  61:.\Generated_Source\PSoC4/USBFS_msc.c ****         /* Handle direction from device to host. */
+  62:.\Generated_Source\PSoC4/USBFS_msc.c ****         
+  63:.\Generated_Source\PSoC4/USBFS_msc.c ****         if (USBFS_MSC_GET_MAX_LUN == USBFS_bRequestReg)
+  58              		.loc 1 63 0
+  59 002a 4368     		ldr	r3, [r0, #4]
+  60 002c FE2B     		cmp	r3, #254
+  61 002e 17D1     		bne	.L4
+  64:.\Generated_Source\PSoC4/USBFS_msc.c ****         {
+  65:.\Generated_Source\PSoC4/USBFS_msc.c ****             /* Check request fields. */
+  66:.\Generated_Source\PSoC4/USBFS_msc.c ****             if ((value  == USBFS_MSC_GET_MAX_LUN_WVALUE) &&
+  62              		.loc 1 66 0
+  63 0030 002C     		cmp	r4, #0
+  64 0032 17D1     		bne	.L5
+  65              		.loc 1 66 0 is_stmt 0 discriminator 1
+  66 0034 0129     		cmp	r1, #1
+  67 0036 17D1     		bne	.L6
+  67:.\Generated_Source\PSoC4/USBFS_msc.c ****                 (dataLength == USBFS_MSC_GET_MAX_LUN_WLENGTH))
+  68:.\Generated_Source\PSoC4/USBFS_msc.c ****             {
+  69:.\Generated_Source\PSoC4/USBFS_msc.c ****                 /* Reply to Get Max LUN request: setup control read. */
+  70:.\Generated_Source\PSoC4/USBFS_msc.c ****                 USBFS_currentTD.pData = &USBFS_lunCount;
+  68              		.loc 1 70 0 is_stmt 1
+  69 0038 0F4B     		ldr	r3, .L9+4
+  70 003a 104A     		ldr	r2, .L9+8
+  71 003c 5A60     		str	r2, [r3, #4]
+  71:.\Generated_Source\PSoC4/USBFS_msc.c ****                 USBFS_currentTD.count =  USBFS_MSC_GET_MAX_LUN_WLENGTH;
+  72              		.loc 1 71 0
+  73 003e 0122     		mov	r2, #1
+  74 0040 1A80     		strh	r2, [r3]
+  72:.\Generated_Source\PSoC4/USBFS_msc.c ****                 
+  73:.\Generated_Source\PSoC4/USBFS_msc.c ****                 requestHandled  = USBFS_InitControlRead();
+  75              		.loc 1 73 0
+  76 0042 FFF7FEFF 		bl	USBFS_InitControlRead
+  77              	.LVL3:
+  78 0046 14E0     		b	.L3
+  79              	.LVL4:
+  80              	.L2:
+  74:.\Generated_Source\PSoC4/USBFS_msc.c ****             }
+  75:.\Generated_Source\PSoC4/USBFS_msc.c ****         }
+  76:.\Generated_Source\PSoC4/USBFS_msc.c ****     }
+  77:.\Generated_Source\PSoC4/USBFS_msc.c ****     else
+  78:.\Generated_Source\PSoC4/USBFS_msc.c ****     {
+  79:.\Generated_Source\PSoC4/USBFS_msc.c ****         /* Handle direction from host to device. */
+  80:.\Generated_Source\PSoC4/USBFS_msc.c ****         
+  81:.\Generated_Source\PSoC4/USBFS_msc.c ****         if (USBFS_MSC_RESET == USBFS_bRequestReg)
+  81              		.loc 1 81 0
+  82 0048 0A4B     		ldr	r3, .L9
+  83 004a 5B68     		ldr	r3, [r3, #4]
+  84 004c FF2B     		cmp	r3, #255
+  85 004e 0DD1     		bne	.L7
+  82:.\Generated_Source\PSoC4/USBFS_msc.c ****         {
+  83:.\Generated_Source\PSoC4/USBFS_msc.c ****             /* Check request fields. */
+  84:.\Generated_Source\PSoC4/USBFS_msc.c ****             if ((value  == USBFS_MSC_RESET_WVALUE) &&
+  86              		.loc 1 84 0
+  87 0050 2143     		orr	r1, r4
+ARM GAS  C:\Users\LAIR\AppData\Local\Temp\ccUBGtb7.s 			page 4
+
+
+  88              	.LVL5:
+  89 0052 0DD1     		bne	.L8
+  85:.\Generated_Source\PSoC4/USBFS_msc.c ****                 (dataLength == USBFS_MSC_RESET_WLENGTH))
+  86:.\Generated_Source\PSoC4/USBFS_msc.c ****             {
+  87:.\Generated_Source\PSoC4/USBFS_msc.c ****                 /* Handle to Bulk-Only Reset request: no data control transfer. */
+  88:.\Generated_Source\PSoC4/USBFS_msc.c ****                 USBFS_currentTD.count = USBFS_MSC_RESET_WLENGTH;
+  90              		.loc 1 88 0
+  91 0054 0022     		mov	r2, #0
+  92 0056 084B     		ldr	r3, .L9+4
+  93 0058 1A80     		strh	r2, [r3]
+  89:.\Generated_Source\PSoC4/USBFS_msc.c ****                 
+  90:.\Generated_Source\PSoC4/USBFS_msc.c ****             #ifdef USBFS_DISPATCH_MSC_CLASS_MSC_RESET_RQST_CALLBACK
+  91:.\Generated_Source\PSoC4/USBFS_msc.c ****                 USBFS_DispatchMSCClass_MSC_RESET_RQST_Callback();
+  92:.\Generated_Source\PSoC4/USBFS_msc.c ****             #endif /* (USBFS_DISPATCH_MSC_CLASS_MSC_RESET_RQST_CALLBACK) */
+  93:.\Generated_Source\PSoC4/USBFS_msc.c ****                 
+  94:.\Generated_Source\PSoC4/USBFS_msc.c ****                 requestHandled = USBFS_InitNoDataControlTransfer();
+  94              		.loc 1 94 0
+  95 005a FFF7FEFF 		bl	USBFS_InitNoDataControlTransfer
+  96              	.LVL6:
+  97 005e 08E0     		b	.L3
+  98              	.LVL7:
+  99              	.L4:
+  52:.\Generated_Source\PSoC4/USBFS_msc.c ****     
+ 100              		.loc 1 52 0
+ 101 0060 0020     		mov	r0, #0
+ 102 0062 06E0     		b	.L3
+ 103              	.L5:
+ 104 0064 0020     		mov	r0, #0
+ 105 0066 04E0     		b	.L3
+ 106              	.L6:
+ 107 0068 0020     		mov	r0, #0
+ 108 006a 02E0     		b	.L3
+ 109              	.L7:
+ 110 006c 0020     		mov	r0, #0
+ 111 006e 00E0     		b	.L3
+ 112              	.LVL8:
+ 113              	.L8:
+ 114 0070 0020     		mov	r0, #0
+ 115              	.LVL9:
+ 116              	.L3:
+  95:.\Generated_Source\PSoC4/USBFS_msc.c ****             }
+  96:.\Generated_Source\PSoC4/USBFS_msc.c ****         }
+  97:.\Generated_Source\PSoC4/USBFS_msc.c ****     }
+  98:.\Generated_Source\PSoC4/USBFS_msc.c ****     
+  99:.\Generated_Source\PSoC4/USBFS_msc.c ****     return (requestHandled);
+ 100:.\Generated_Source\PSoC4/USBFS_msc.c **** }
+ 117              		.loc 1 100 0
+ 118              		@ sp needed
+ 119              	.LVL10:
+ 120 0072 10BD     		pop	{r4, pc}
+ 121              	.L10:
+ 122              		.align	2
+ 123              	.L9:
+ 124 0074 00002C40 		.word	1076625408
+ 125 0078 00000000 		.word	USBFS_currentTD
+ 126 007c 00000000 		.word	.LANCHOR0
+ 127              		.cfi_endproc
+ARM GAS  C:\Users\LAIR\AppData\Local\Temp\ccUBGtb7.s 			page 5
+
+
+ 128              	.LFE65:
+ 129              		.size	USBFS_DispatchMSCClassRqst, .-USBFS_DispatchMSCClassRqst
+ 130              		.section	.text.USBFS_MSC_SetLunCount,"ax",%progbits
+ 131              		.align	2
+ 132              		.global	USBFS_MSC_SetLunCount
+ 133              		.code	16
+ 134              		.thumb_func
+ 135              		.type	USBFS_MSC_SetLunCount, %function
+ 136              	USBFS_MSC_SetLunCount:
+ 137              	.LFB66:
+ 101:.\Generated_Source\PSoC4/USBFS_msc.c **** 
+ 102:.\Generated_Source\PSoC4/USBFS_msc.c **** 
+ 103:.\Generated_Source\PSoC4/USBFS_msc.c **** /*******************************************************************************
+ 104:.\Generated_Source\PSoC4/USBFS_msc.c **** * Function Name: USBFS_MSC_SetLunCount
+ 105:.\Generated_Source\PSoC4/USBFS_msc.c **** ****************************************************************************//**
+ 106:.\Generated_Source\PSoC4/USBFS_msc.c **** *
+ 107:.\Generated_Source\PSoC4/USBFS_msc.c **** *  This function sets the number of logical units supported in the application. 
+ 108:.\Generated_Source\PSoC4/USBFS_msc.c **** *  The default number of logical units is set in the component customizer.
+ 109:.\Generated_Source\PSoC4/USBFS_msc.c **** *
+ 110:.\Generated_Source\PSoC4/USBFS_msc.c **** *  \param lunCount: Count of the logical units. Valid range is between 1 and 16.
+ 111:.\Generated_Source\PSoC4/USBFS_msc.c **** *
+ 112:.\Generated_Source\PSoC4/USBFS_msc.c **** *
+ 113:.\Generated_Source\PSoC4/USBFS_msc.c **** * \globalvars
+ 114:.\Generated_Source\PSoC4/USBFS_msc.c **** *  USBFS_lunCount - stores number of LUN (logical units).
+ 115:.\Generated_Source\PSoC4/USBFS_msc.c **** *
+ 116:.\Generated_Source\PSoC4/USBFS_msc.c **** * \reentrant
+ 117:.\Generated_Source\PSoC4/USBFS_msc.c **** *  No.
+ 118:.\Generated_Source\PSoC4/USBFS_msc.c **** *
+ 119:.\Generated_Source\PSoC4/USBFS_msc.c **** *******************************************************************************/
+ 120:.\Generated_Source\PSoC4/USBFS_msc.c **** void USBFS_MSC_SetLunCount(uint8 lunCount) 
+ 121:.\Generated_Source\PSoC4/USBFS_msc.c **** {
+ 138              		.loc 1 121 0
+ 139              		.cfi_startproc
+ 140              	.LVL11:
+ 122:.\Generated_Source\PSoC4/USBFS_msc.c ****     USBFS_lunCount = (lunCount - 1u);
+ 141              		.loc 1 122 0
+ 142 0000 0138     		sub	r0, r0, #1
+ 143              	.LVL12:
+ 144 0002 014B     		ldr	r3, .L12
+ 145 0004 1870     		strb	r0, [r3]
+ 123:.\Generated_Source\PSoC4/USBFS_msc.c **** }
+ 146              		.loc 1 123 0
+ 147              		@ sp needed
+ 148 0006 7047     		bx	lr
+ 149              	.L13:
+ 150              		.align	2
+ 151              	.L12:
+ 152 0008 00000000 		.word	.LANCHOR0
+ 153              		.cfi_endproc
+ 154              	.LFE66:
+ 155              		.size	USBFS_MSC_SetLunCount, .-USBFS_MSC_SetLunCount
+ 156              		.section	.text.USBFS_MSC_GetLunCount,"ax",%progbits
+ 157              		.align	2
+ 158              		.global	USBFS_MSC_GetLunCount
+ 159              		.code	16
+ 160              		.thumb_func
+ 161              		.type	USBFS_MSC_GetLunCount, %function
+ARM GAS  C:\Users\LAIR\AppData\Local\Temp\ccUBGtb7.s 			page 6
+
+
+ 162              	USBFS_MSC_GetLunCount:
+ 163              	.LFB67:
+ 124:.\Generated_Source\PSoC4/USBFS_msc.c **** 
+ 125:.\Generated_Source\PSoC4/USBFS_msc.c **** 
+ 126:.\Generated_Source\PSoC4/USBFS_msc.c **** /*******************************************************************************
+ 127:.\Generated_Source\PSoC4/USBFS_msc.c **** * Function Name: USBFS_MSC_GetLunCount
+ 128:.\Generated_Source\PSoC4/USBFS_msc.c **** ****************************************************************************//**
+ 129:.\Generated_Source\PSoC4/USBFS_msc.c **** *
+ 130:.\Generated_Source\PSoC4/USBFS_msc.c **** *  This function returns the number of logical units.
+ 131:.\Generated_Source\PSoC4/USBFS_msc.c **** *
+ 132:.\Generated_Source\PSoC4/USBFS_msc.c **** * \return
+ 133:.\Generated_Source\PSoC4/USBFS_msc.c **** *   Number of the logical units.
+ 134:.\Generated_Source\PSoC4/USBFS_msc.c **** *
+ 135:.\Generated_Source\PSoC4/USBFS_msc.c **** * \globalvars
+ 136:.\Generated_Source\PSoC4/USBFS_msc.c **** *  USBFS_lunCount - stores number of LUN (logical units).
+ 137:.\Generated_Source\PSoC4/USBFS_msc.c **** *
+ 138:.\Generated_Source\PSoC4/USBFS_msc.c **** * \reentrant
+ 139:.\Generated_Source\PSoC4/USBFS_msc.c **** *  No.
+ 140:.\Generated_Source\PSoC4/USBFS_msc.c **** *
+ 141:.\Generated_Source\PSoC4/USBFS_msc.c **** *******************************************************************************/
+ 142:.\Generated_Source\PSoC4/USBFS_msc.c **** uint8 USBFS_MSC_GetLunCount(void) 
+ 143:.\Generated_Source\PSoC4/USBFS_msc.c **** {
+ 164              		.loc 1 143 0
+ 165              		.cfi_startproc
+ 144:.\Generated_Source\PSoC4/USBFS_msc.c ****     return (USBFS_lunCount + 1u);
+ 166              		.loc 1 144 0
+ 167 0000 024B     		ldr	r3, .L15
+ 168 0002 1878     		ldrb	r0, [r3]
+ 169 0004 0130     		add	r0, r0, #1
+ 170 0006 C0B2     		uxtb	r0, r0
+ 145:.\Generated_Source\PSoC4/USBFS_msc.c **** }   
+ 171              		.loc 1 145 0
+ 172              		@ sp needed
+ 173 0008 7047     		bx	lr
+ 174              	.L16:
+ 175 000a C046     		.align	2
+ 176              	.L15:
+ 177 000c 00000000 		.word	.LANCHOR0
+ 178              		.cfi_endproc
+ 179              	.LFE67:
+ 180              		.size	USBFS_MSC_GetLunCount, .-USBFS_MSC_GetLunCount
+ 181              		.bss
+ 182              		.set	.LANCHOR0,. + 0
+ 183              		.type	USBFS_lunCount, %object
+ 184              		.size	USBFS_lunCount, 1
+ 185              	USBFS_lunCount:
+ 186 0000 00       		.space	1
+ 187              		.text
+ 188              	.Letext0:
+ 189              		.file 2 ".\\Generated_Source\\PSoC4\\cytypes.h"
+ 190              		.file 3 ".\\Generated_Source\\PSoC4\\USBFS.h"
+ 191              		.file 4 ".\\Generated_Source\\PSoC4\\USBFS_pvt.h"
+ 192              		.section	.debug_info,"",%progbits
+ 193              	.Ldebug_info0:
+ 194 0000 17020000 		.4byte	0x217
+ 195 0004 0400     		.2byte	0x4
+ 196 0006 00000000 		.4byte	.Ldebug_abbrev0
+ARM GAS  C:\Users\LAIR\AppData\Local\Temp\ccUBGtb7.s 			page 7
+
+
+ 197 000a 04       		.byte	0x4
+ 198 000b 01       		.uleb128 0x1
+ 199 000c FE010000 		.4byte	.LASF31
+ 200 0010 01       		.byte	0x1
+ 201 0011 6A010000 		.4byte	.LASF32
+ 202 0015 B6010000 		.4byte	.LASF33
+ 203 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 204 001d 00000000 		.4byte	0
+ 205 0021 00000000 		.4byte	.Ldebug_line0
+ 206 0025 02       		.uleb128 0x2
+ 207 0026 01       		.byte	0x1
+ 208 0027 06       		.byte	0x6
+ 209 0028 C9020000 		.4byte	.LASF0
+ 210 002c 02       		.uleb128 0x2
+ 211 002d 01       		.byte	0x1
+ 212 002e 08       		.byte	0x8
+ 213 002f 7B000000 		.4byte	.LASF1
+ 214 0033 02       		.uleb128 0x2
+ 215 0034 02       		.byte	0x2
+ 216 0035 05       		.byte	0x5
+ 217 0036 8C020000 		.4byte	.LASF2
+ 218 003a 02       		.uleb128 0x2
+ 219 003b 02       		.byte	0x2
+ 220 003c 07       		.byte	0x7
+ 221 003d 19000000 		.4byte	.LASF3
+ 222 0041 02       		.uleb128 0x2
+ 223 0042 04       		.byte	0x4
+ 224 0043 05       		.byte	0x5
+ 225 0044 A5020000 		.4byte	.LASF4
+ 226 0048 02       		.uleb128 0x2
+ 227 0049 04       		.byte	0x4
+ 228 004a 07       		.byte	0x7
+ 229 004b A3000000 		.4byte	.LASF5
+ 230 004f 02       		.uleb128 0x2
+ 231 0050 08       		.byte	0x8
+ 232 0051 05       		.byte	0x5
+ 233 0052 A8010000 		.4byte	.LASF6
+ 234 0056 02       		.uleb128 0x2
+ 235 0057 08       		.byte	0x8
+ 236 0058 07       		.byte	0x7
+ 237 0059 3F010000 		.4byte	.LASF7
+ 238 005d 03       		.uleb128 0x3
+ 239 005e 04       		.byte	0x4
+ 240 005f 05       		.byte	0x5
+ 241 0060 696E7400 		.ascii	"int\000"
+ 242 0064 02       		.uleb128 0x2
+ 243 0065 04       		.byte	0x4
+ 244 0066 07       		.byte	0x7
+ 245 0067 32010000 		.4byte	.LASF8
+ 246 006b 04       		.uleb128 0x4
+ 247 006c B5000000 		.4byte	.LASF9
+ 248 0070 02       		.byte	0x2
+ 249 0071 9801     		.2byte	0x198
+ 250 0073 2C000000 		.4byte	0x2c
+ 251 0077 04       		.uleb128 0x4
+ 252 0078 24010000 		.4byte	.LASF10
+ 253 007c 02       		.byte	0x2
+ARM GAS  C:\Users\LAIR\AppData\Local\Temp\ccUBGtb7.s 			page 8
+
+
+ 254 007d 9901     		.2byte	0x199
+ 255 007f 3A000000 		.4byte	0x3a
+ 256 0083 04       		.uleb128 0x4
+ 257 0084 2B010000 		.4byte	.LASF11
+ 258 0088 02       		.byte	0x2
+ 259 0089 9A01     		.2byte	0x19a
+ 260 008b 48000000 		.4byte	0x48
+ 261 008f 02       		.uleb128 0x2
+ 262 0090 04       		.byte	0x4
+ 263 0091 04       		.byte	0x4
+ 264 0092 75000000 		.4byte	.LASF12
+ 265 0096 02       		.uleb128 0x2
+ 266 0097 08       		.byte	0x8
+ 267 0098 04       		.byte	0x4
+ 268 0099 F1000000 		.4byte	.LASF13
+ 269 009d 02       		.uleb128 0x2
+ 270 009e 01       		.byte	0x1
+ 271 009f 08       		.byte	0x8
+ 272 00a0 AE020000 		.4byte	.LASF14
+ 273 00a4 05       		.uleb128 0x5
+ 274 00a5 6B000000 		.4byte	0x6b
+ 275 00a9 02       		.uleb128 0x2
+ 276 00aa 04       		.byte	0x4
+ 277 00ab 07       		.byte	0x7
+ 278 00ac 9F010000 		.4byte	.LASF15
+ 279 00b0 06       		.uleb128 0x6
+ 280 00b1 04       		.byte	0x4
+ 281 00b2 03       		.byte	0x3
+ 282 00b3 A5       		.byte	0xa5
+ 283 00b4 D1000000 		.4byte	0xd1
+ 284 00b8 07       		.uleb128 0x7
+ 285 00b9 2C000000 		.4byte	.LASF16
+ 286 00bd 03       		.byte	0x3
+ 287 00be A7       		.byte	0xa7
+ 288 00bf 6B000000 		.4byte	0x6b
+ 289 00c3 00       		.byte	0
+ 290 00c4 07       		.uleb128 0x7
+ 291 00c5 D5020000 		.4byte	.LASF17
+ 292 00c9 03       		.byte	0x3
+ 293 00ca A8       		.byte	0xa8
+ 294 00cb 77000000 		.4byte	0x77
+ 295 00cf 02       		.byte	0x2
+ 296 00d0 00       		.byte	0
+ 297 00d1 08       		.uleb128 0x8
+ 298 00d2 89000000 		.4byte	.LASF18
+ 299 00d6 03       		.byte	0x3
+ 300 00d7 A9       		.byte	0xa9
+ 301 00d8 B0000000 		.4byte	0xb0
+ 302 00dc 06       		.uleb128 0x6
+ 303 00dd 0C       		.byte	0xc
+ 304 00de 03       		.byte	0x3
+ 305 00df AB       		.byte	0xab
+ 306 00e0 09010000 		.4byte	0x109
+ 307 00e4 07       		.uleb128 0x7
+ 308 00e5 13000000 		.4byte	.LASF19
+ 309 00e9 03       		.byte	0x3
+ 310 00ea AD       		.byte	0xad
+ARM GAS  C:\Users\LAIR\AppData\Local\Temp\ccUBGtb7.s 			page 9
+
+
+ 311 00eb 77000000 		.4byte	0x77
+ 312 00ef 00       		.byte	0
+ 313 00f0 07       		.uleb128 0x7
+ 314 00f1 4E000000 		.4byte	.LASF20
+ 315 00f5 03       		.byte	0x3
+ 316 00f6 AE       		.byte	0xae
+ 317 00f7 09010000 		.4byte	0x109
+ 318 00fb 04       		.byte	0x4
+ 319 00fc 07       		.uleb128 0x7
+ 320 00fd 00000000 		.4byte	.LASF21
+ 321 0101 03       		.byte	0x3
+ 322 0102 AF       		.byte	0xaf
+ 323 0103 0F010000 		.4byte	0x10f
+ 324 0107 08       		.byte	0x8
+ 325 0108 00       		.byte	0
+ 326 0109 09       		.uleb128 0x9
+ 327 010a 04       		.byte	0x4
+ 328 010b A4000000 		.4byte	0xa4
+ 329 010f 09       		.uleb128 0x9
+ 330 0110 04       		.byte	0x4
+ 331 0111 D1000000 		.4byte	0xd1
+ 332 0115 08       		.uleb128 0x8
+ 333 0116 6A000000 		.4byte	.LASF22
+ 334 011a 03       		.byte	0x3
+ 335 011b B0       		.byte	0xb0
+ 336 011c DC000000 		.4byte	0xdc
+ 337 0120 06       		.uleb128 0x6
+ 338 0121 20       		.byte	0x20
+ 339 0122 03       		.byte	0x3
+ 340 0123 C6       		.byte	0xc6
+ 341 0124 35010000 		.4byte	0x135
+ 342 0128 07       		.uleb128 0x7
+ 343 0129 54000000 		.4byte	.LASF23
+ 344 012d 03       		.byte	0x3
+ 345 012e C8       		.byte	0xc8
+ 346 012f 35010000 		.4byte	0x135
+ 347 0133 00       		.byte	0
+ 348 0134 00       		.byte	0
+ 349 0135 0A       		.uleb128 0xa
+ 350 0136 83000000 		.4byte	0x83
+ 351 013a 45010000 		.4byte	0x145
+ 352 013e 0B       		.uleb128 0xb
+ 353 013f A9000000 		.4byte	0xa9
+ 354 0143 07       		.byte	0x7
+ 355 0144 00       		.byte	0
+ 356 0145 08       		.uleb128 0x8
+ 357 0146 DB000000 		.4byte	.LASF24
+ 358 014a 03       		.byte	0x3
+ 359 014b C9       		.byte	0xc9
+ 360 014c 20010000 		.4byte	0x120
+ 361 0150 0C       		.uleb128 0xc
+ 362 0151 33000000 		.4byte	.LASF34
+ 363 0155 01       		.byte	0x1
+ 364 0156 32       		.byte	0x32
+ 365 0157 6B000000 		.4byte	0x6b
+ 366 015b 00000000 		.4byte	.LFB65
+ 367 015f 80000000 		.4byte	.LFE65-.LFB65
+ARM GAS  C:\Users\LAIR\AppData\Local\Temp\ccUBGtb7.s 			page 10
+
+
+ 368 0163 01       		.uleb128 0x1
+ 369 0164 9C       		.byte	0x9c
+ 370 0165 A9010000 		.4byte	0x1a9
+ 371 0169 0D       		.uleb128 0xd
+ 372 016a 96020000 		.4byte	.LASF25
+ 373 016e 01       		.byte	0x1
+ 374 016f 34       		.byte	0x34
+ 375 0170 6B000000 		.4byte	0x6b
+ 376 0174 00000000 		.4byte	.LLST0
+ 377 0178 0D       		.uleb128 0xd
+ 378 0179 0D000000 		.4byte	.LASF26
+ 379 017d 01       		.byte	0x1
+ 380 017e 37       		.byte	0x37
+ 381 017f 77000000 		.4byte	0x77
+ 382 0183 4D000000 		.4byte	.LLST1
+ 383 0187 0D       		.uleb128 0xd
+ 384 0188 5F010000 		.4byte	.LASF27
+ 385 018c 01       		.byte	0x1
+ 386 018d 38       		.byte	0x38
+ 387 018e 77000000 		.4byte	0x77
+ 388 0192 60000000 		.4byte	.LLST2
+ 389 0196 0E       		.uleb128 0xe
+ 390 0197 46000000 		.4byte	.LVL3
+ 391 019b 04020000 		.4byte	0x204
+ 392 019f 0E       		.uleb128 0xe
+ 393 01a0 5E000000 		.4byte	.LVL6
+ 394 01a4 0F020000 		.4byte	0x20f
+ 395 01a8 00       		.byte	0
+ 396 01a9 0F       		.uleb128 0xf
+ 397 01aa B3020000 		.4byte	.LASF35
+ 398 01ae 01       		.byte	0x1
+ 399 01af 78       		.byte	0x78
+ 400 01b0 00000000 		.4byte	.LFB66
+ 401 01b4 0C000000 		.4byte	.LFE66-.LFB66
+ 402 01b8 01       		.uleb128 0x1
+ 403 01b9 9C       		.byte	0x9c
+ 404 01ba CE010000 		.4byte	0x1ce
+ 405 01be 10       		.uleb128 0x10
+ 406 01bf 56010000 		.4byte	.LASF36
+ 407 01c3 01       		.byte	0x1
+ 408 01c4 78       		.byte	0x78
+ 409 01c5 6B000000 		.4byte	0x6b
+ 410 01c9 89000000 		.4byte	.LLST3
+ 411 01cd 00       		.byte	0
+ 412 01ce 11       		.uleb128 0x11
+ 413 01cf 0E010000 		.4byte	.LASF37
+ 414 01d3 01       		.byte	0x1
+ 415 01d4 8E       		.byte	0x8e
+ 416 01d5 6B000000 		.4byte	0x6b
+ 417 01d9 00000000 		.4byte	.LFB67
+ 418 01dd 10000000 		.4byte	.LFE67-.LFB67
+ 419 01e1 01       		.uleb128 0x1
+ 420 01e2 9C       		.byte	0x9c
+ 421 01e3 12       		.uleb128 0x12
+ 422 01e4 5B000000 		.4byte	.LASF28
+ 423 01e8 01       		.byte	0x1
+ 424 01e9 1E       		.byte	0x1e
+ARM GAS  C:\Users\LAIR\AppData\Local\Temp\ccUBGtb7.s 			page 11
+
+
+ 425 01ea 6B000000 		.4byte	0x6b
+ 426 01ee 05       		.uleb128 0x5
+ 427 01ef 03       		.byte	0x3
+ 428 01f0 00000000 		.4byte	USBFS_lunCount
+ 429 01f4 13       		.uleb128 0x13
+ 430 01f5 8F010000 		.4byte	.LASF38
+ 431 01f9 04       		.byte	0x4
+ 432 01fa 7A       		.byte	0x7a
+ 433 01fb FF010000 		.4byte	0x1ff
+ 434 01ff 05       		.uleb128 0x5
+ 435 0200 15010000 		.4byte	0x115
+ 436 0204 14       		.uleb128 0x14
+ 437 0205 F8000000 		.4byte	.LASF29
+ 438 0209 04       		.byte	0x4
+ 439 020a A9       		.byte	0xa9
+ 440 020b 6B000000 		.4byte	0x6b
+ 441 020f 14       		.uleb128 0x14
+ 442 0210 BB000000 		.4byte	.LASF30
+ 443 0214 04       		.byte	0x4
+ 444 0215 B3       		.byte	0xb3
+ 445 0216 6B000000 		.4byte	0x6b
+ 446 021a 00       		.byte	0
+ 447              		.section	.debug_abbrev,"",%progbits
+ 448              	.Ldebug_abbrev0:
+ 449 0000 01       		.uleb128 0x1
+ 450 0001 11       		.uleb128 0x11
+ 451 0002 01       		.byte	0x1
+ 452 0003 25       		.uleb128 0x25
+ 453 0004 0E       		.uleb128 0xe
+ 454 0005 13       		.uleb128 0x13
+ 455 0006 0B       		.uleb128 0xb
+ 456 0007 03       		.uleb128 0x3
+ 457 0008 0E       		.uleb128 0xe
+ 458 0009 1B       		.uleb128 0x1b
+ 459 000a 0E       		.uleb128 0xe
+ 460 000b 55       		.uleb128 0x55
+ 461 000c 17       		.uleb128 0x17
+ 462 000d 11       		.uleb128 0x11
+ 463 000e 01       		.uleb128 0x1
+ 464 000f 10       		.uleb128 0x10
+ 465 0010 17       		.uleb128 0x17
+ 466 0011 00       		.byte	0
+ 467 0012 00       		.byte	0
+ 468 0013 02       		.uleb128 0x2
+ 469 0014 24       		.uleb128 0x24
+ 470 0015 00       		.byte	0
+ 471 0016 0B       		.uleb128 0xb
+ 472 0017 0B       		.uleb128 0xb
+ 473 0018 3E       		.uleb128 0x3e
+ 474 0019 0B       		.uleb128 0xb
+ 475 001a 03       		.uleb128 0x3
+ 476 001b 0E       		.uleb128 0xe
+ 477 001c 00       		.byte	0
+ 478 001d 00       		.byte	0
+ 479 001e 03       		.uleb128 0x3
+ 480 001f 24       		.uleb128 0x24
+ 481 0020 00       		.byte	0
+ARM GAS  C:\Users\LAIR\AppData\Local\Temp\ccUBGtb7.s 			page 12
+
+
+ 482 0021 0B       		.uleb128 0xb
+ 483 0022 0B       		.uleb128 0xb
+ 484 0023 3E       		.uleb128 0x3e
+ 485 0024 0B       		.uleb128 0xb
+ 486 0025 03       		.uleb128 0x3
+ 487 0026 08       		.uleb128 0x8
+ 488 0027 00       		.byte	0
+ 489 0028 00       		.byte	0
+ 490 0029 04       		.uleb128 0x4
+ 491 002a 16       		.uleb128 0x16
+ 492 002b 00       		.byte	0
+ 493 002c 03       		.uleb128 0x3
+ 494 002d 0E       		.uleb128 0xe
+ 495 002e 3A       		.uleb128 0x3a
+ 496 002f 0B       		.uleb128 0xb
+ 497 0030 3B       		.uleb128 0x3b
+ 498 0031 05       		.uleb128 0x5
+ 499 0032 49       		.uleb128 0x49
+ 500 0033 13       		.uleb128 0x13
+ 501 0034 00       		.byte	0
+ 502 0035 00       		.byte	0
+ 503 0036 05       		.uleb128 0x5
+ 504 0037 35       		.uleb128 0x35
+ 505 0038 00       		.byte	0
+ 506 0039 49       		.uleb128 0x49
+ 507 003a 13       		.uleb128 0x13
+ 508 003b 00       		.byte	0
+ 509 003c 00       		.byte	0
+ 510 003d 06       		.uleb128 0x6
+ 511 003e 13       		.uleb128 0x13
+ 512 003f 01       		.byte	0x1
+ 513 0040 0B       		.uleb128 0xb
+ 514 0041 0B       		.uleb128 0xb
+ 515 0042 3A       		.uleb128 0x3a
+ 516 0043 0B       		.uleb128 0xb
+ 517 0044 3B       		.uleb128 0x3b
+ 518 0045 0B       		.uleb128 0xb
+ 519 0046 01       		.uleb128 0x1
+ 520 0047 13       		.uleb128 0x13
+ 521 0048 00       		.byte	0
+ 522 0049 00       		.byte	0
+ 523 004a 07       		.uleb128 0x7
+ 524 004b 0D       		.uleb128 0xd
+ 525 004c 00       		.byte	0
+ 526 004d 03       		.uleb128 0x3
+ 527 004e 0E       		.uleb128 0xe
+ 528 004f 3A       		.uleb128 0x3a
+ 529 0050 0B       		.uleb128 0xb
+ 530 0051 3B       		.uleb128 0x3b
+ 531 0052 0B       		.uleb128 0xb
+ 532 0053 49       		.uleb128 0x49
+ 533 0054 13       		.uleb128 0x13
+ 534 0055 38       		.uleb128 0x38
+ 535 0056 0B       		.uleb128 0xb
+ 536 0057 00       		.byte	0
+ 537 0058 00       		.byte	0
+ 538 0059 08       		.uleb128 0x8
+ARM GAS  C:\Users\LAIR\AppData\Local\Temp\ccUBGtb7.s 			page 13
+
+
+ 539 005a 16       		.uleb128 0x16
+ 540 005b 00       		.byte	0
+ 541 005c 03       		.uleb128 0x3
+ 542 005d 0E       		.uleb128 0xe
+ 543 005e 3A       		.uleb128 0x3a
+ 544 005f 0B       		.uleb128 0xb
+ 545 0060 3B       		.uleb128 0x3b
+ 546 0061 0B       		.uleb128 0xb
+ 547 0062 49       		.uleb128 0x49
+ 548 0063 13       		.uleb128 0x13
+ 549 0064 00       		.byte	0
+ 550 0065 00       		.byte	0
+ 551 0066 09       		.uleb128 0x9
+ 552 0067 0F       		.uleb128 0xf
+ 553 0068 00       		.byte	0
+ 554 0069 0B       		.uleb128 0xb
+ 555 006a 0B       		.uleb128 0xb
+ 556 006b 49       		.uleb128 0x49
+ 557 006c 13       		.uleb128 0x13
+ 558 006d 00       		.byte	0
+ 559 006e 00       		.byte	0
+ 560 006f 0A       		.uleb128 0xa
+ 561 0070 01       		.uleb128 0x1
+ 562 0071 01       		.byte	0x1
+ 563 0072 49       		.uleb128 0x49
+ 564 0073 13       		.uleb128 0x13
+ 565 0074 01       		.uleb128 0x1
+ 566 0075 13       		.uleb128 0x13
+ 567 0076 00       		.byte	0
+ 568 0077 00       		.byte	0
+ 569 0078 0B       		.uleb128 0xb
+ 570 0079 21       		.uleb128 0x21
+ 571 007a 00       		.byte	0
+ 572 007b 49       		.uleb128 0x49
+ 573 007c 13       		.uleb128 0x13
+ 574 007d 2F       		.uleb128 0x2f
+ 575 007e 0B       		.uleb128 0xb
+ 576 007f 00       		.byte	0
+ 577 0080 00       		.byte	0
+ 578 0081 0C       		.uleb128 0xc
+ 579 0082 2E       		.uleb128 0x2e
+ 580 0083 01       		.byte	0x1
+ 581 0084 3F       		.uleb128 0x3f
+ 582 0085 19       		.uleb128 0x19
+ 583 0086 03       		.uleb128 0x3
+ 584 0087 0E       		.uleb128 0xe
+ 585 0088 3A       		.uleb128 0x3a
+ 586 0089 0B       		.uleb128 0xb
+ 587 008a 3B       		.uleb128 0x3b
+ 588 008b 0B       		.uleb128 0xb
+ 589 008c 27       		.uleb128 0x27
+ 590 008d 19       		.uleb128 0x19
+ 591 008e 49       		.uleb128 0x49
+ 592 008f 13       		.uleb128 0x13
+ 593 0090 11       		.uleb128 0x11
+ 594 0091 01       		.uleb128 0x1
+ 595 0092 12       		.uleb128 0x12
+ARM GAS  C:\Users\LAIR\AppData\Local\Temp\ccUBGtb7.s 			page 14
+
+
+ 596 0093 06       		.uleb128 0x6
+ 597 0094 40       		.uleb128 0x40
+ 598 0095 18       		.uleb128 0x18
+ 599 0096 9742     		.uleb128 0x2117
+ 600 0098 19       		.uleb128 0x19
+ 601 0099 01       		.uleb128 0x1
+ 602 009a 13       		.uleb128 0x13
+ 603 009b 00       		.byte	0
+ 604 009c 00       		.byte	0
+ 605 009d 0D       		.uleb128 0xd
+ 606 009e 34       		.uleb128 0x34
+ 607 009f 00       		.byte	0
+ 608 00a0 03       		.uleb128 0x3
+ 609 00a1 0E       		.uleb128 0xe
+ 610 00a2 3A       		.uleb128 0x3a
+ 611 00a3 0B       		.uleb128 0xb
+ 612 00a4 3B       		.uleb128 0x3b
+ 613 00a5 0B       		.uleb128 0xb
+ 614 00a6 49       		.uleb128 0x49
+ 615 00a7 13       		.uleb128 0x13
+ 616 00a8 02       		.uleb128 0x2
+ 617 00a9 17       		.uleb128 0x17
+ 618 00aa 00       		.byte	0
+ 619 00ab 00       		.byte	0
+ 620 00ac 0E       		.uleb128 0xe
+ 621 00ad 898201   		.uleb128 0x4109
+ 622 00b0 00       		.byte	0
+ 623 00b1 11       		.uleb128 0x11
+ 624 00b2 01       		.uleb128 0x1
+ 625 00b3 31       		.uleb128 0x31
+ 626 00b4 13       		.uleb128 0x13
+ 627 00b5 00       		.byte	0
+ 628 00b6 00       		.byte	0
+ 629 00b7 0F       		.uleb128 0xf
+ 630 00b8 2E       		.uleb128 0x2e
+ 631 00b9 01       		.byte	0x1
+ 632 00ba 3F       		.uleb128 0x3f
+ 633 00bb 19       		.uleb128 0x19
+ 634 00bc 03       		.uleb128 0x3
+ 635 00bd 0E       		.uleb128 0xe
+ 636 00be 3A       		.uleb128 0x3a
+ 637 00bf 0B       		.uleb128 0xb
+ 638 00c0 3B       		.uleb128 0x3b
+ 639 00c1 0B       		.uleb128 0xb
+ 640 00c2 27       		.uleb128 0x27
+ 641 00c3 19       		.uleb128 0x19
+ 642 00c4 11       		.uleb128 0x11
+ 643 00c5 01       		.uleb128 0x1
+ 644 00c6 12       		.uleb128 0x12
+ 645 00c7 06       		.uleb128 0x6
+ 646 00c8 40       		.uleb128 0x40
+ 647 00c9 18       		.uleb128 0x18
+ 648 00ca 9742     		.uleb128 0x2117
+ 649 00cc 19       		.uleb128 0x19
+ 650 00cd 01       		.uleb128 0x1
+ 651 00ce 13       		.uleb128 0x13
+ 652 00cf 00       		.byte	0
+ARM GAS  C:\Users\LAIR\AppData\Local\Temp\ccUBGtb7.s 			page 15
+
+
+ 653 00d0 00       		.byte	0
+ 654 00d1 10       		.uleb128 0x10
+ 655 00d2 05       		.uleb128 0x5
+ 656 00d3 00       		.byte	0
+ 657 00d4 03       		.uleb128 0x3
+ 658 00d5 0E       		.uleb128 0xe
+ 659 00d6 3A       		.uleb128 0x3a
+ 660 00d7 0B       		.uleb128 0xb
+ 661 00d8 3B       		.uleb128 0x3b
+ 662 00d9 0B       		.uleb128 0xb
+ 663 00da 49       		.uleb128 0x49
+ 664 00db 13       		.uleb128 0x13
+ 665 00dc 02       		.uleb128 0x2
+ 666 00dd 17       		.uleb128 0x17
+ 667 00de 00       		.byte	0
+ 668 00df 00       		.byte	0
+ 669 00e0 11       		.uleb128 0x11
+ 670 00e1 2E       		.uleb128 0x2e
+ 671 00e2 00       		.byte	0
+ 672 00e3 3F       		.uleb128 0x3f
+ 673 00e4 19       		.uleb128 0x19
+ 674 00e5 03       		.uleb128 0x3
+ 675 00e6 0E       		.uleb128 0xe
+ 676 00e7 3A       		.uleb128 0x3a
+ 677 00e8 0B       		.uleb128 0xb
+ 678 00e9 3B       		.uleb128 0x3b
+ 679 00ea 0B       		.uleb128 0xb
+ 680 00eb 27       		.uleb128 0x27
+ 681 00ec 19       		.uleb128 0x19
+ 682 00ed 49       		.uleb128 0x49
+ 683 00ee 13       		.uleb128 0x13
+ 684 00ef 11       		.uleb128 0x11
+ 685 00f0 01       		.uleb128 0x1
+ 686 00f1 12       		.uleb128 0x12
+ 687 00f2 06       		.uleb128 0x6
+ 688 00f3 40       		.uleb128 0x40
+ 689 00f4 18       		.uleb128 0x18
+ 690 00f5 9742     		.uleb128 0x2117
+ 691 00f7 19       		.uleb128 0x19
+ 692 00f8 00       		.byte	0
+ 693 00f9 00       		.byte	0
+ 694 00fa 12       		.uleb128 0x12
+ 695 00fb 34       		.uleb128 0x34
+ 696 00fc 00       		.byte	0
+ 697 00fd 03       		.uleb128 0x3
+ 698 00fe 0E       		.uleb128 0xe
+ 699 00ff 3A       		.uleb128 0x3a
+ 700 0100 0B       		.uleb128 0xb
+ 701 0101 3B       		.uleb128 0x3b
+ 702 0102 0B       		.uleb128 0xb
+ 703 0103 49       		.uleb128 0x49
+ 704 0104 13       		.uleb128 0x13
+ 705 0105 02       		.uleb128 0x2
+ 706 0106 18       		.uleb128 0x18
+ 707 0107 00       		.byte	0
+ 708 0108 00       		.byte	0
+ 709 0109 13       		.uleb128 0x13
+ARM GAS  C:\Users\LAIR\AppData\Local\Temp\ccUBGtb7.s 			page 16
+
+
+ 710 010a 34       		.uleb128 0x34
+ 711 010b 00       		.byte	0
+ 712 010c 03       		.uleb128 0x3
+ 713 010d 0E       		.uleb128 0xe
+ 714 010e 3A       		.uleb128 0x3a
+ 715 010f 0B       		.uleb128 0xb
+ 716 0110 3B       		.uleb128 0x3b
+ 717 0111 0B       		.uleb128 0xb
+ 718 0112 49       		.uleb128 0x49
+ 719 0113 13       		.uleb128 0x13
+ 720 0114 3F       		.uleb128 0x3f
+ 721 0115 19       		.uleb128 0x19
+ 722 0116 3C       		.uleb128 0x3c
+ 723 0117 19       		.uleb128 0x19
+ 724 0118 00       		.byte	0
+ 725 0119 00       		.byte	0
+ 726 011a 14       		.uleb128 0x14
+ 727 011b 2E       		.uleb128 0x2e
+ 728 011c 00       		.byte	0
+ 729 011d 3F       		.uleb128 0x3f
+ 730 011e 19       		.uleb128 0x19
+ 731 011f 03       		.uleb128 0x3
+ 732 0120 0E       		.uleb128 0xe
+ 733 0121 3A       		.uleb128 0x3a
+ 734 0122 0B       		.uleb128 0xb
+ 735 0123 3B       		.uleb128 0x3b
+ 736 0124 0B       		.uleb128 0xb
+ 737 0125 27       		.uleb128 0x27
+ 738 0126 19       		.uleb128 0x19
+ 739 0127 49       		.uleb128 0x49
+ 740 0128 13       		.uleb128 0x13
+ 741 0129 3C       		.uleb128 0x3c
+ 742 012a 19       		.uleb128 0x19
+ 743 012b 00       		.byte	0
+ 744 012c 00       		.byte	0
+ 745 012d 00       		.byte	0
+ 746              		.section	.debug_loc,"",%progbits
+ 747              	.Ldebug_loc0:
+ 748              	.LLST0:
+ 749 0000 02000000 		.4byte	.LVL0
+ 750 0004 46000000 		.4byte	.LVL3
+ 751 0008 0200     		.2byte	0x2
+ 752 000a 30       		.byte	0x30
+ 753 000b 9F       		.byte	0x9f
+ 754 000c 46000000 		.4byte	.LVL3
+ 755 0010 48000000 		.4byte	.LVL4
+ 756 0014 0100     		.2byte	0x1
+ 757 0016 50       		.byte	0x50
+ 758 0017 48000000 		.4byte	.LVL4
+ 759 001b 5E000000 		.4byte	.LVL6
+ 760 001f 0200     		.2byte	0x2
+ 761 0021 30       		.byte	0x30
+ 762 0022 9F       		.byte	0x9f
+ 763 0023 5E000000 		.4byte	.LVL6
+ 764 0027 60000000 		.4byte	.LVL7
+ 765 002b 0100     		.2byte	0x1
+ 766 002d 50       		.byte	0x50
+ARM GAS  C:\Users\LAIR\AppData\Local\Temp\ccUBGtb7.s 			page 17
+
+
+ 767 002e 60000000 		.4byte	.LVL7
+ 768 0032 72000000 		.4byte	.LVL9
+ 769 0036 0200     		.2byte	0x2
+ 770 0038 30       		.byte	0x30
+ 771 0039 9F       		.byte	0x9f
+ 772 003a 72000000 		.4byte	.LVL9
+ 773 003e 80000000 		.4byte	.LFE65
+ 774 0042 0100     		.2byte	0x1
+ 775 0044 50       		.byte	0x50
+ 776 0045 00000000 		.4byte	0
+ 777 0049 00000000 		.4byte	0
+ 778              	.LLST1:
+ 779 004d 16000000 		.4byte	.LVL1
+ 780 0051 72000000 		.4byte	.LVL10
+ 781 0055 0100     		.2byte	0x1
+ 782 0057 54       		.byte	0x54
+ 783 0058 00000000 		.4byte	0
+ 784 005c 00000000 		.4byte	0
+ 785              	.LLST2:
+ 786 0060 24000000 		.4byte	.LVL2
+ 787 0064 45000000 		.4byte	.LVL3-1
+ 788 0068 0100     		.2byte	0x1
+ 789 006a 51       		.byte	0x51
+ 790 006b 48000000 		.4byte	.LVL4
+ 791 006f 52000000 		.4byte	.LVL5
+ 792 0073 0100     		.2byte	0x1
+ 793 0075 51       		.byte	0x51
+ 794 0076 60000000 		.4byte	.LVL7
+ 795 007a 70000000 		.4byte	.LVL8
+ 796 007e 0100     		.2byte	0x1
+ 797 0080 51       		.byte	0x51
+ 798 0081 00000000 		.4byte	0
+ 799 0085 00000000 		.4byte	0
+ 800              	.LLST3:
+ 801 0089 00000000 		.4byte	.LVL11
+ 802 008d 02000000 		.4byte	.LVL12
+ 803 0091 0100     		.2byte	0x1
+ 804 0093 50       		.byte	0x50
+ 805 0094 02000000 		.4byte	.LVL12
+ 806 0098 0C000000 		.4byte	.LFE66
+ 807 009c 0400     		.2byte	0x4
+ 808 009e F3       		.byte	0xf3
+ 809 009f 01       		.uleb128 0x1
+ 810 00a0 50       		.byte	0x50
+ 811 00a1 9F       		.byte	0x9f
+ 812 00a2 00000000 		.4byte	0
+ 813 00a6 00000000 		.4byte	0
+ 814              		.section	.debug_aranges,"",%progbits
+ 815 0000 2C000000 		.4byte	0x2c
+ 816 0004 0200     		.2byte	0x2
+ 817 0006 00000000 		.4byte	.Ldebug_info0
+ 818 000a 04       		.byte	0x4
+ 819 000b 00       		.byte	0
+ 820 000c 0000     		.2byte	0
+ 821 000e 0000     		.2byte	0
+ 822 0010 00000000 		.4byte	.LFB65
+ 823 0014 80000000 		.4byte	.LFE65-.LFB65
+ARM GAS  C:\Users\LAIR\AppData\Local\Temp\ccUBGtb7.s 			page 18
+
+
+ 824 0018 00000000 		.4byte	.LFB66
+ 825 001c 0C000000 		.4byte	.LFE66-.LFB66
+ 826 0020 00000000 		.4byte	.LFB67
+ 827 0024 10000000 		.4byte	.LFE67-.LFB67
+ 828 0028 00000000 		.4byte	0
+ 829 002c 00000000 		.4byte	0
+ 830              		.section	.debug_ranges,"",%progbits
+ 831              	.Ldebug_ranges0:
+ 832 0000 00000000 		.4byte	.LFB65
+ 833 0004 80000000 		.4byte	.LFE65
+ 834 0008 00000000 		.4byte	.LFB66
+ 835 000c 0C000000 		.4byte	.LFE66
+ 836 0010 00000000 		.4byte	.LFB67
+ 837 0014 10000000 		.4byte	.LFE67
+ 838 0018 00000000 		.4byte	0
+ 839 001c 00000000 		.4byte	0
+ 840              		.section	.debug_line,"",%progbits
+ 841              	.Ldebug_line0:
+ 842 0000 B4000000 		.section	.debug_str,"MS",%progbits,1
+ 842      02006200 
+ 842      00000201 
+ 842      FB0E0D00 
+ 842      01010101 
+ 843              	.LASF21:
+ 844 0000 70537461 		.ascii	"pStatusBlock\000"
+ 844      74757342 
+ 844      6C6F636B 
+ 844      00
+ 845              	.LASF26:
+ 846 000d 76616C75 		.ascii	"value\000"
+ 846      6500
+ 847              	.LASF19:
+ 848 0013 636F756E 		.ascii	"count\000"
+ 848      7400
+ 849              	.LASF3:
+ 850 0019 73686F72 		.ascii	"short unsigned int\000"
+ 850      7420756E 
+ 850      7369676E 
+ 850      65642069 
+ 850      6E7400
+ 851              	.LASF16:
+ 852 002c 73746174 		.ascii	"status\000"
+ 852      757300
+ 853              	.LASF34:
+ 854 0033 55534246 		.ascii	"USBFS_DispatchMSCClassRqst\000"
+ 854      535F4469 
+ 854      73706174 
+ 854      63684D53 
+ 854      43436C61 
+ 855              	.LASF20:
+ 856 004e 70446174 		.ascii	"pData\000"
+ 856      6100
+ 857              	.LASF23:
+ 858 0054 65704461 		.ascii	"epData\000"
+ 858      746100
+ 859              	.LASF28:
+ 860 005b 55534246 		.ascii	"USBFS_lunCount\000"
+ARM GAS  C:\Users\LAIR\AppData\Local\Temp\ccUBGtb7.s 			page 19
+
+
+ 860      535F6C75 
+ 860      6E436F75 
+ 860      6E7400
+ 861              	.LASF22:
+ 862 006a 545F5553 		.ascii	"T_USBFS_TD\000"
+ 862      4246535F 
+ 862      544400
+ 863              	.LASF12:
+ 864 0075 666C6F61 		.ascii	"float\000"
+ 864      7400
+ 865              	.LASF1:
+ 866 007b 756E7369 		.ascii	"unsigned char\000"
+ 866      676E6564 
+ 866      20636861 
+ 866      7200
+ 867              	.LASF18:
+ 868 0089 545F5553 		.ascii	"T_USBFS_XFER_STATUS_BLOCK\000"
+ 868      4246535F 
+ 868      58464552 
+ 868      5F535441 
+ 868      5455535F 
+ 869              	.LASF5:
+ 870 00a3 6C6F6E67 		.ascii	"long unsigned int\000"
+ 870      20756E73 
+ 870      69676E65 
+ 870      6420696E 
+ 870      7400
+ 871              	.LASF9:
+ 872 00b5 75696E74 		.ascii	"uint8\000"
+ 872      3800
+ 873              	.LASF30:
+ 874 00bb 55534246 		.ascii	"USBFS_InitNoDataControlTransfer\000"
+ 874      535F496E 
+ 874      69744E6F 
+ 874      44617461 
+ 874      436F6E74 
+ 875              	.LASF24:
+ 876 00db 55534246 		.ascii	"USBFS_ep0_data_struct\000"
+ 876      535F6570 
+ 876      305F6461 
+ 876      74615F73 
+ 876      74727563 
+ 877              	.LASF13:
+ 878 00f1 646F7562 		.ascii	"double\000"
+ 878      6C6500
+ 879              	.LASF29:
+ 880 00f8 55534246 		.ascii	"USBFS_InitControlRead\000"
+ 880      535F496E 
+ 880      6974436F 
+ 880      6E74726F 
+ 880      6C526561 
+ 881              	.LASF37:
+ 882 010e 55534246 		.ascii	"USBFS_MSC_GetLunCount\000"
+ 882      535F4D53 
+ 882      435F4765 
+ 882      744C756E 
+ 882      436F756E 
+ARM GAS  C:\Users\LAIR\AppData\Local\Temp\ccUBGtb7.s 			page 20
+
+
+ 883              	.LASF10:
+ 884 0124 75696E74 		.ascii	"uint16\000"
+ 884      313600
+ 885              	.LASF11:
+ 886 012b 75696E74 		.ascii	"uint32\000"
+ 886      333200
+ 887              	.LASF8:
+ 888 0132 756E7369 		.ascii	"unsigned int\000"
+ 888      676E6564 
+ 888      20696E74 
+ 888      00
+ 889              	.LASF7:
+ 890 013f 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 890      206C6F6E 
+ 890      6720756E 
+ 890      7369676E 
+ 890      65642069 
+ 891              	.LASF36:
+ 892 0156 6C756E43 		.ascii	"lunCount\000"
+ 892      6F756E74 
+ 892      00
+ 893              	.LASF27:
+ 894 015f 64617461 		.ascii	"dataLength\000"
+ 894      4C656E67 
+ 894      746800
+ 895              	.LASF32:
+ 896 016a 2E5C4765 		.ascii	".\\Generated_Source\\PSoC4\\USBFS_msc.c\000"
+ 896      6E657261 
+ 896      7465645F 
+ 896      536F7572 
+ 896      63655C50 
+ 897              	.LASF38:
+ 898 018f 55534246 		.ascii	"USBFS_currentTD\000"
+ 898      535F6375 
+ 898      7272656E 
+ 898      74544400 
+ 899              	.LASF15:
+ 900 019f 73697A65 		.ascii	"sizetype\000"
+ 900      74797065 
+ 900      00
+ 901              	.LASF6:
+ 902 01a8 6C6F6E67 		.ascii	"long long int\000"
+ 902      206C6F6E 
+ 902      6720696E 
+ 902      7400
+ 903              	.LASF33:
+ 904 01b6 433A5C55 		.ascii	"C:\\Users\\LAIR\\Documents\\GitHub\\ARC-Controller\\"
+ 904      73657273 
+ 904      5C4C4149 
+ 904      525C446F 
+ 904      63756D65 
+ 905 01e4 50536F43 		.ascii	"PSoC-Code\\ARC-EMBED.cydsn\000"
+ 905      2D436F64 
+ 905      655C4152 
+ 905      432D454D 
+ 905      4245442E 
+ 906              	.LASF31:
+ARM GAS  C:\Users\LAIR\AppData\Local\Temp\ccUBGtb7.s 			page 21
+
+
+ 907 01fe 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 907      4320342E 
+ 907      392E3320 
+ 907      32303135 
+ 907      30333033 
+ 908 0231 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m0 -mthumb -g -O"
+ 908      20726576 
+ 908      6973696F 
+ 908      6E203232 
+ 908      31323230 
+ 909 0264 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 909      66756E63 
+ 909      74696F6E 
+ 909      2D736563 
+ 909      74696F6E 
+ 910              	.LASF2:
+ 911 028c 73686F72 		.ascii	"short int\000"
+ 911      7420696E 
+ 911      7400
+ 912              	.LASF25:
+ 913 0296 72657175 		.ascii	"requestHandled\000"
+ 913      65737448 
+ 913      616E646C 
+ 913      656400
+ 914              	.LASF4:
+ 915 02a5 6C6F6E67 		.ascii	"long int\000"
+ 915      20696E74 
+ 915      00
+ 916              	.LASF14:
+ 917 02ae 63686172 		.ascii	"char\000"
+ 917      00
+ 918              	.LASF35:
+ 919 02b3 55534246 		.ascii	"USBFS_MSC_SetLunCount\000"
+ 919      535F4D53 
+ 919      435F5365 
+ 919      744C756E 
+ 919      436F756E 
+ 920              	.LASF0:
+ 921 02c9 7369676E 		.ascii	"signed char\000"
+ 921      65642063 
+ 921      68617200 
+ 922              	.LASF17:
+ 923 02d5 6C656E67 		.ascii	"length\000"
+ 923      746800
+ 924              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

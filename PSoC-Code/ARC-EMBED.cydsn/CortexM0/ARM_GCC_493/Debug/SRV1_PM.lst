@@ -1,0 +1,1150 @@
+ARM GAS  C:\Users\LAIR\AppData\Local\Temp\cc7UH66a.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 1
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"SRV1_PM.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.SRV1_SaveConfig,"ax",%progbits
+  18              		.align	2
+  19              		.global	SRV1_SaveConfig
+  20              		.code	16
+  21              		.thumb_func
+  22              		.type	SRV1_SaveConfig, %function
+  23              	SRV1_SaveConfig:
+  24              	.LFB1:
+  25              		.file 1 ".\\Generated_Source\\PSoC4\\SRV1_PM.c"
+   1:.\Generated_Source\PSoC4/SRV1_PM.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC4/SRV1_PM.c **** * File Name: SRV1_PM.c
+   3:.\Generated_Source\PSoC4/SRV1_PM.c **** * Version 3.30
+   4:.\Generated_Source\PSoC4/SRV1_PM.c **** *
+   5:.\Generated_Source\PSoC4/SRV1_PM.c **** * Description:
+   6:.\Generated_Source\PSoC4/SRV1_PM.c **** *  This file provides the power management source code to API for the
+   7:.\Generated_Source\PSoC4/SRV1_PM.c **** *  PWM.
+   8:.\Generated_Source\PSoC4/SRV1_PM.c **** *
+   9:.\Generated_Source\PSoC4/SRV1_PM.c **** * Note:
+  10:.\Generated_Source\PSoC4/SRV1_PM.c **** *
+  11:.\Generated_Source\PSoC4/SRV1_PM.c **** ********************************************************************************
+  12:.\Generated_Source\PSoC4/SRV1_PM.c **** * Copyright 2008-2014, Cypress Semiconductor Corporation.  All rights reserved.
+  13:.\Generated_Source\PSoC4/SRV1_PM.c **** * You may use this file only in accordance with the license, terms, conditions,
+  14:.\Generated_Source\PSoC4/SRV1_PM.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  15:.\Generated_Source\PSoC4/SRV1_PM.c **** * the software package with which this file was provided.
+  16:.\Generated_Source\PSoC4/SRV1_PM.c **** *******************************************************************************/
+  17:.\Generated_Source\PSoC4/SRV1_PM.c **** 
+  18:.\Generated_Source\PSoC4/SRV1_PM.c **** #include "SRV1.h"
+  19:.\Generated_Source\PSoC4/SRV1_PM.c **** 
+  20:.\Generated_Source\PSoC4/SRV1_PM.c **** static SRV1_backupStruct SRV1_backup;
+  21:.\Generated_Source\PSoC4/SRV1_PM.c **** 
+  22:.\Generated_Source\PSoC4/SRV1_PM.c **** 
+  23:.\Generated_Source\PSoC4/SRV1_PM.c **** /*******************************************************************************
+  24:.\Generated_Source\PSoC4/SRV1_PM.c **** * Function Name: SRV1_SaveConfig
+  25:.\Generated_Source\PSoC4/SRV1_PM.c **** ********************************************************************************
+  26:.\Generated_Source\PSoC4/SRV1_PM.c **** *
+  27:.\Generated_Source\PSoC4/SRV1_PM.c **** * Summary:
+  28:.\Generated_Source\PSoC4/SRV1_PM.c **** *  Saves the current user configuration of the component.
+  29:.\Generated_Source\PSoC4/SRV1_PM.c **** *
+  30:.\Generated_Source\PSoC4/SRV1_PM.c **** * Parameters:
+  31:.\Generated_Source\PSoC4/SRV1_PM.c **** *  None
+  32:.\Generated_Source\PSoC4/SRV1_PM.c **** *
+ARM GAS  C:\Users\LAIR\AppData\Local\Temp\cc7UH66a.s 			page 2
+
+
+  33:.\Generated_Source\PSoC4/SRV1_PM.c **** * Return:
+  34:.\Generated_Source\PSoC4/SRV1_PM.c **** *  None
+  35:.\Generated_Source\PSoC4/SRV1_PM.c **** *
+  36:.\Generated_Source\PSoC4/SRV1_PM.c **** * Global variables:
+  37:.\Generated_Source\PSoC4/SRV1_PM.c **** *  SRV1_backup:  Variables of this global structure are modified to
+  38:.\Generated_Source\PSoC4/SRV1_PM.c **** *  store the values of non retention configuration registers when Sleep() API is
+  39:.\Generated_Source\PSoC4/SRV1_PM.c **** *  called.
+  40:.\Generated_Source\PSoC4/SRV1_PM.c **** *
+  41:.\Generated_Source\PSoC4/SRV1_PM.c **** *******************************************************************************/
+  42:.\Generated_Source\PSoC4/SRV1_PM.c **** void SRV1_SaveConfig(void) 
+  43:.\Generated_Source\PSoC4/SRV1_PM.c **** {
+  26              		.loc 1 43 0
+  27              		.cfi_startproc
+  28 0000 10B5     		push	{r4, lr}
+  29              		.cfi_def_cfa_offset 8
+  30              		.cfi_offset 4, -8
+  31              		.cfi_offset 14, -4
+  44:.\Generated_Source\PSoC4/SRV1_PM.c **** 
+  45:.\Generated_Source\PSoC4/SRV1_PM.c ****     #if(!SRV1_UsingFixedFunction)
+  46:.\Generated_Source\PSoC4/SRV1_PM.c ****         #if(!SRV1_PWMModeIsCenterAligned)
+  47:.\Generated_Source\PSoC4/SRV1_PM.c ****             SRV1_backup.PWMPeriod = SRV1_ReadPeriod();
+  32              		.loc 1 47 0
+  33 0002 FFF7FEFF 		bl	SRV1_ReadPeriod
+  34              	.LVL0:
+  35 0006 064C     		ldr	r4, .L2
+  36 0008 A080     		strh	r0, [r4, #4]
+  48:.\Generated_Source\PSoC4/SRV1_PM.c ****         #endif /* (!SRV1_PWMModeIsCenterAligned) */
+  49:.\Generated_Source\PSoC4/SRV1_PM.c ****         SRV1_backup.PWMUdb = SRV1_ReadCounter();
+  37              		.loc 1 49 0
+  38 000a FFF7FEFF 		bl	SRV1_ReadCounter
+  39              	.LVL1:
+  40 000e 6080     		strh	r0, [r4, #2]
+  50:.\Generated_Source\PSoC4/SRV1_PM.c ****         #if (SRV1_UseStatus)
+  51:.\Generated_Source\PSoC4/SRV1_PM.c ****             SRV1_backup.InterruptMaskValue = SRV1_STATUS_MASK;
+  41              		.loc 1 51 0
+  42 0010 044B     		ldr	r3, .L2+4
+  43 0012 1B78     		ldrb	r3, [r3]
+  44 0014 A371     		strb	r3, [r4, #6]
+  52:.\Generated_Source\PSoC4/SRV1_PM.c ****         #endif /* (SRV1_UseStatus) */
+  53:.\Generated_Source\PSoC4/SRV1_PM.c **** 
+  54:.\Generated_Source\PSoC4/SRV1_PM.c ****         #if(SRV1_DeadBandMode == SRV1__B_PWM__DBM_256_CLOCKS || \
+  55:.\Generated_Source\PSoC4/SRV1_PM.c ****             SRV1_DeadBandMode == SRV1__B_PWM__DBM_2_4_CLOCKS)
+  56:.\Generated_Source\PSoC4/SRV1_PM.c ****             SRV1_backup.PWMdeadBandValue = SRV1_ReadDeadTime();
+  57:.\Generated_Source\PSoC4/SRV1_PM.c ****         #endif /*  deadband count is either 2-4 clocks or 256 clocks */
+  58:.\Generated_Source\PSoC4/SRV1_PM.c **** 
+  59:.\Generated_Source\PSoC4/SRV1_PM.c ****         #if(SRV1_KillModeMinTime)
+  60:.\Generated_Source\PSoC4/SRV1_PM.c ****              SRV1_backup.PWMKillCounterPeriod = SRV1_ReadKillTime();
+  61:.\Generated_Source\PSoC4/SRV1_PM.c ****         #endif /* (SRV1_KillModeMinTime) */
+  62:.\Generated_Source\PSoC4/SRV1_PM.c **** 
+  63:.\Generated_Source\PSoC4/SRV1_PM.c ****         #if(SRV1_UseControl)
+  64:.\Generated_Source\PSoC4/SRV1_PM.c ****             SRV1_backup.PWMControlRegister = SRV1_ReadControlRegister();
+  45              		.loc 1 64 0
+  46 0016 FFF7FEFF 		bl	SRV1_ReadControlRegister
+  47              	.LVL2:
+  48 001a E071     		strb	r0, [r4, #7]
+  65:.\Generated_Source\PSoC4/SRV1_PM.c ****         #endif /* (SRV1_UseControl) */
+  66:.\Generated_Source\PSoC4/SRV1_PM.c ****     #endif  /* (!SRV1_UsingFixedFunction) */
+ARM GAS  C:\Users\LAIR\AppData\Local\Temp\cc7UH66a.s 			page 3
+
+
+  67:.\Generated_Source\PSoC4/SRV1_PM.c **** }
+  49              		.loc 1 67 0
+  50              		@ sp needed
+  51 001c 10BD     		pop	{r4, pc}
+  52              	.L3:
+  53 001e C046     		.align	2
+  54              	.L2:
+  55 0020 00000000 		.word	.LANCHOR0
+  56 0024 87000F40 		.word	1074724999
+  57              		.cfi_endproc
+  58              	.LFE1:
+  59              		.size	SRV1_SaveConfig, .-SRV1_SaveConfig
+  60              		.section	.text.SRV1_RestoreConfig,"ax",%progbits
+  61              		.align	2
+  62              		.global	SRV1_RestoreConfig
+  63              		.code	16
+  64              		.thumb_func
+  65              		.type	SRV1_RestoreConfig, %function
+  66              	SRV1_RestoreConfig:
+  67              	.LFB2:
+  68:.\Generated_Source\PSoC4/SRV1_PM.c **** 
+  69:.\Generated_Source\PSoC4/SRV1_PM.c **** 
+  70:.\Generated_Source\PSoC4/SRV1_PM.c **** /*******************************************************************************
+  71:.\Generated_Source\PSoC4/SRV1_PM.c **** * Function Name: SRV1_RestoreConfig
+  72:.\Generated_Source\PSoC4/SRV1_PM.c **** ********************************************************************************
+  73:.\Generated_Source\PSoC4/SRV1_PM.c **** *
+  74:.\Generated_Source\PSoC4/SRV1_PM.c **** * Summary:
+  75:.\Generated_Source\PSoC4/SRV1_PM.c **** *  Restores the current user configuration of the component.
+  76:.\Generated_Source\PSoC4/SRV1_PM.c **** *
+  77:.\Generated_Source\PSoC4/SRV1_PM.c **** * Parameters:
+  78:.\Generated_Source\PSoC4/SRV1_PM.c **** *  None
+  79:.\Generated_Source\PSoC4/SRV1_PM.c **** *
+  80:.\Generated_Source\PSoC4/SRV1_PM.c **** * Return:
+  81:.\Generated_Source\PSoC4/SRV1_PM.c **** *  None
+  82:.\Generated_Source\PSoC4/SRV1_PM.c **** *
+  83:.\Generated_Source\PSoC4/SRV1_PM.c **** * Global variables:
+  84:.\Generated_Source\PSoC4/SRV1_PM.c **** *  SRV1_backup:  Variables of this global structure are used to
+  85:.\Generated_Source\PSoC4/SRV1_PM.c **** *  restore the values of non retention registers on wakeup from sleep mode.
+  86:.\Generated_Source\PSoC4/SRV1_PM.c **** *
+  87:.\Generated_Source\PSoC4/SRV1_PM.c **** *******************************************************************************/
+  88:.\Generated_Source\PSoC4/SRV1_PM.c **** void SRV1_RestoreConfig(void) 
+  89:.\Generated_Source\PSoC4/SRV1_PM.c **** {
+  68              		.loc 1 89 0
+  69              		.cfi_startproc
+  70 0000 10B5     		push	{r4, lr}
+  71              		.cfi_def_cfa_offset 8
+  72              		.cfi_offset 4, -8
+  73              		.cfi_offset 14, -4
+  90:.\Generated_Source\PSoC4/SRV1_PM.c ****         #if(!SRV1_UsingFixedFunction)
+  91:.\Generated_Source\PSoC4/SRV1_PM.c ****             #if(!SRV1_PWMModeIsCenterAligned)
+  92:.\Generated_Source\PSoC4/SRV1_PM.c ****                 SRV1_WritePeriod(SRV1_backup.PWMPeriod);
+  74              		.loc 1 92 0
+  75 0002 074C     		ldr	r4, .L5
+  76 0004 A088     		ldrh	r0, [r4, #4]
+  77 0006 FFF7FEFF 		bl	SRV1_WritePeriod
+  78              	.LVL3:
+  93:.\Generated_Source\PSoC4/SRV1_PM.c ****             #endif /* (!SRV1_PWMModeIsCenterAligned) */
+ARM GAS  C:\Users\LAIR\AppData\Local\Temp\cc7UH66a.s 			page 4
+
+
+  94:.\Generated_Source\PSoC4/SRV1_PM.c **** 
+  95:.\Generated_Source\PSoC4/SRV1_PM.c ****             SRV1_WriteCounter(SRV1_backup.PWMUdb);
+  79              		.loc 1 95 0
+  80 000a 6088     		ldrh	r0, [r4, #2]
+  81 000c FFF7FEFF 		bl	SRV1_WriteCounter
+  82              	.LVL4:
+  96:.\Generated_Source\PSoC4/SRV1_PM.c **** 
+  97:.\Generated_Source\PSoC4/SRV1_PM.c ****             #if (SRV1_UseStatus)
+  98:.\Generated_Source\PSoC4/SRV1_PM.c ****                 SRV1_STATUS_MASK = SRV1_backup.InterruptMaskValue;
+  83              		.loc 1 98 0
+  84 0010 A279     		ldrb	r2, [r4, #6]
+  85 0012 044B     		ldr	r3, .L5+4
+  86 0014 1A70     		strb	r2, [r3]
+  99:.\Generated_Source\PSoC4/SRV1_PM.c ****             #endif /* (SRV1_UseStatus) */
+ 100:.\Generated_Source\PSoC4/SRV1_PM.c **** 
+ 101:.\Generated_Source\PSoC4/SRV1_PM.c ****             #if(SRV1_DeadBandMode == SRV1__B_PWM__DBM_256_CLOCKS || \
+ 102:.\Generated_Source\PSoC4/SRV1_PM.c ****                 SRV1_DeadBandMode == SRV1__B_PWM__DBM_2_4_CLOCKS)
+ 103:.\Generated_Source\PSoC4/SRV1_PM.c ****                 SRV1_WriteDeadTime(SRV1_backup.PWMdeadBandValue);
+ 104:.\Generated_Source\PSoC4/SRV1_PM.c ****             #endif /* deadband count is either 2-4 clocks or 256 clocks */
+ 105:.\Generated_Source\PSoC4/SRV1_PM.c **** 
+ 106:.\Generated_Source\PSoC4/SRV1_PM.c ****             #if(SRV1_KillModeMinTime)
+ 107:.\Generated_Source\PSoC4/SRV1_PM.c ****                 SRV1_WriteKillTime(SRV1_backup.PWMKillCounterPeriod);
+ 108:.\Generated_Source\PSoC4/SRV1_PM.c ****             #endif /* (SRV1_KillModeMinTime) */
+ 109:.\Generated_Source\PSoC4/SRV1_PM.c **** 
+ 110:.\Generated_Source\PSoC4/SRV1_PM.c ****             #if(SRV1_UseControl)
+ 111:.\Generated_Source\PSoC4/SRV1_PM.c ****                 SRV1_WriteControlRegister(SRV1_backup.PWMControlRegister);
+  87              		.loc 1 111 0
+  88 0016 E079     		ldrb	r0, [r4, #7]
+  89 0018 FFF7FEFF 		bl	SRV1_WriteControlRegister
+  90              	.LVL5:
+ 112:.\Generated_Source\PSoC4/SRV1_PM.c ****             #endif /* (SRV1_UseControl) */
+ 113:.\Generated_Source\PSoC4/SRV1_PM.c ****         #endif  /* (!SRV1_UsingFixedFunction) */
+ 114:.\Generated_Source\PSoC4/SRV1_PM.c ****     }
+  91              		.loc 1 114 0
+  92              		@ sp needed
+  93 001c 10BD     		pop	{r4, pc}
+  94              	.L6:
+  95 001e C046     		.align	2
+  96              	.L5:
+  97 0020 00000000 		.word	.LANCHOR0
+  98 0024 87000F40 		.word	1074724999
+  99              		.cfi_endproc
+ 100              	.LFE2:
+ 101              		.size	SRV1_RestoreConfig, .-SRV1_RestoreConfig
+ 102              		.section	.text.SRV1_Sleep,"ax",%progbits
+ 103              		.align	2
+ 104              		.global	SRV1_Sleep
+ 105              		.code	16
+ 106              		.thumb_func
+ 107              		.type	SRV1_Sleep, %function
+ 108              	SRV1_Sleep:
+ 109              	.LFB3:
+ 115:.\Generated_Source\PSoC4/SRV1_PM.c **** 
+ 116:.\Generated_Source\PSoC4/SRV1_PM.c **** 
+ 117:.\Generated_Source\PSoC4/SRV1_PM.c **** /*******************************************************************************
+ 118:.\Generated_Source\PSoC4/SRV1_PM.c **** * Function Name: SRV1_Sleep
+ 119:.\Generated_Source\PSoC4/SRV1_PM.c **** ********************************************************************************
+ARM GAS  C:\Users\LAIR\AppData\Local\Temp\cc7UH66a.s 			page 5
+
+
+ 120:.\Generated_Source\PSoC4/SRV1_PM.c **** *
+ 121:.\Generated_Source\PSoC4/SRV1_PM.c **** * Summary:
+ 122:.\Generated_Source\PSoC4/SRV1_PM.c **** *  Disables block's operation and saves the user configuration. Should be called
+ 123:.\Generated_Source\PSoC4/SRV1_PM.c **** *  just prior to entering sleep.
+ 124:.\Generated_Source\PSoC4/SRV1_PM.c **** *
+ 125:.\Generated_Source\PSoC4/SRV1_PM.c **** * Parameters:
+ 126:.\Generated_Source\PSoC4/SRV1_PM.c **** *  None
+ 127:.\Generated_Source\PSoC4/SRV1_PM.c **** *
+ 128:.\Generated_Source\PSoC4/SRV1_PM.c **** * Return:
+ 129:.\Generated_Source\PSoC4/SRV1_PM.c **** *  None
+ 130:.\Generated_Source\PSoC4/SRV1_PM.c **** *
+ 131:.\Generated_Source\PSoC4/SRV1_PM.c **** * Global variables:
+ 132:.\Generated_Source\PSoC4/SRV1_PM.c **** *  SRV1_backup.PWMEnableState:  Is modified depending on the enable
+ 133:.\Generated_Source\PSoC4/SRV1_PM.c **** *  state of the block before entering sleep mode.
+ 134:.\Generated_Source\PSoC4/SRV1_PM.c **** *
+ 135:.\Generated_Source\PSoC4/SRV1_PM.c **** *******************************************************************************/
+ 136:.\Generated_Source\PSoC4/SRV1_PM.c **** void SRV1_Sleep(void) 
+ 137:.\Generated_Source\PSoC4/SRV1_PM.c **** {
+ 110              		.loc 1 137 0
+ 111              		.cfi_startproc
+ 112 0000 08B5     		push	{r3, lr}
+ 113              		.cfi_def_cfa_offset 8
+ 114              		.cfi_offset 3, -8
+ 115              		.cfi_offset 14, -4
+ 138:.\Generated_Source\PSoC4/SRV1_PM.c ****     #if(SRV1_UseControl)
+ 139:.\Generated_Source\PSoC4/SRV1_PM.c ****         if(SRV1_CTRL_ENABLE == (SRV1_CONTROL & SRV1_CTRL_ENABLE))
+ 116              		.loc 1 139 0
+ 117 0002 084B     		ldr	r3, .L10
+ 118 0004 1B78     		ldrb	r3, [r3]
+ 119 0006 5BB2     		sxtb	r3, r3
+ 120 0008 002B     		cmp	r3, #0
+ 121 000a 03DA     		bge	.L8
+ 140:.\Generated_Source\PSoC4/SRV1_PM.c ****         {
+ 141:.\Generated_Source\PSoC4/SRV1_PM.c ****             /*Component is enabled */
+ 142:.\Generated_Source\PSoC4/SRV1_PM.c ****             SRV1_backup.PWMEnableState = 1u;
+ 122              		.loc 1 142 0
+ 123 000c 0122     		mov	r2, #1
+ 124 000e 064B     		ldr	r3, .L10+4
+ 125 0010 1A70     		strb	r2, [r3]
+ 126 0012 02E0     		b	.L9
+ 127              	.L8:
+ 143:.\Generated_Source\PSoC4/SRV1_PM.c ****         }
+ 144:.\Generated_Source\PSoC4/SRV1_PM.c ****         else
+ 145:.\Generated_Source\PSoC4/SRV1_PM.c ****         {
+ 146:.\Generated_Source\PSoC4/SRV1_PM.c ****             /* Component is disabled */
+ 147:.\Generated_Source\PSoC4/SRV1_PM.c ****             SRV1_backup.PWMEnableState = 0u;
+ 128              		.loc 1 147 0
+ 129 0014 0022     		mov	r2, #0
+ 130 0016 044B     		ldr	r3, .L10+4
+ 131 0018 1A70     		strb	r2, [r3]
+ 132              	.L9:
+ 148:.\Generated_Source\PSoC4/SRV1_PM.c ****         }
+ 149:.\Generated_Source\PSoC4/SRV1_PM.c ****     #endif /* (SRV1_UseControl) */
+ 150:.\Generated_Source\PSoC4/SRV1_PM.c **** 
+ 151:.\Generated_Source\PSoC4/SRV1_PM.c ****     /* Stop component */
+ 152:.\Generated_Source\PSoC4/SRV1_PM.c ****     SRV1_Stop();
+ 133              		.loc 1 152 0
+ARM GAS  C:\Users\LAIR\AppData\Local\Temp\cc7UH66a.s 			page 6
+
+
+ 134 001a FFF7FEFF 		bl	SRV1_Stop
+ 135              	.LVL6:
+ 153:.\Generated_Source\PSoC4/SRV1_PM.c **** 
+ 154:.\Generated_Source\PSoC4/SRV1_PM.c ****     /* Save registers configuration */
+ 155:.\Generated_Source\PSoC4/SRV1_PM.c ****     SRV1_SaveConfig();
+ 136              		.loc 1 155 0
+ 137 001e FFF7FEFF 		bl	SRV1_SaveConfig
+ 138              	.LVL7:
+ 156:.\Generated_Source\PSoC4/SRV1_PM.c **** }
+ 139              		.loc 1 156 0
+ 140              		@ sp needed
+ 141 0022 08BD     		pop	{r3, pc}
+ 142              	.L11:
+ 143              		.align	2
+ 144              	.L10:
+ 145 0024 76000F40 		.word	1074724982
+ 146 0028 00000000 		.word	.LANCHOR0
+ 147              		.cfi_endproc
+ 148              	.LFE3:
+ 149              		.size	SRV1_Sleep, .-SRV1_Sleep
+ 150              		.section	.text.SRV1_Wakeup,"ax",%progbits
+ 151              		.align	2
+ 152              		.global	SRV1_Wakeup
+ 153              		.code	16
+ 154              		.thumb_func
+ 155              		.type	SRV1_Wakeup, %function
+ 156              	SRV1_Wakeup:
+ 157              	.LFB4:
+ 157:.\Generated_Source\PSoC4/SRV1_PM.c **** 
+ 158:.\Generated_Source\PSoC4/SRV1_PM.c **** 
+ 159:.\Generated_Source\PSoC4/SRV1_PM.c **** /*******************************************************************************
+ 160:.\Generated_Source\PSoC4/SRV1_PM.c **** * Function Name: SRV1_Wakeup
+ 161:.\Generated_Source\PSoC4/SRV1_PM.c **** ********************************************************************************
+ 162:.\Generated_Source\PSoC4/SRV1_PM.c **** *
+ 163:.\Generated_Source\PSoC4/SRV1_PM.c **** * Summary:
+ 164:.\Generated_Source\PSoC4/SRV1_PM.c **** *  Restores and enables the user configuration. Should be called just after
+ 165:.\Generated_Source\PSoC4/SRV1_PM.c **** *  awaking from sleep.
+ 166:.\Generated_Source\PSoC4/SRV1_PM.c **** *
+ 167:.\Generated_Source\PSoC4/SRV1_PM.c **** * Parameters:
+ 168:.\Generated_Source\PSoC4/SRV1_PM.c **** *  None
+ 169:.\Generated_Source\PSoC4/SRV1_PM.c **** *
+ 170:.\Generated_Source\PSoC4/SRV1_PM.c **** * Return:
+ 171:.\Generated_Source\PSoC4/SRV1_PM.c **** *  None
+ 172:.\Generated_Source\PSoC4/SRV1_PM.c **** *
+ 173:.\Generated_Source\PSoC4/SRV1_PM.c **** * Global variables:
+ 174:.\Generated_Source\PSoC4/SRV1_PM.c **** *  SRV1_backup.pwmEnable:  Is used to restore the enable state of
+ 175:.\Generated_Source\PSoC4/SRV1_PM.c **** *  block on wakeup from sleep mode.
+ 176:.\Generated_Source\PSoC4/SRV1_PM.c **** *
+ 177:.\Generated_Source\PSoC4/SRV1_PM.c **** *******************************************************************************/
+ 178:.\Generated_Source\PSoC4/SRV1_PM.c **** void SRV1_Wakeup(void) 
+ 179:.\Generated_Source\PSoC4/SRV1_PM.c **** {
+ 158              		.loc 1 179 0
+ 159              		.cfi_startproc
+ 160 0000 08B5     		push	{r3, lr}
+ 161              		.cfi_def_cfa_offset 8
+ 162              		.cfi_offset 3, -8
+ 163              		.cfi_offset 14, -4
+ARM GAS  C:\Users\LAIR\AppData\Local\Temp\cc7UH66a.s 			page 7
+
+
+ 180:.\Generated_Source\PSoC4/SRV1_PM.c ****      /* Restore registers values */
+ 181:.\Generated_Source\PSoC4/SRV1_PM.c ****     SRV1_RestoreConfig();
+ 164              		.loc 1 181 0
+ 165 0002 FFF7FEFF 		bl	SRV1_RestoreConfig
+ 166              	.LVL8:
+ 182:.\Generated_Source\PSoC4/SRV1_PM.c **** 
+ 183:.\Generated_Source\PSoC4/SRV1_PM.c ****     if(SRV1_backup.PWMEnableState != 0u)
+ 167              		.loc 1 183 0
+ 168 0006 034B     		ldr	r3, .L14
+ 169 0008 1B78     		ldrb	r3, [r3]
+ 170 000a 002B     		cmp	r3, #0
+ 171 000c 01D0     		beq	.L12
+ 184:.\Generated_Source\PSoC4/SRV1_PM.c ****     {
+ 185:.\Generated_Source\PSoC4/SRV1_PM.c ****         /* Enable component's operation */
+ 186:.\Generated_Source\PSoC4/SRV1_PM.c ****         SRV1_Enable();
+ 172              		.loc 1 186 0
+ 173 000e FFF7FEFF 		bl	SRV1_Enable
+ 174              	.LVL9:
+ 175              	.L12:
+ 187:.\Generated_Source\PSoC4/SRV1_PM.c ****     } /* Do nothing if component's block was disabled before */
+ 188:.\Generated_Source\PSoC4/SRV1_PM.c **** 
+ 189:.\Generated_Source\PSoC4/SRV1_PM.c **** }
+ 176              		.loc 1 189 0
+ 177              		@ sp needed
+ 178 0012 08BD     		pop	{r3, pc}
+ 179              	.L15:
+ 180              		.align	2
+ 181              	.L14:
+ 182 0014 00000000 		.word	.LANCHOR0
+ 183              		.cfi_endproc
+ 184              	.LFE4:
+ 185              		.size	SRV1_Wakeup, .-SRV1_Wakeup
+ 186              		.bss
+ 187              		.align	2
+ 188              		.set	.LANCHOR0,. + 0
+ 189              		.type	SRV1_backup, %object
+ 190              		.size	SRV1_backup, 8
+ 191              	SRV1_backup:
+ 192 0000 00000000 		.space	8
+ 192      00000000 
+ 193              		.text
+ 194              	.Letext0:
+ 195              		.file 2 ".\\Generated_Source\\PSoC4\\cytypes.h"
+ 196              		.file 3 ".\\Generated_Source\\PSoC4\\SRV1.h"
+ 197              		.section	.debug_info,"",%progbits
+ 198              	.Ldebug_info0:
+ 199 0000 22020000 		.4byte	0x222
+ 200 0004 0400     		.2byte	0x4
+ 201 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 202 000a 04       		.byte	0x4
+ 203 000b 01       		.uleb128 0x1
+ 204 000c F0010000 		.4byte	.LASF34
+ 205 0010 01       		.byte	0x1
+ 206 0011 63000000 		.4byte	.LASF35
+ 207 0015 8A010000 		.4byte	.LASF36
+ 208 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 209 001d 00000000 		.4byte	0
+ARM GAS  C:\Users\LAIR\AppData\Local\Temp\cc7UH66a.s 			page 8
+
+
+ 210 0021 00000000 		.4byte	.Ldebug_line0
+ 211 0025 02       		.uleb128 0x2
+ 212 0026 01       		.byte	0x1
+ 213 0027 06       		.byte	0x6
+ 214 0028 B6020000 		.4byte	.LASF0
+ 215 002c 02       		.uleb128 0x2
+ 216 002d 01       		.byte	0x1
+ 217 002e 08       		.byte	0x8
+ 218 002f 91000000 		.4byte	.LASF1
+ 219 0033 02       		.uleb128 0x2
+ 220 0034 02       		.byte	0x2
+ 221 0035 05       		.byte	0x5
+ 222 0036 7E020000 		.4byte	.LASF2
+ 223 003a 02       		.uleb128 0x2
+ 224 003b 02       		.byte	0x2
+ 225 003c 07       		.byte	0x7
+ 226 003d 34000000 		.4byte	.LASF3
+ 227 0041 02       		.uleb128 0x2
+ 228 0042 04       		.byte	0x4
+ 229 0043 05       		.byte	0x5
+ 230 0044 A8020000 		.4byte	.LASF4
+ 231 0048 02       		.uleb128 0x2
+ 232 0049 04       		.byte	0x4
+ 233 004a 07       		.byte	0x7
+ 234 004b B1000000 		.4byte	.LASF5
+ 235 004f 02       		.uleb128 0x2
+ 236 0050 08       		.byte	0x8
+ 237 0051 05       		.byte	0x5
+ 238 0052 7C010000 		.4byte	.LASF6
+ 239 0056 02       		.uleb128 0x2
+ 240 0057 08       		.byte	0x8
+ 241 0058 07       		.byte	0x7
+ 242 0059 34010000 		.4byte	.LASF7
+ 243 005d 03       		.uleb128 0x3
+ 244 005e 04       		.byte	0x4
+ 245 005f 05       		.byte	0x5
+ 246 0060 696E7400 		.ascii	"int\000"
+ 247 0064 02       		.uleb128 0x2
+ 248 0065 04       		.byte	0x4
+ 249 0066 07       		.byte	0x7
+ 250 0067 27010000 		.4byte	.LASF8
+ 251 006b 04       		.uleb128 0x4
+ 252 006c C3000000 		.4byte	.LASF9
+ 253 0070 02       		.byte	0x2
+ 254 0071 9801     		.2byte	0x198
+ 255 0073 2C000000 		.4byte	0x2c
+ 256 0077 04       		.uleb128 0x4
+ 257 0078 20010000 		.4byte	.LASF10
+ 258 007c 02       		.byte	0x2
+ 259 007d 9901     		.2byte	0x199
+ 260 007f 3A000000 		.4byte	0x3a
+ 261 0083 02       		.uleb128 0x2
+ 262 0084 04       		.byte	0x4
+ 263 0085 04       		.byte	0x4
+ 264 0086 22000000 		.4byte	.LASF11
+ 265 008a 02       		.uleb128 0x2
+ 266 008b 08       		.byte	0x8
+ARM GAS  C:\Users\LAIR\AppData\Local\Temp\cc7UH66a.s 			page 9
+
+
+ 267 008c 04       		.byte	0x4
+ 268 008d 06010000 		.4byte	.LASF12
+ 269 0091 02       		.uleb128 0x2
+ 270 0092 01       		.byte	0x1
+ 271 0093 08       		.byte	0x8
+ 272 0094 B1020000 		.4byte	.LASF13
+ 273 0098 04       		.uleb128 0x4
+ 274 0099 6E010000 		.4byte	.LASF14
+ 275 009d 02       		.byte	0x2
+ 276 009e 4202     		.2byte	0x242
+ 277 00a0 A4000000 		.4byte	0xa4
+ 278 00a4 05       		.uleb128 0x5
+ 279 00a5 6B000000 		.4byte	0x6b
+ 280 00a9 02       		.uleb128 0x2
+ 281 00aa 04       		.byte	0x4
+ 282 00ab 07       		.byte	0x7
+ 283 00ac 73010000 		.4byte	.LASF15
+ 284 00b0 06       		.uleb128 0x6
+ 285 00b1 08       		.byte	0x8
+ 286 00b2 03       		.byte	0x3
+ 287 00b3 6B       		.byte	0x6b
+ 288 00b4 F5000000 		.4byte	0xf5
+ 289 00b8 07       		.uleb128 0x7
+ 290 00b9 99020000 		.4byte	.LASF16
+ 291 00bd 03       		.byte	0x3
+ 292 00be 6E       		.byte	0x6e
+ 293 00bf 6B000000 		.4byte	0x6b
+ 294 00c3 00       		.byte	0
+ 295 00c4 07       		.uleb128 0x7
+ 296 00c5 00000000 		.4byte	.LASF17
+ 297 00c9 03       		.byte	0x3
+ 298 00ca 71       		.byte	0x71
+ 299 00cb 77000000 		.4byte	0x77
+ 300 00cf 02       		.byte	0x2
+ 301 00d0 07       		.uleb128 0x7
+ 302 00d1 18000000 		.4byte	.LASF18
+ 303 00d5 03       		.byte	0x3
+ 304 00d6 73       		.byte	0x73
+ 305 00d7 77000000 		.4byte	0x77
+ 306 00db 04       		.byte	0x4
+ 307 00dc 07       		.uleb128 0x7
+ 308 00dd C2020000 		.4byte	.LASF19
+ 309 00e1 03       		.byte	0x3
+ 310 00e2 76       		.byte	0x76
+ 311 00e3 6B000000 		.4byte	0x6b
+ 312 00e7 06       		.byte	0x6
+ 313 00e8 07       		.uleb128 0x7
+ 314 00e9 D9000000 		.4byte	.LASF20
+ 315 00ed 03       		.byte	0x3
+ 316 00ee 86       		.byte	0x86
+ 317 00ef 6B000000 		.4byte	0x6b
+ 318 00f3 07       		.byte	0x7
+ 319 00f4 00       		.byte	0
+ 320 00f5 08       		.uleb128 0x8
+ 321 00f6 D2010000 		.4byte	.LASF21
+ 322 00fa 03       		.byte	0x3
+ 323 00fb 8B       		.byte	0x8b
+ARM GAS  C:\Users\LAIR\AppData\Local\Temp\cc7UH66a.s 			page 10
+
+
+ 324 00fc B0000000 		.4byte	0xb0
+ 325 0100 09       		.uleb128 0x9
+ 326 0101 C9000000 		.4byte	.LASF22
+ 327 0105 01       		.byte	0x1
+ 328 0106 2A       		.byte	0x2a
+ 329 0107 00000000 		.4byte	.LFB1
+ 330 010b 28000000 		.4byte	.LFE1-.LFB1
+ 331 010f 01       		.uleb128 0x1
+ 332 0110 9C       		.byte	0x9c
+ 333 0111 31010000 		.4byte	0x131
+ 334 0115 0A       		.uleb128 0xa
+ 335 0116 06000000 		.4byte	.LVL0
+ 336 011a C3010000 		.4byte	0x1c3
+ 337 011e 0A       		.uleb128 0xa
+ 338 011f 0E000000 		.4byte	.LVL1
+ 339 0123 CE010000 		.4byte	0x1ce
+ 340 0127 0A       		.uleb128 0xa
+ 341 0128 1A000000 		.4byte	.LVL2
+ 342 012c D9010000 		.4byte	0x1d9
+ 343 0130 00       		.byte	0
+ 344 0131 09       		.uleb128 0x9
+ 345 0132 0D010000 		.4byte	.LASF23
+ 346 0136 01       		.byte	0x1
+ 347 0137 58       		.byte	0x58
+ 348 0138 00000000 		.4byte	.LFB2
+ 349 013c 28000000 		.4byte	.LFE2-.LFB2
+ 350 0140 01       		.uleb128 0x1
+ 351 0141 9C       		.byte	0x9c
+ 352 0142 62010000 		.4byte	0x162
+ 353 0146 0A       		.uleb128 0xa
+ 354 0147 0A000000 		.4byte	.LVL3
+ 355 014b E4010000 		.4byte	0x1e4
+ 356 014f 0A       		.uleb128 0xa
+ 357 0150 10000000 		.4byte	.LVL4
+ 358 0154 F5010000 		.4byte	0x1f5
+ 359 0158 0A       		.uleb128 0xa
+ 360 0159 1C000000 		.4byte	.LVL5
+ 361 015d 06020000 		.4byte	0x206
+ 362 0161 00       		.byte	0
+ 363 0162 09       		.uleb128 0x9
+ 364 0163 86000000 		.4byte	.LASF24
+ 365 0167 01       		.byte	0x1
+ 366 0168 88       		.byte	0x88
+ 367 0169 00000000 		.4byte	.LFB3
+ 368 016d 2C000000 		.4byte	.LFE3-.LFB3
+ 369 0171 01       		.uleb128 0x1
+ 370 0172 9C       		.byte	0x9c
+ 371 0173 8A010000 		.4byte	0x18a
+ 372 0177 0A       		.uleb128 0xa
+ 373 0178 1E000000 		.4byte	.LVL6
+ 374 017c 17020000 		.4byte	0x217
+ 375 0180 0A       		.uleb128 0xa
+ 376 0181 22000000 		.4byte	.LVL7
+ 377 0185 00010000 		.4byte	0x100
+ 378 0189 00       		.byte	0
+ 379 018a 09       		.uleb128 0x9
+ 380 018b 57000000 		.4byte	.LASF25
+ARM GAS  C:\Users\LAIR\AppData\Local\Temp\cc7UH66a.s 			page 11
+
+
+ 381 018f 01       		.byte	0x1
+ 382 0190 B2       		.byte	0xb2
+ 383 0191 00000000 		.4byte	.LFB4
+ 384 0195 18000000 		.4byte	.LFE4-.LFB4
+ 385 0199 01       		.uleb128 0x1
+ 386 019a 9C       		.byte	0x9c
+ 387 019b B2010000 		.4byte	0x1b2
+ 388 019f 0A       		.uleb128 0xa
+ 389 01a0 06000000 		.4byte	.LVL8
+ 390 01a4 31010000 		.4byte	0x131
+ 391 01a8 0A       		.uleb128 0xa
+ 392 01a9 12000000 		.4byte	.LVL9
+ 393 01ad 1E020000 		.4byte	0x21e
+ 394 01b1 00       		.byte	0
+ 395 01b2 0B       		.uleb128 0xb
+ 396 01b3 28000000 		.4byte	.LASF37
+ 397 01b7 01       		.byte	0x1
+ 398 01b8 14       		.byte	0x14
+ 399 01b9 F5000000 		.4byte	0xf5
+ 400 01bd 05       		.uleb128 0x5
+ 401 01be 03       		.byte	0x3
+ 402 01bf 00000000 		.4byte	SRV1_backup
+ 403 01c3 0C       		.uleb128 0xc
+ 404 01c4 47000000 		.4byte	.LASF26
+ 405 01c8 03       		.byte	0x3
+ 406 01c9 C0       		.byte	0xc0
+ 407 01ca 77000000 		.4byte	0x77
+ 408 01ce 0C       		.uleb128 0xc
+ 409 01cf 88020000 		.4byte	.LASF27
+ 410 01d3 03       		.byte	0x3
+ 411 01d4 B3       		.byte	0xb3
+ 412 01d5 77000000 		.4byte	0x77
+ 413 01d9 0C       		.uleb128 0xc
+ 414 01da 55010000 		.4byte	.LASF28
+ 415 01de 03       		.byte	0x3
+ 416 01df 9D       		.byte	0x9d
+ 417 01e0 6B000000 		.4byte	0x6b
+ 418 01e4 0D       		.uleb128 0xd
+ 419 01e5 07000000 		.4byte	.LASF29
+ 420 01e9 03       		.byte	0x3
+ 421 01ea BE       		.byte	0xbe
+ 422 01eb F5010000 		.4byte	0x1f5
+ 423 01ef 0E       		.uleb128 0xe
+ 424 01f0 77000000 		.4byte	0x77
+ 425 01f4 00       		.byte	0
+ 426 01f5 0D       		.uleb128 0xd
+ 427 01f6 9F000000 		.4byte	.LASF30
+ 428 01fa 03       		.byte	0x3
+ 429 01fb BA       		.byte	0xba
+ 430 01fc 06020000 		.4byte	0x206
+ 431 0200 0E       		.uleb128 0xe
+ 432 0201 77000000 		.4byte	0x77
+ 433 0205 00       		.byte	0
+ 434 0206 0D       		.uleb128 0xd
+ 435 0207 EC000000 		.4byte	.LASF31
+ 436 020b 03       		.byte	0x3
+ 437 020c 9E       		.byte	0x9e
+ARM GAS  C:\Users\LAIR\AppData\Local\Temp\cc7UH66a.s 			page 12
+
+
+ 438 020d 17020000 		.4byte	0x217
+ 439 0211 0E       		.uleb128 0xe
+ 440 0212 6B000000 		.4byte	0x6b
+ 441 0216 00       		.byte	0
+ 442 0217 0F       		.uleb128 0xf
+ 443 0218 4B010000 		.4byte	.LASF32
+ 444 021c 03       		.byte	0x3
+ 445 021d 93       		.byte	0x93
+ 446 021e 0F       		.uleb128 0xf
+ 447 021f E4010000 		.4byte	.LASF33
+ 448 0223 03       		.byte	0x3
+ 449 0224 DB       		.byte	0xdb
+ 450 0225 00       		.byte	0
+ 451              		.section	.debug_abbrev,"",%progbits
+ 452              	.Ldebug_abbrev0:
+ 453 0000 01       		.uleb128 0x1
+ 454 0001 11       		.uleb128 0x11
+ 455 0002 01       		.byte	0x1
+ 456 0003 25       		.uleb128 0x25
+ 457 0004 0E       		.uleb128 0xe
+ 458 0005 13       		.uleb128 0x13
+ 459 0006 0B       		.uleb128 0xb
+ 460 0007 03       		.uleb128 0x3
+ 461 0008 0E       		.uleb128 0xe
+ 462 0009 1B       		.uleb128 0x1b
+ 463 000a 0E       		.uleb128 0xe
+ 464 000b 55       		.uleb128 0x55
+ 465 000c 17       		.uleb128 0x17
+ 466 000d 11       		.uleb128 0x11
+ 467 000e 01       		.uleb128 0x1
+ 468 000f 10       		.uleb128 0x10
+ 469 0010 17       		.uleb128 0x17
+ 470 0011 00       		.byte	0
+ 471 0012 00       		.byte	0
+ 472 0013 02       		.uleb128 0x2
+ 473 0014 24       		.uleb128 0x24
+ 474 0015 00       		.byte	0
+ 475 0016 0B       		.uleb128 0xb
+ 476 0017 0B       		.uleb128 0xb
+ 477 0018 3E       		.uleb128 0x3e
+ 478 0019 0B       		.uleb128 0xb
+ 479 001a 03       		.uleb128 0x3
+ 480 001b 0E       		.uleb128 0xe
+ 481 001c 00       		.byte	0
+ 482 001d 00       		.byte	0
+ 483 001e 03       		.uleb128 0x3
+ 484 001f 24       		.uleb128 0x24
+ 485 0020 00       		.byte	0
+ 486 0021 0B       		.uleb128 0xb
+ 487 0022 0B       		.uleb128 0xb
+ 488 0023 3E       		.uleb128 0x3e
+ 489 0024 0B       		.uleb128 0xb
+ 490 0025 03       		.uleb128 0x3
+ 491 0026 08       		.uleb128 0x8
+ 492 0027 00       		.byte	0
+ 493 0028 00       		.byte	0
+ 494 0029 04       		.uleb128 0x4
+ARM GAS  C:\Users\LAIR\AppData\Local\Temp\cc7UH66a.s 			page 13
+
+
+ 495 002a 16       		.uleb128 0x16
+ 496 002b 00       		.byte	0
+ 497 002c 03       		.uleb128 0x3
+ 498 002d 0E       		.uleb128 0xe
+ 499 002e 3A       		.uleb128 0x3a
+ 500 002f 0B       		.uleb128 0xb
+ 501 0030 3B       		.uleb128 0x3b
+ 502 0031 05       		.uleb128 0x5
+ 503 0032 49       		.uleb128 0x49
+ 504 0033 13       		.uleb128 0x13
+ 505 0034 00       		.byte	0
+ 506 0035 00       		.byte	0
+ 507 0036 05       		.uleb128 0x5
+ 508 0037 35       		.uleb128 0x35
+ 509 0038 00       		.byte	0
+ 510 0039 49       		.uleb128 0x49
+ 511 003a 13       		.uleb128 0x13
+ 512 003b 00       		.byte	0
+ 513 003c 00       		.byte	0
+ 514 003d 06       		.uleb128 0x6
+ 515 003e 13       		.uleb128 0x13
+ 516 003f 01       		.byte	0x1
+ 517 0040 0B       		.uleb128 0xb
+ 518 0041 0B       		.uleb128 0xb
+ 519 0042 3A       		.uleb128 0x3a
+ 520 0043 0B       		.uleb128 0xb
+ 521 0044 3B       		.uleb128 0x3b
+ 522 0045 0B       		.uleb128 0xb
+ 523 0046 01       		.uleb128 0x1
+ 524 0047 13       		.uleb128 0x13
+ 525 0048 00       		.byte	0
+ 526 0049 00       		.byte	0
+ 527 004a 07       		.uleb128 0x7
+ 528 004b 0D       		.uleb128 0xd
+ 529 004c 00       		.byte	0
+ 530 004d 03       		.uleb128 0x3
+ 531 004e 0E       		.uleb128 0xe
+ 532 004f 3A       		.uleb128 0x3a
+ 533 0050 0B       		.uleb128 0xb
+ 534 0051 3B       		.uleb128 0x3b
+ 535 0052 0B       		.uleb128 0xb
+ 536 0053 49       		.uleb128 0x49
+ 537 0054 13       		.uleb128 0x13
+ 538 0055 38       		.uleb128 0x38
+ 539 0056 0B       		.uleb128 0xb
+ 540 0057 00       		.byte	0
+ 541 0058 00       		.byte	0
+ 542 0059 08       		.uleb128 0x8
+ 543 005a 16       		.uleb128 0x16
+ 544 005b 00       		.byte	0
+ 545 005c 03       		.uleb128 0x3
+ 546 005d 0E       		.uleb128 0xe
+ 547 005e 3A       		.uleb128 0x3a
+ 548 005f 0B       		.uleb128 0xb
+ 549 0060 3B       		.uleb128 0x3b
+ 550 0061 0B       		.uleb128 0xb
+ 551 0062 49       		.uleb128 0x49
+ARM GAS  C:\Users\LAIR\AppData\Local\Temp\cc7UH66a.s 			page 14
+
+
+ 552 0063 13       		.uleb128 0x13
+ 553 0064 00       		.byte	0
+ 554 0065 00       		.byte	0
+ 555 0066 09       		.uleb128 0x9
+ 556 0067 2E       		.uleb128 0x2e
+ 557 0068 01       		.byte	0x1
+ 558 0069 3F       		.uleb128 0x3f
+ 559 006a 19       		.uleb128 0x19
+ 560 006b 03       		.uleb128 0x3
+ 561 006c 0E       		.uleb128 0xe
+ 562 006d 3A       		.uleb128 0x3a
+ 563 006e 0B       		.uleb128 0xb
+ 564 006f 3B       		.uleb128 0x3b
+ 565 0070 0B       		.uleb128 0xb
+ 566 0071 27       		.uleb128 0x27
+ 567 0072 19       		.uleb128 0x19
+ 568 0073 11       		.uleb128 0x11
+ 569 0074 01       		.uleb128 0x1
+ 570 0075 12       		.uleb128 0x12
+ 571 0076 06       		.uleb128 0x6
+ 572 0077 40       		.uleb128 0x40
+ 573 0078 18       		.uleb128 0x18
+ 574 0079 9742     		.uleb128 0x2117
+ 575 007b 19       		.uleb128 0x19
+ 576 007c 01       		.uleb128 0x1
+ 577 007d 13       		.uleb128 0x13
+ 578 007e 00       		.byte	0
+ 579 007f 00       		.byte	0
+ 580 0080 0A       		.uleb128 0xa
+ 581 0081 898201   		.uleb128 0x4109
+ 582 0084 00       		.byte	0
+ 583 0085 11       		.uleb128 0x11
+ 584 0086 01       		.uleb128 0x1
+ 585 0087 31       		.uleb128 0x31
+ 586 0088 13       		.uleb128 0x13
+ 587 0089 00       		.byte	0
+ 588 008a 00       		.byte	0
+ 589 008b 0B       		.uleb128 0xb
+ 590 008c 34       		.uleb128 0x34
+ 591 008d 00       		.byte	0
+ 592 008e 03       		.uleb128 0x3
+ 593 008f 0E       		.uleb128 0xe
+ 594 0090 3A       		.uleb128 0x3a
+ 595 0091 0B       		.uleb128 0xb
+ 596 0092 3B       		.uleb128 0x3b
+ 597 0093 0B       		.uleb128 0xb
+ 598 0094 49       		.uleb128 0x49
+ 599 0095 13       		.uleb128 0x13
+ 600 0096 02       		.uleb128 0x2
+ 601 0097 18       		.uleb128 0x18
+ 602 0098 00       		.byte	0
+ 603 0099 00       		.byte	0
+ 604 009a 0C       		.uleb128 0xc
+ 605 009b 2E       		.uleb128 0x2e
+ 606 009c 00       		.byte	0
+ 607 009d 3F       		.uleb128 0x3f
+ 608 009e 19       		.uleb128 0x19
+ARM GAS  C:\Users\LAIR\AppData\Local\Temp\cc7UH66a.s 			page 15
+
+
+ 609 009f 03       		.uleb128 0x3
+ 610 00a0 0E       		.uleb128 0xe
+ 611 00a1 3A       		.uleb128 0x3a
+ 612 00a2 0B       		.uleb128 0xb
+ 613 00a3 3B       		.uleb128 0x3b
+ 614 00a4 0B       		.uleb128 0xb
+ 615 00a5 27       		.uleb128 0x27
+ 616 00a6 19       		.uleb128 0x19
+ 617 00a7 49       		.uleb128 0x49
+ 618 00a8 13       		.uleb128 0x13
+ 619 00a9 3C       		.uleb128 0x3c
+ 620 00aa 19       		.uleb128 0x19
+ 621 00ab 00       		.byte	0
+ 622 00ac 00       		.byte	0
+ 623 00ad 0D       		.uleb128 0xd
+ 624 00ae 2E       		.uleb128 0x2e
+ 625 00af 01       		.byte	0x1
+ 626 00b0 3F       		.uleb128 0x3f
+ 627 00b1 19       		.uleb128 0x19
+ 628 00b2 03       		.uleb128 0x3
+ 629 00b3 0E       		.uleb128 0xe
+ 630 00b4 3A       		.uleb128 0x3a
+ 631 00b5 0B       		.uleb128 0xb
+ 632 00b6 3B       		.uleb128 0x3b
+ 633 00b7 0B       		.uleb128 0xb
+ 634 00b8 27       		.uleb128 0x27
+ 635 00b9 19       		.uleb128 0x19
+ 636 00ba 3C       		.uleb128 0x3c
+ 637 00bb 19       		.uleb128 0x19
+ 638 00bc 01       		.uleb128 0x1
+ 639 00bd 13       		.uleb128 0x13
+ 640 00be 00       		.byte	0
+ 641 00bf 00       		.byte	0
+ 642 00c0 0E       		.uleb128 0xe
+ 643 00c1 05       		.uleb128 0x5
+ 644 00c2 00       		.byte	0
+ 645 00c3 49       		.uleb128 0x49
+ 646 00c4 13       		.uleb128 0x13
+ 647 00c5 00       		.byte	0
+ 648 00c6 00       		.byte	0
+ 649 00c7 0F       		.uleb128 0xf
+ 650 00c8 2E       		.uleb128 0x2e
+ 651 00c9 00       		.byte	0
+ 652 00ca 3F       		.uleb128 0x3f
+ 653 00cb 19       		.uleb128 0x19
+ 654 00cc 03       		.uleb128 0x3
+ 655 00cd 0E       		.uleb128 0xe
+ 656 00ce 3A       		.uleb128 0x3a
+ 657 00cf 0B       		.uleb128 0xb
+ 658 00d0 3B       		.uleb128 0x3b
+ 659 00d1 0B       		.uleb128 0xb
+ 660 00d2 27       		.uleb128 0x27
+ 661 00d3 19       		.uleb128 0x19
+ 662 00d4 3C       		.uleb128 0x3c
+ 663 00d5 19       		.uleb128 0x19
+ 664 00d6 00       		.byte	0
+ 665 00d7 00       		.byte	0
+ARM GAS  C:\Users\LAIR\AppData\Local\Temp\cc7UH66a.s 			page 16
+
+
+ 666 00d8 00       		.byte	0
+ 667              		.section	.debug_aranges,"",%progbits
+ 668 0000 34000000 		.4byte	0x34
+ 669 0004 0200     		.2byte	0x2
+ 670 0006 00000000 		.4byte	.Ldebug_info0
+ 671 000a 04       		.byte	0x4
+ 672 000b 00       		.byte	0
+ 673 000c 0000     		.2byte	0
+ 674 000e 0000     		.2byte	0
+ 675 0010 00000000 		.4byte	.LFB1
+ 676 0014 28000000 		.4byte	.LFE1-.LFB1
+ 677 0018 00000000 		.4byte	.LFB2
+ 678 001c 28000000 		.4byte	.LFE2-.LFB2
+ 679 0020 00000000 		.4byte	.LFB3
+ 680 0024 2C000000 		.4byte	.LFE3-.LFB3
+ 681 0028 00000000 		.4byte	.LFB4
+ 682 002c 18000000 		.4byte	.LFE4-.LFB4
+ 683 0030 00000000 		.4byte	0
+ 684 0034 00000000 		.4byte	0
+ 685              		.section	.debug_ranges,"",%progbits
+ 686              	.Ldebug_ranges0:
+ 687 0000 00000000 		.4byte	.LFB1
+ 688 0004 28000000 		.4byte	.LFE1
+ 689 0008 00000000 		.4byte	.LFB2
+ 690 000c 28000000 		.4byte	.LFE2
+ 691 0010 00000000 		.4byte	.LFB3
+ 692 0014 2C000000 		.4byte	.LFE3
+ 693 0018 00000000 		.4byte	.LFB4
+ 694 001c 18000000 		.4byte	.LFE4
+ 695 0020 00000000 		.4byte	0
+ 696 0024 00000000 		.4byte	0
+ 697              		.section	.debug_line,"",%progbits
+ 698              	.Ldebug_line0:
+ 699 0000 AD000000 		.section	.debug_str,"MS",%progbits,1
+ 699      02005000 
+ 699      00000201 
+ 699      FB0E0D00 
+ 699      01010101 
+ 700              	.LASF17:
+ 701 0000 50574D55 		.ascii	"PWMUdb\000"
+ 701      646200
+ 702              	.LASF29:
+ 703 0007 53525631 		.ascii	"SRV1_WritePeriod\000"
+ 703      5F577269 
+ 703      74655065 
+ 703      72696F64 
+ 703      00
+ 704              	.LASF18:
+ 705 0018 50574D50 		.ascii	"PWMPeriod\000"
+ 705      6572696F 
+ 705      6400
+ 706              	.LASF11:
+ 707 0022 666C6F61 		.ascii	"float\000"
+ 707      7400
+ 708              	.LASF37:
+ 709 0028 53525631 		.ascii	"SRV1_backup\000"
+ 709      5F626163 
+ARM GAS  C:\Users\LAIR\AppData\Local\Temp\cc7UH66a.s 			page 17
+
+
+ 709      6B757000 
+ 710              	.LASF3:
+ 711 0034 73686F72 		.ascii	"short unsigned int\000"
+ 711      7420756E 
+ 711      7369676E 
+ 711      65642069 
+ 711      6E7400
+ 712              	.LASF26:
+ 713 0047 53525631 		.ascii	"SRV1_ReadPeriod\000"
+ 713      5F526561 
+ 713      64506572 
+ 713      696F6400 
+ 714              	.LASF25:
+ 715 0057 53525631 		.ascii	"SRV1_Wakeup\000"
+ 715      5F57616B 
+ 715      65757000 
+ 716              	.LASF35:
+ 717 0063 2E5C4765 		.ascii	".\\Generated_Source\\PSoC4\\SRV1_PM.c\000"
+ 717      6E657261 
+ 717      7465645F 
+ 717      536F7572 
+ 717      63655C50 
+ 718              	.LASF24:
+ 719 0086 53525631 		.ascii	"SRV1_Sleep\000"
+ 719      5F536C65 
+ 719      657000
+ 720              	.LASF1:
+ 721 0091 756E7369 		.ascii	"unsigned char\000"
+ 721      676E6564 
+ 721      20636861 
+ 721      7200
+ 722              	.LASF30:
+ 723 009f 53525631 		.ascii	"SRV1_WriteCounter\000"
+ 723      5F577269 
+ 723      7465436F 
+ 723      756E7465 
+ 723      7200
+ 724              	.LASF5:
+ 725 00b1 6C6F6E67 		.ascii	"long unsigned int\000"
+ 725      20756E73 
+ 725      69676E65 
+ 725      6420696E 
+ 725      7400
+ 726              	.LASF9:
+ 727 00c3 75696E74 		.ascii	"uint8\000"
+ 727      3800
+ 728              	.LASF22:
+ 729 00c9 53525631 		.ascii	"SRV1_SaveConfig\000"
+ 729      5F536176 
+ 729      65436F6E 
+ 729      66696700 
+ 730              	.LASF20:
+ 731 00d9 50574D43 		.ascii	"PWMControlRegister\000"
+ 731      6F6E7472 
+ 731      6F6C5265 
+ 731      67697374 
+ 731      657200
+ARM GAS  C:\Users\LAIR\AppData\Local\Temp\cc7UH66a.s 			page 18
+
+
+ 732              	.LASF31:
+ 733 00ec 53525631 		.ascii	"SRV1_WriteControlRegister\000"
+ 733      5F577269 
+ 733      7465436F 
+ 733      6E74726F 
+ 733      6C526567 
+ 734              	.LASF12:
+ 735 0106 646F7562 		.ascii	"double\000"
+ 735      6C6500
+ 736              	.LASF23:
+ 737 010d 53525631 		.ascii	"SRV1_RestoreConfig\000"
+ 737      5F526573 
+ 737      746F7265 
+ 737      436F6E66 
+ 737      696700
+ 738              	.LASF10:
+ 739 0120 75696E74 		.ascii	"uint16\000"
+ 739      313600
+ 740              	.LASF8:
+ 741 0127 756E7369 		.ascii	"unsigned int\000"
+ 741      676E6564 
+ 741      20696E74 
+ 741      00
+ 742              	.LASF7:
+ 743 0134 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 743      206C6F6E 
+ 743      6720756E 
+ 743      7369676E 
+ 743      65642069 
+ 744              	.LASF32:
+ 745 014b 53525631 		.ascii	"SRV1_Stop\000"
+ 745      5F53746F 
+ 745      7000
+ 746              	.LASF28:
+ 747 0155 53525631 		.ascii	"SRV1_ReadControlRegister\000"
+ 747      5F526561 
+ 747      64436F6E 
+ 747      74726F6C 
+ 747      52656769 
+ 748              	.LASF14:
+ 749 016e 72656738 		.ascii	"reg8\000"
+ 749      00
+ 750              	.LASF15:
+ 751 0173 73697A65 		.ascii	"sizetype\000"
+ 751      74797065 
+ 751      00
+ 752              	.LASF6:
+ 753 017c 6C6F6E67 		.ascii	"long long int\000"
+ 753      206C6F6E 
+ 753      6720696E 
+ 753      7400
+ 754              	.LASF36:
+ 755 018a 433A5C55 		.ascii	"C:\\Users\\LAIR\\Documents\\GitHub\\ARC-Controller\\"
+ 755      73657273 
+ 755      5C4C4149 
+ 755      525C446F 
+ 755      63756D65 
+ARM GAS  C:\Users\LAIR\AppData\Local\Temp\cc7UH66a.s 			page 19
+
+
+ 756 01b8 50536F43 		.ascii	"PSoC-Code\\ARC-EMBED.cydsn\000"
+ 756      2D436F64 
+ 756      655C4152 
+ 756      432D454D 
+ 756      4245442E 
+ 757              	.LASF21:
+ 758 01d2 53525631 		.ascii	"SRV1_backupStruct\000"
+ 758      5F626163 
+ 758      6B757053 
+ 758      74727563 
+ 758      7400
+ 759              	.LASF33:
+ 760 01e4 53525631 		.ascii	"SRV1_Enable\000"
+ 760      5F456E61 
+ 760      626C6500 
+ 761              	.LASF34:
+ 762 01f0 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 762      4320342E 
+ 762      392E3320 
+ 762      32303135 
+ 762      30333033 
+ 763 0223 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m0 -mthumb -g -O"
+ 763      20726576 
+ 763      6973696F 
+ 763      6E203232 
+ 763      31323230 
+ 764 0256 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 764      66756E63 
+ 764      74696F6E 
+ 764      2D736563 
+ 764      74696F6E 
+ 765              	.LASF2:
+ 766 027e 73686F72 		.ascii	"short int\000"
+ 766      7420696E 
+ 766      7400
+ 767              	.LASF27:
+ 768 0288 53525631 		.ascii	"SRV1_ReadCounter\000"
+ 768      5F526561 
+ 768      64436F75 
+ 768      6E746572 
+ 768      00
+ 769              	.LASF16:
+ 770 0299 50574D45 		.ascii	"PWMEnableState\000"
+ 770      6E61626C 
+ 770      65537461 
+ 770      746500
+ 771              	.LASF4:
+ 772 02a8 6C6F6E67 		.ascii	"long int\000"
+ 772      20696E74 
+ 772      00
+ 773              	.LASF13:
+ 774 02b1 63686172 		.ascii	"char\000"
+ 774      00
+ 775              	.LASF0:
+ 776 02b6 7369676E 		.ascii	"signed char\000"
+ 776      65642063 
+ 776      68617200 
+ARM GAS  C:\Users\LAIR\AppData\Local\Temp\cc7UH66a.s 			page 20
+
+
+ 777              	.LASF19:
+ 778 02c2 496E7465 		.ascii	"InterruptMaskValue\000"
+ 778      72727570 
+ 778      744D6173 
+ 778      6B56616C 
+ 778      756500
+ 779              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

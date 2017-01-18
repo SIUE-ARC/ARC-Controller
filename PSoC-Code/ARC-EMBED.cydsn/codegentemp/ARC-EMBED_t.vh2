@@ -1,5 +1,5 @@
--- Project:   C:\Users\Bryan Orabutt\Documents\GitHub\ARC-Controller\PSoC-Code\ARC-Controller\ARC-EMBED.cydsn\ARC-EMBED.cyprj
--- Generated: 01/12/2017 00:18:49
+-- Project:   C:\Users\LAIR\Documents\GitHub\ARC-Controller\PSoC-Code\ARC-EMBED.cydsn\ARC-EMBED.cyprj
+-- Generated: 01/17/2017 23:58:35
 -- PSoC Creator  3.3 CP3
 
 ENTITY \ARC-EMBED\ IS
@@ -20,12 +20,6 @@ ENTITY \ARC-EMBED\ IS
         \USBFS:Dm(0)_PAD\ : OUT std_ulogic;
         \UART:tx(0)_PAD\ : INOUT std_ulogic;
         \UART:rx(0)_PAD\ : IN std_ulogic;
-        \SPI:ss_s(0)_PAD\ : IN std_ulogic;
-        \SPI:miso_s(0)_PAD\ : INOUT std_ulogic;
-        \SPI:sclk_s(0)_PAD\ : IN std_ulogic;
-        \SPI:mosi_s(0)_PAD\ : IN std_ulogic;
-        \EZI2C_1:sda(0)_PAD\ : INOUT std_ulogic;
-        \EZI2C_1:scl(0)_PAD\ : INOUT std_ulogic;
         SRV1EN(0)_PAD : IN std_ulogic;
         SRV2EN(0)_PAD : IN std_ulogic;
         SRV3EN(0)_PAD : IN std_ulogic;
@@ -41,10 +35,8 @@ ENTITY \ARC-EMBED\ IS
     ATTRIBUTE voltage_VDDIO_A_1 OF __DEFAULT__ : ENTITY IS 3.3e0;
     ATTRIBUTE voltage_VDDA_0 OF __DEFAULT__ : ENTITY IS 3.3e0;
     ATTRIBUTE voltage_VDDA_CTB OF __DEFAULT__ : ENTITY IS 3.3e0;
-    ATTRIBUTE voltage_VDDA_1 OF __DEFAULT__ : ENTITY IS 3.3e0;
-    ATTRIBUTE voltage_VDDIO_0 OF __DEFAULT__ : ENTITY IS 3.3e0;
     ATTRIBUTE voltage_VDDD OF __DEFAULT__ : ENTITY IS 3.3e0;
-    ATTRIBUTE voltage_VDDIO_1 OF __DEFAULT__ : ENTITY IS 3.3e0;
+    ATTRIBUTE voltage_VDDIO_0 OF __DEFAULT__ : ENTITY IS 3.3e0;
     ATTRIBUTE voltage_VDDIO_2 OF __DEFAULT__ : ENTITY IS 3.3e0;
     ATTRIBUTE voltage_VDDIO_3 OF __DEFAULT__ : ENTITY IS 3.3e0;
     ATTRIBUTE voltage_VDDIO_4 OF __DEFAULT__ : ENTITY IS 3.3e0;
@@ -54,6 +46,10 @@ ENTITY \ARC-EMBED\ IS
 END \ARC-EMBED\;
 
 ARCHITECTURE __DEFAULT__ OF \ARC-EMBED\ IS
+    SIGNAL ADC0(0)__PA : bit;
+    SIGNAL ADC1(0)__PA : bit;
+    SIGNAL ADC2(0)__PA : bit;
+    SIGNAL ADC3(0)__PA : bit;
     SIGNAL ClockBlock_ECO : bit;
     SIGNAL ClockBlock_EXTCLK : bit;
     SIGNAL ClockBlock_HFCLK : bit;
@@ -66,6 +62,10 @@ ARCHITECTURE __DEFAULT__ OF \ARC-EMBED\ IS
     SIGNAL ClockBlock_Routed1 : bit;
     SIGNAL ClockBlock_SYSCLK : bit;
     SIGNAL ClockBlock_WCO : bit;
+    SIGNAL DAC0(0)__PA : bit;
+    SIGNAL DAC1(0)__PA : bit;
+    SIGNAL DAC2(0)__PA : bit;
+    SIGNAL DAC3(0)__PA : bit;
     SIGNAL ENC1A(0)__PA : bit;
     SIGNAL ENC1B(0)__PA : bit;
     SIGNAL ENC2A(0)__PA : bit;
@@ -105,15 +105,9 @@ ARCHITECTURE __DEFAULT__ OF \ARC-EMBED\ IS
     SIGNAL Net_1602 : bit;
     SIGNAL Net_1603 : bit;
     SIGNAL Net_1959 : bit;
-    SIGNAL Net_2068 : bit;
-    SIGNAL Net_2070 : bit;
-    SIGNAL Net_2071 : bit;
     SIGNAL Net_2139 : bit;
     SIGNAL Net_2141 : bit;
     SIGNAL Net_2142 : bit;
-    SIGNAL Net_2177 : bit;
-    SIGNAL Net_2179 : bit;
-    SIGNAL Net_2180 : bit;
     SIGNAL Net_27 : bit;
     SIGNAL Net_28 : bit;
     SIGNAL Net_3 : bit;
@@ -134,23 +128,23 @@ ARCHITECTURE __DEFAULT__ OF \ARC-EMBED\ IS
     SIGNAL Net_336_ff18 : bit;
     ATTRIBUTE global_signal OF Net_336_ff18 : SIGNAL IS true;
     SIGNAL Net_3736 : bit;
-    ATTRIBUTE placement_force OF Net_3736 : SIGNAL IS "U(0,0,A)2";
+    ATTRIBUTE placement_force OF Net_3736 : SIGNAL IS "U(1,0,B)0";
     SIGNAL Net_3789 : bit;
-    ATTRIBUTE placement_force OF Net_3789 : SIGNAL IS "U(0,0,B)1";
+    ATTRIBUTE placement_force OF Net_3789 : SIGNAL IS "U(0,0,A)0";
     SIGNAL Net_3842 : bit;
-    ATTRIBUTE placement_force OF Net_3842 : SIGNAL IS "U(1,1,A)2";
+    ATTRIBUTE placement_force OF Net_3842 : SIGNAL IS "U(0,3,A)0";
     SIGNAL Net_3843 : bit;
-    ATTRIBUTE placement_force OF Net_3843 : SIGNAL IS "U(1,1,B)1";
+    ATTRIBUTE placement_force OF Net_3843 : SIGNAL IS "U(0,3,B)0";
     SIGNAL Net_3896 : bit;
-    ATTRIBUTE placement_force OF Net_3896 : SIGNAL IS "U(0,2,A)2";
+    ATTRIBUTE placement_force OF Net_3896 : SIGNAL IS "U(1,2,B)2";
     SIGNAL Net_3897 : bit;
-    ATTRIBUTE placement_force OF Net_3897 : SIGNAL IS "U(0,2,B)1";
+    ATTRIBUTE placement_force OF Net_3897 : SIGNAL IS "U(0,2,A)2";
     SIGNAL Net_3950 : bit;
-    ATTRIBUTE placement_force OF Net_3950 : SIGNAL IS "U(0,3,A)2";
+    ATTRIBUTE placement_force OF Net_3950 : SIGNAL IS "U(0,1,A)0";
     SIGNAL Net_4 : bit;
     SIGNAL Net_40 : bit;
     SIGNAL Net_4003 : bit;
-    ATTRIBUTE placement_force OF Net_4003 : SIGNAL IS "U(1,3,A)2";
+    ATTRIBUTE placement_force OF Net_4003 : SIGNAL IS "U(1,1,A)2";
     SIGNAL Net_4011 : bit;
     SIGNAL Net_4024 : bit;
     SIGNAL Net_4037 : bit;
@@ -158,12 +152,15 @@ ARCHITECTURE __DEFAULT__ OF \ARC-EMBED\ IS
     SIGNAL Net_408 : bit;
     SIGNAL Net_419 : bit;
     SIGNAL Net_430 : bit;
+    SIGNAL Net_4395 : bit;
+    SIGNAL Net_4437 : bit;
     SIGNAL Net_445 : bit;
     SIGNAL Net_461 : bit;
     SIGNAL Net_462 : bit;
     SIGNAL Net_463 : bit;
     SIGNAL Net_464 : bit;
     SIGNAL Net_465 : bit;
+    SIGNAL Net_4683 : bit;
     SIGNAL Net_471 : bit;
     SIGNAL Net_472 : bit;
     SIGNAL Net_473 : bit;
@@ -195,39 +192,28 @@ ARCHITECTURE __DEFAULT__ OF \ARC-EMBED\ IS
     SIGNAL SRV4A(0)__PA : bit;
     SIGNAL SRV4B(0)__PA : bit;
     SIGNAL SRV4EN(0)__PA : bit;
-    SIGNAL \EZI2C_1:Net_847_ff3\ : bit;
-    ATTRIBUTE global_signal OF \EZI2C_1:Net_847_ff3\ : SIGNAL IS true;
-    SIGNAL \EZI2C_1:miso_s_wire\ : bit;
-    SIGNAL \EZI2C_1:mosi_m_wire\ : bit;
-    SIGNAL \EZI2C_1:rts_wire\ : bit;
-    SIGNAL \\\EZI2C_1:scl(0)\\__PA\ : bit;
-    SIGNAL \EZI2C_1:scl_wire\ : bit;
-    SIGNAL \EZI2C_1:sclk_m_wire\ : bit;
-    SIGNAL \\\EZI2C_1:sda(0)\\__PA\ : bit;
-    SIGNAL \EZI2C_1:sda_wire\ : bit;
-    SIGNAL \EZI2C_1:select_m_wire_0\ : bit;
-    SIGNAL \EZI2C_1:select_m_wire_1\ : bit;
-    SIGNAL \EZI2C_1:select_m_wire_2\ : bit;
-    SIGNAL \EZI2C_1:select_m_wire_3\ : bit;
-    SIGNAL \EZI2C_1:tx_wire\ : bit;
-    SIGNAL \SPI:Net_1297\ : bit;
-    SIGNAL \SPI:Net_847_ff2\ : bit;
-    ATTRIBUTE global_signal OF \SPI:Net_847_ff2\ : SIGNAL IS true;
-    SIGNAL \\\SPI:miso_s(0)\\__PA\ : bit;
-    SIGNAL \SPI:miso_s_wire\ : bit;
-    SIGNAL \SPI:mosi_m_wire\ : bit;
-    SIGNAL \\\SPI:mosi_s(0)\\__PA\ : bit;
-    SIGNAL \SPI:mosi_s_wire\ : bit;
-    SIGNAL \SPI:rts_wire\ : bit;
-    SIGNAL \SPI:sclk_m_wire\ : bit;
-    SIGNAL \\\SPI:sclk_s(0)\\__PA\ : bit;
-    SIGNAL \SPI:sclk_s_wire\ : bit;
-    SIGNAL \SPI:select_m_wire_0\ : bit;
-    SIGNAL \SPI:select_m_wire_1\ : bit;
-    SIGNAL \SPI:select_m_wire_2\ : bit;
-    SIGNAL \SPI:select_m_wire_3\ : bit;
-    SIGNAL \\\SPI:ss_s(0)\\__PA\ : bit;
-    SIGNAL \SPI:tx_wire\ : bit;
+    SIGNAL \\\ADC:Bypass(0)\\__PA\ : bit;
+    SIGNAL \ADC:Net_1845_ff10\ : bit;
+    ATTRIBUTE global_signal OF \ADC:Net_1845_ff10\ : SIGNAL IS true;
+    SIGNAL \ADC:Net_3108\ : bit;
+    SIGNAL \ADC:Net_3109_0\ : bit;
+    SIGNAL \ADC:Net_3109_1\ : bit;
+    SIGNAL \ADC:Net_3109_2\ : bit;
+    SIGNAL \ADC:Net_3109_3\ : bit;
+    SIGNAL \ADC:Net_3110\ : bit;
+    SIGNAL \ADC:Net_3111_0\ : bit;
+    SIGNAL \ADC:Net_3111_10\ : bit;
+    SIGNAL \ADC:Net_3111_11\ : bit;
+    SIGNAL \ADC:Net_3111_1\ : bit;
+    SIGNAL \ADC:Net_3111_2\ : bit;
+    SIGNAL \ADC:Net_3111_3\ : bit;
+    SIGNAL \ADC:Net_3111_4\ : bit;
+    SIGNAL \ADC:Net_3111_5\ : bit;
+    SIGNAL \ADC:Net_3111_6\ : bit;
+    SIGNAL \ADC:Net_3111_7\ : bit;
+    SIGNAL \ADC:Net_3111_8\ : bit;
+    SIGNAL \ADC:Net_3111_9\ : bit;
+    SIGNAL \ADC:Net_3112\ : bit;
     SIGNAL \SRV1:PWMUDB:cmp1_eq\ : bit;
     SIGNAL \SRV1:PWMUDB:cmp1_less\ : bit;
     SIGNAL \SRV1:PWMUDB:cmp2_eq\ : bit;
@@ -245,7 +231,7 @@ ARCHITECTURE __DEFAULT__ OF \ARC-EMBED\ IS
     SIGNAL \SRV1:PWMUDB:prevCompare2\ : bit;
     ATTRIBUTE placement_force OF \SRV1:PWMUDB:prevCompare2\ : SIGNAL IS "U(0,0,B)2";
     SIGNAL \SRV1:PWMUDB:runmode_enable\ : bit;
-    ATTRIBUTE placement_force OF \SRV1:PWMUDB:runmode_enable\ : SIGNAL IS "U(0,0,A)0";
+    ATTRIBUTE placement_force OF \SRV1:PWMUDB:runmode_enable\ : SIGNAL IS "U(1,0,B)2";
     SIGNAL \SRV2:PWMUDB:sP16:pwmdp:u0.ce0__sig\ : bit;
     SIGNAL \SRV1:PWMUDB:status_0\ : bit;
     ATTRIBUTE placement_force OF \SRV1:PWMUDB:status_0\ : SIGNAL IS "U(0,0,B)0";
@@ -268,18 +254,18 @@ ARCHITECTURE __DEFAULT__ OF \ARC-EMBED\ IS
     SIGNAL \SRV2:PWMUDB:control_6\ : bit;
     SIGNAL \SRV2:PWMUDB:control_7\ : bit;
     SIGNAL \SRV2:PWMUDB:prevCompare1\ : bit;
-    ATTRIBUTE placement_force OF \SRV2:PWMUDB:prevCompare1\ : SIGNAL IS "U(1,1,A)3";
+    ATTRIBUTE placement_force OF \SRV2:PWMUDB:prevCompare1\ : SIGNAL IS "U(1,3,A)3";
     SIGNAL \SRV2:PWMUDB:prevCompare2\ : bit;
-    ATTRIBUTE placement_force OF \SRV2:PWMUDB:prevCompare2\ : SIGNAL IS "U(1,1,B)2";
+    ATTRIBUTE placement_force OF \SRV2:PWMUDB:prevCompare2\ : SIGNAL IS "U(0,3,A)3";
     SIGNAL \SRV2:PWMUDB:runmode_enable\ : bit;
-    ATTRIBUTE placement_force OF \SRV2:PWMUDB:runmode_enable\ : SIGNAL IS "U(1,1,A)0";
+    ATTRIBUTE placement_force OF \SRV2:PWMUDB:runmode_enable\ : SIGNAL IS "U(0,3,B)1";
     SIGNAL \SRV3:PWMUDB:sP16:pwmdp:u0.ce0__sig\ : bit;
     SIGNAL \SRV2:PWMUDB:status_0\ : bit;
-    ATTRIBUTE placement_force OF \SRV2:PWMUDB:status_0\ : SIGNAL IS "U(1,1,B)0";
+    ATTRIBUTE placement_force OF \SRV2:PWMUDB:status_0\ : SIGNAL IS "U(1,3,B)0";
     SIGNAL \SRV2:PWMUDB:status_1\ : bit;
-    ATTRIBUTE placement_force OF \SRV2:PWMUDB:status_1\ : SIGNAL IS "U(1,1,B)3";
+    ATTRIBUTE placement_force OF \SRV2:PWMUDB:status_1\ : SIGNAL IS "U(1,3,B)3";
     SIGNAL \SRV2:PWMUDB:status_2\ : bit;
-    ATTRIBUTE placement_force OF \SRV2:PWMUDB:status_2\ : SIGNAL IS "U(1,1,A)1";
+    ATTRIBUTE placement_force OF \SRV2:PWMUDB:status_2\ : SIGNAL IS "U(1,3,A)1";
     SIGNAL \SRV2:PWMUDB:status_3\ : bit;
     SIGNAL \SRV2:PWMUDB:tc_i\ : bit;
     SIGNAL \SRV3:PWMUDB:cmp1_eq\ : bit;
@@ -322,21 +308,21 @@ ARCHITECTURE __DEFAULT__ OF \ARC-EMBED\ IS
     SIGNAL \SRV4:PWMUDB:control_6\ : bit;
     SIGNAL \SRV4:PWMUDB:control_7\ : bit;
     SIGNAL \SRV4:PWMUDB:prevCompare1\ : bit;
-    ATTRIBUTE placement_force OF \SRV4:PWMUDB:prevCompare1\ : SIGNAL IS "U(1,3,A)3";
+    ATTRIBUTE placement_force OF \SRV4:PWMUDB:prevCompare1\ : SIGNAL IS "U(1,1,A)3";
     SIGNAL \SRV4:PWMUDB:prevCompare2\ : bit;
-    ATTRIBUTE placement_force OF \SRV4:PWMUDB:prevCompare2\ : SIGNAL IS "U(1,3,B)2";
+    ATTRIBUTE placement_force OF \SRV4:PWMUDB:prevCompare2\ : SIGNAL IS "U(1,1,B)2";
     SIGNAL \SRV4:PWMUDB:runmode_enable\ : bit;
-    ATTRIBUTE placement_force OF \SRV4:PWMUDB:runmode_enable\ : SIGNAL IS "U(0,3,B)1";
+    ATTRIBUTE placement_force OF \SRV4:PWMUDB:runmode_enable\ : SIGNAL IS "U(0,1,B)0";
     SIGNAL \SRV4:PWMUDB:status_0\ : bit;
-    ATTRIBUTE placement_force OF \SRV4:PWMUDB:status_0\ : SIGNAL IS "U(1,3,B)0";
+    ATTRIBUTE placement_force OF \SRV4:PWMUDB:status_0\ : SIGNAL IS "U(1,1,B)0";
     SIGNAL \SRV4:PWMUDB:status_1\ : bit;
-    ATTRIBUTE placement_force OF \SRV4:PWMUDB:status_1\ : SIGNAL IS "U(1,3,B)3";
+    ATTRIBUTE placement_force OF \SRV4:PWMUDB:status_1\ : SIGNAL IS "U(1,1,B)3";
     SIGNAL \SRV4:PWMUDB:status_2\ : bit;
-    ATTRIBUTE placement_force OF \SRV4:PWMUDB:status_2\ : SIGNAL IS "U(1,3,A)1";
+    ATTRIBUTE placement_force OF \SRV4:PWMUDB:status_2\ : SIGNAL IS "U(1,1,A)1";
     SIGNAL \SRV4:PWMUDB:status_3\ : bit;
     SIGNAL \SRV4:PWMUDB:tc_i\ : bit;
-    SIGNAL \UART:Net_847_ff4\ : bit;
-    ATTRIBUTE global_signal OF \UART:Net_847_ff4\ : SIGNAL IS true;
+    SIGNAL \UART:Net_847_ff2\ : bit;
+    ATTRIBUTE global_signal OF \UART:Net_847_ff2\ : SIGNAL IS true;
     SIGNAL \UART:miso_s_wire\ : bit;
     SIGNAL \UART:mosi_m_wire\ : bit;
     SIGNAL \UART:rts_wire\ : bit;
@@ -368,6 +354,7 @@ ARCHITECTURE __DEFAULT__ OF \ARC-EMBED\ IS
     SIGNAL \USBFS:dma_req_6\ : bit;
     SIGNAL \USBFS:dma_req_7\ : bit;
     SIGNAL __ONE__ : bit;
+    ATTRIBUTE placement_force OF __ONE__ : SIGNAL IS "U(1,3,B)2";
     ATTRIBUTE POWER OF __ONE__ : SIGNAL IS true;
     SIGNAL __ZERO__ : bit;
     ATTRIBUTE GROUND OF __ZERO__ : SIGNAL IS true;
@@ -428,92 +415,100 @@ ARCHITECTURE __DEFAULT__ OF \ARC-EMBED\ IS
     ATTRIBUTE Location OF ClockGenBlock : LABEL IS "F(CLK_GEN,0)";
     ATTRIBUTE Location OF ClockBlock : LABEL IS "F(Clock,0)";
     ATTRIBUTE lib_model OF ENC1A(0) : LABEL IS "iocell1";
-    ATTRIBUTE Location OF ENC1A(0) : LABEL IS "P4[4]";
+    ATTRIBUTE Location OF ENC1A(0) : LABEL IS "P1[6]";
     ATTRIBUTE lib_model OF ENC1B(0) : LABEL IS "iocell2";
-    ATTRIBUTE Location OF ENC1B(0) : LABEL IS "P3[1]";
+    ATTRIBUTE Location OF ENC1B(0) : LABEL IS "P0[1]";
     ATTRIBUTE lib_model OF ENC2A(0) : LABEL IS "iocell3";
-    ATTRIBUTE Location OF ENC2A(0) : LABEL IS "P1[4]";
+    ATTRIBUTE Location OF ENC2A(0) : LABEL IS "P3[4]";
     ATTRIBUTE lib_model OF ENC2B(0) : LABEL IS "iocell4";
-    ATTRIBUTE Location OF ENC2B(0) : LABEL IS "P0[1]";
+    ATTRIBUTE Location OF ENC2B(0) : LABEL IS "P1[2]";
     ATTRIBUTE lib_model OF ENC3A(0) : LABEL IS "iocell5";
-    ATTRIBUTE Location OF ENC3A(0) : LABEL IS "P4[1]";
+    ATTRIBUTE Location OF ENC3A(0) : LABEL IS "P2[4]";
     ATTRIBUTE lib_model OF ENC3B(0) : LABEL IS "iocell6";
-    ATTRIBUTE Location OF ENC3B(0) : LABEL IS "P4[0]";
+    ATTRIBUTE Location OF ENC3B(0) : LABEL IS "P1[5]";
     ATTRIBUTE lib_model OF ENC4A(0) : LABEL IS "iocell7";
-    ATTRIBUTE Location OF ENC4A(0) : LABEL IS "P4[7]";
+    ATTRIBUTE Location OF ENC4A(0) : LABEL IS "P3[1]";
     ATTRIBUTE lib_model OF ENC4B(0) : LABEL IS "iocell8";
     ATTRIBUTE Location OF ENC4B(0) : LABEL IS "P0[3]";
     ATTRIBUTE lib_model OF PWM1(0) : LABEL IS "iocell9";
-    ATTRIBUTE Location OF PWM1(0) : LABEL IS "P0[7]";
+    ATTRIBUTE Location OF PWM1(0) : LABEL IS "P3[0]";
     ATTRIBUTE lib_model OF PWM2(0) : LABEL IS "iocell10";
-    ATTRIBUTE Location OF PWM2(0) : LABEL IS "P3[4]";
+    ATTRIBUTE Location OF PWM2(0) : LABEL IS "P3[6]";
     ATTRIBUTE lib_model OF PWM3(0) : LABEL IS "iocell11";
-    ATTRIBUTE Location OF PWM3(0) : LABEL IS "P4[3]";
+    ATTRIBUTE Location OF PWM3(0) : LABEL IS "P3[5]";
     ATTRIBUTE lib_model OF PWM4(0) : LABEL IS "iocell12";
-    ATTRIBUTE Location OF PWM4(0) : LABEL IS "P1[7]";
+    ATTRIBUTE Location OF PWM4(0) : LABEL IS "P4[1]";
     ATTRIBUTE Location OF \USBFS:Dp\ : LABEL IS "F(PICU,13)";
     ATTRIBUTE lib_model OF \USBFS:Dp(0)\ : LABEL IS "iocell13";
     ATTRIBUTE Location OF \USBFS:Dp(0)\ : LABEL IS "P13[0]";
     ATTRIBUTE lib_model OF \USBFS:Dm(0)\ : LABEL IS "iocell14";
     ATTRIBUTE Location OF \USBFS:Dm(0)\ : LABEL IS "P13[1]";
     ATTRIBUTE lib_model OF \UART:tx(0)\ : LABEL IS "iocell15";
-    ATTRIBUTE Location OF \UART:tx(0)\ : LABEL IS "P5[1]";
+    ATTRIBUTE Location OF \UART:tx(0)\ : LABEL IS "P1[1]";
     ATTRIBUTE lib_model OF \UART:rx(0)\ : LABEL IS "iocell16";
-    ATTRIBUTE Location OF \UART:rx(0)\ : LABEL IS "P5[0]";
-    ATTRIBUTE lib_model OF \SPI:ss_s(0)\ : LABEL IS "iocell17";
-    ATTRIBUTE Location OF \SPI:ss_s(0)\ : LABEL IS "P1[3]";
-    ATTRIBUTE lib_model OF \SPI:miso_s(0)\ : LABEL IS "iocell18";
-    ATTRIBUTE Location OF \SPI:miso_s(0)\ : LABEL IS "P1[1]";
-    ATTRIBUTE lib_model OF \SPI:sclk_s(0)\ : LABEL IS "iocell19";
-    ATTRIBUTE Location OF \SPI:sclk_s(0)\ : LABEL IS "P1[2]";
-    ATTRIBUTE lib_model OF \SPI:mosi_s(0)\ : LABEL IS "iocell20";
-    ATTRIBUTE Location OF \SPI:mosi_s(0)\ : LABEL IS "P1[0]";
-    ATTRIBUTE lib_model OF \EZI2C_1:sda(0)\ : LABEL IS "iocell21";
-    ATTRIBUTE Location OF \EZI2C_1:sda(0)\ : LABEL IS "P0[5]";
-    ATTRIBUTE lib_model OF \EZI2C_1:scl(0)\ : LABEL IS "iocell22";
-    ATTRIBUTE Location OF \EZI2C_1:scl(0)\ : LABEL IS "P0[4]";
-    ATTRIBUTE lib_model OF SRV1EN(0) : LABEL IS "iocell23";
-    ATTRIBUTE Location OF SRV1EN(0) : LABEL IS "P3[5]";
-    ATTRIBUTE lib_model OF SRV2EN(0) : LABEL IS "iocell24";
-    ATTRIBUTE Location OF SRV2EN(0) : LABEL IS "P2[7]";
-    ATTRIBUTE lib_model OF SRV3EN(0) : LABEL IS "iocell25";
-    ATTRIBUTE Location OF SRV3EN(0) : LABEL IS "P4[5]";
-    ATTRIBUTE lib_model OF SRV4EN(0) : LABEL IS "iocell26";
-    ATTRIBUTE Location OF SRV4EN(0) : LABEL IS "P0[0]";
-    ATTRIBUTE lib_model OF SRV1A(0) : LABEL IS "iocell27";
-    ATTRIBUTE Location OF SRV1A(0) : LABEL IS "P3[7]";
-    ATTRIBUTE lib_model OF SRV1B(0) : LABEL IS "iocell28";
-    ATTRIBUTE Location OF SRV1B(0) : LABEL IS "P3[6]";
-    ATTRIBUTE lib_model OF SRV2A(0) : LABEL IS "iocell29";
-    ATTRIBUTE Location OF SRV2A(0) : LABEL IS "P11[2]";
-    ATTRIBUTE lib_model OF SRV2B(0) : LABEL IS "iocell30";
-    ATTRIBUTE Location OF SRV2B(0) : LABEL IS "P2[2]";
-    ATTRIBUTE lib_model OF SRV3A(0) : LABEL IS "iocell31";
-    ATTRIBUTE Location OF SRV3A(0) : LABEL IS "P1[5]";
-    ATTRIBUTE lib_model OF SRV3B(0) : LABEL IS "iocell32";
-    ATTRIBUTE Location OF SRV3B(0) : LABEL IS "P4[2]";
-    ATTRIBUTE lib_model OF SRV4A(0) : LABEL IS "iocell33";
-    ATTRIBUTE Location OF SRV4A(0) : LABEL IS "P0[2]";
-    ATTRIBUTE lib_model OF SRV4B(0) : LABEL IS "iocell34";
-    ATTRIBUTE Location OF SRV4B(0) : LABEL IS "P4[6]";
+    ATTRIBUTE Location OF \UART:rx(0)\ : LABEL IS "P1[0]";
+    ATTRIBUTE lib_model OF \ADC:Bypass(0)\ : LABEL IS "iocell17";
+    ATTRIBUTE Location OF \ADC:Bypass(0)\ : LABEL IS "P1[7]";
+    ATTRIBUTE lib_model OF ADC0(0) : LABEL IS "iocell18";
+    ATTRIBUTE Location OF ADC0(0) : LABEL IS "P2[7]";
+    ATTRIBUTE lib_model OF SRV1EN(0) : LABEL IS "iocell19";
+    ATTRIBUTE Location OF SRV1EN(0) : LABEL IS "P2[0]";
+    ATTRIBUTE lib_model OF SRV2EN(0) : LABEL IS "iocell20";
+    ATTRIBUTE Location OF SRV2EN(0) : LABEL IS "P0[5]";
+    ATTRIBUTE lib_model OF SRV3EN(0) : LABEL IS "iocell21";
+    ATTRIBUTE Location OF SRV3EN(0) : LABEL IS "P4[0]";
+    ATTRIBUTE lib_model OF SRV4EN(0) : LABEL IS "iocell22";
+    ATTRIBUTE Location OF SRV4EN(0) : LABEL IS "P4[5]";
+    ATTRIBUTE lib_model OF SRV1A(0) : LABEL IS "iocell23";
+    ATTRIBUTE Location OF SRV1A(0) : LABEL IS "P2[2]";
+    ATTRIBUTE lib_model OF SRV1B(0) : LABEL IS "iocell24";
+    ATTRIBUTE Location OF SRV1B(0) : LABEL IS "P2[1]";
+    ATTRIBUTE lib_model OF SRV2A(0) : LABEL IS "iocell25";
+    ATTRIBUTE Location OF SRV2A(0) : LABEL IS "P0[4]";
+    ATTRIBUTE lib_model OF SRV2B(0) : LABEL IS "iocell26";
+    ATTRIBUTE Location OF SRV2B(0) : LABEL IS "P0[6]";
+    ATTRIBUTE lib_model OF SRV3A(0) : LABEL IS "iocell27";
+    ATTRIBUTE Location OF SRV3A(0) : LABEL IS "P1[3]";
+    ATTRIBUTE lib_model OF SRV3B(0) : LABEL IS "iocell28";
+    ATTRIBUTE Location OF SRV3B(0) : LABEL IS "P1[4]";
+    ATTRIBUTE lib_model OF SRV4A(0) : LABEL IS "iocell29";
+    ATTRIBUTE Location OF SRV4A(0) : LABEL IS "P3[7]";
+    ATTRIBUTE lib_model OF SRV4B(0) : LABEL IS "iocell30";
+    ATTRIBUTE Location OF SRV4B(0) : LABEL IS "P4[2]";
+    ATTRIBUTE lib_model OF ADC1(0) : LABEL IS "iocell31";
+    ATTRIBUTE Location OF ADC1(0) : LABEL IS "P2[5]";
+    ATTRIBUTE lib_model OF ADC2(0) : LABEL IS "iocell32";
+    ATTRIBUTE Location OF ADC2(0) : LABEL IS "P2[6]";
+    ATTRIBUTE lib_model OF ADC3(0) : LABEL IS "iocell33";
+    ATTRIBUTE Location OF ADC3(0) : LABEL IS "P2[3]";
+    ATTRIBUTE lib_model OF DAC0(0) : LABEL IS "iocell34";
+    ATTRIBUTE Location OF DAC0(0) : LABEL IS "P0[7]";
+    ATTRIBUTE lib_model OF DAC1(0) : LABEL IS "iocell35";
+    ATTRIBUTE Location OF DAC1(0) : LABEL IS "P5[5]";
+    ATTRIBUTE lib_model OF DAC2(0) : LABEL IS "iocell36";
+    ATTRIBUTE Location OF DAC2(0) : LABEL IS "P5[3]";
+    ATTRIBUTE lib_model OF DAC3(0) : LABEL IS "iocell37";
+    ATTRIBUTE Location OF DAC3(0) : LABEL IS "P4[6]";
     ATTRIBUTE lib_model OF \SRV1:PWMUDB:status_2\ : LABEL IS "macrocell1";
     ATTRIBUTE Location OF \SRV1:PWMUDB:status_2\ : LABEL IS "U(0,0)";
     ATTRIBUTE lib_model OF \SRV2:PWMUDB:status_2\ : LABEL IS "macrocell2";
-    ATTRIBUTE Location OF \SRV2:PWMUDB:status_2\ : LABEL IS "U(1,1)";
+    ATTRIBUTE Location OF \SRV2:PWMUDB:status_2\ : LABEL IS "U(1,3)";
     ATTRIBUTE lib_model OF \SRV3:PWMUDB:status_2\ : LABEL IS "macrocell3";
     ATTRIBUTE Location OF \SRV3:PWMUDB:status_2\ : LABEL IS "U(0,2)";
     ATTRIBUTE lib_model OF \SRV4:PWMUDB:status_2\ : LABEL IS "macrocell4";
-    ATTRIBUTE Location OF \SRV4:PWMUDB:status_2\ : LABEL IS "U(1,3)";
-    ATTRIBUTE Location OF \QuadDec1:cy_m0s8_tcpwm_1\ : LABEL IS "F(TCPWM,2)";
-    ATTRIBUTE Location OF \QuadDec_2:cy_m0s8_tcpwm_1\ : LABEL IS "F(TCPWM,0)";
-    ATTRIBUTE Location OF \QuadDec3:cy_m0s8_tcpwm_1\ : LABEL IS "F(TCPWM,7)";
-    ATTRIBUTE Location OF \QuadDec_4:cy_m0s8_tcpwm_1\ : LABEL IS "F(TCPWM,6)";
-    ATTRIBUTE Location OF \M1PWM:cy_m0s8_tcpwm_1\ : LABEL IS "F(TCPWM,1)";
-    ATTRIBUTE Location OF \M2PWM:cy_m0s8_tcpwm_1\ : LABEL IS "F(TCPWM,5)";
-    ATTRIBUTE Location OF \M3PWM:cy_m0s8_tcpwm_1\ : LABEL IS "F(TCPWM,4)";
-    ATTRIBUTE Location OF \M4PWM:cy_m0s8_tcpwm_1\ : LABEL IS "F(TCPWM,3)";
+    ATTRIBUTE Location OF \SRV4:PWMUDB:status_2\ : LABEL IS "U(1,1)";
+    ATTRIBUTE Location OF \QD0:cy_m0s8_tcpwm_1\ : LABEL IS "F(TCPWM,2)";
+    ATTRIBUTE Location OF \QD1:cy_m0s8_tcpwm_1\ : LABEL IS "F(TCPWM,7)";
+    ATTRIBUTE Location OF \QD2:cy_m0s8_tcpwm_1\ : LABEL IS "F(TCPWM,0)";
+    ATTRIBUTE Location OF \QD4:cy_m0s8_tcpwm_1\ : LABEL IS "F(TCPWM,6)";
+    ATTRIBUTE Location OF \M0PWM:cy_m0s8_tcpwm_1\ : LABEL IS "F(TCPWM,1)";
+    ATTRIBUTE lib_model OF __ONE__ : LABEL IS "macrocell5";
+    ATTRIBUTE Location OF __ONE__ : LABEL IS "U(1,3)";
+    ATTRIBUTE Location OF \M1PWM:cy_m0s8_tcpwm_1\ : LABEL IS "F(TCPWM,5)";
+    ATTRIBUTE Location OF \M2PWM:cy_m0s8_tcpwm_1\ : LABEL IS "F(TCPWM,4)";
+    ATTRIBUTE Location OF \M3PWM:cy_m0s8_tcpwm_1\ : LABEL IS "F(TCPWM,3)";
     ATTRIBUTE lib_model OF \SRV1:PWMUDB:genblk1:ctrlreg\ : LABEL IS "controlcell1";
-    ATTRIBUTE Location OF \SRV1:PWMUDB:genblk1:ctrlreg\ : LABEL IS "U(0,0)";
+    ATTRIBUTE Location OF \SRV1:PWMUDB:genblk1:ctrlreg\ : LABEL IS "U(1,0)";
     ATTRIBUTE lib_model OF \SRV1:PWMUDB:genblk8:stsreg\ : LABEL IS "statusicell1";
     ATTRIBUTE Location OF \SRV1:PWMUDB:genblk8:stsreg\ : LABEL IS "U(0,0)";
     ATTRIBUTE lib_model OF \SRV1:PWMUDB:sP16:pwmdp:u0\ : LABEL IS "datapathcell1";
@@ -530,13 +525,13 @@ ARCHITECTURE __DEFAULT__ OF \ARC-EMBED\ IS
     ATTRIBUTE Location OF \USBFS:dp_int\ : LABEL IS "[IntrContainer=(0)][IntrId=(5)]";
     ATTRIBUTE Location OF \USBFS:cy_m0s8_usb\ : LABEL IS "F(USB,0)";
     ATTRIBUTE lib_model OF \SRV2:PWMUDB:genblk1:ctrlreg\ : LABEL IS "controlcell2";
-    ATTRIBUTE Location OF \SRV2:PWMUDB:genblk1:ctrlreg\ : LABEL IS "U(1,1)";
+    ATTRIBUTE Location OF \SRV2:PWMUDB:genblk1:ctrlreg\ : LABEL IS "U(0,3)";
     ATTRIBUTE lib_model OF \SRV2:PWMUDB:genblk8:stsreg\ : LABEL IS "statusicell2";
-    ATTRIBUTE Location OF \SRV2:PWMUDB:genblk8:stsreg\ : LABEL IS "U(1,1)";
+    ATTRIBUTE Location OF \SRV2:PWMUDB:genblk8:stsreg\ : LABEL IS "U(1,3)";
     ATTRIBUTE lib_model OF \SRV2:PWMUDB:sP16:pwmdp:u0\ : LABEL IS "datapathcell3";
-    ATTRIBUTE Location OF \SRV2:PWMUDB:sP16:pwmdp:u0\ : LABEL IS "U(0,1)";
+    ATTRIBUTE Location OF \SRV2:PWMUDB:sP16:pwmdp:u0\ : LABEL IS "U(0,3)";
     ATTRIBUTE lib_model OF \SRV2:PWMUDB:sP16:pwmdp:u1\ : LABEL IS "datapathcell4";
-    ATTRIBUTE Location OF \SRV2:PWMUDB:sP16:pwmdp:u1\ : LABEL IS "U(1,1)";
+    ATTRIBUTE Location OF \SRV2:PWMUDB:sP16:pwmdp:u1\ : LABEL IS "U(1,3)";
     ATTRIBUTE lib_model OF \SRV3:PWMUDB:genblk1:ctrlreg\ : LABEL IS "controlcell3";
     ATTRIBUTE Location OF \SRV3:PWMUDB:genblk1:ctrlreg\ : LABEL IS "U(0,2)";
     ATTRIBUTE lib_model OF \SRV3:PWMUDB:genblk8:stsreg\ : LABEL IS "statusicell3";
@@ -546,73 +541,78 @@ ARCHITECTURE __DEFAULT__ OF \ARC-EMBED\ IS
     ATTRIBUTE lib_model OF \SRV3:PWMUDB:sP16:pwmdp:u1\ : LABEL IS "datapathcell6";
     ATTRIBUTE Location OF \SRV3:PWMUDB:sP16:pwmdp:u1\ : LABEL IS "U(0,2)";
     ATTRIBUTE lib_model OF \SRV4:PWMUDB:genblk1:ctrlreg\ : LABEL IS "controlcell4";
-    ATTRIBUTE Location OF \SRV4:PWMUDB:genblk1:ctrlreg\ : LABEL IS "U(0,3)";
+    ATTRIBUTE Location OF \SRV4:PWMUDB:genblk1:ctrlreg\ : LABEL IS "U(0,1)";
     ATTRIBUTE lib_model OF \SRV4:PWMUDB:genblk8:stsreg\ : LABEL IS "statusicell4";
-    ATTRIBUTE Location OF \SRV4:PWMUDB:genblk8:stsreg\ : LABEL IS "U(1,3)";
+    ATTRIBUTE Location OF \SRV4:PWMUDB:genblk8:stsreg\ : LABEL IS "U(1,1)";
     ATTRIBUTE lib_model OF \SRV4:PWMUDB:sP16:pwmdp:u0\ : LABEL IS "datapathcell7";
-    ATTRIBUTE Location OF \SRV4:PWMUDB:sP16:pwmdp:u0\ : LABEL IS "U(0,3)";
+    ATTRIBUTE Location OF \SRV4:PWMUDB:sP16:pwmdp:u0\ : LABEL IS "U(0,1)";
     ATTRIBUTE lib_model OF \SRV4:PWMUDB:sP16:pwmdp:u1\ : LABEL IS "datapathcell8";
-    ATTRIBUTE Location OF \SRV4:PWMUDB:sP16:pwmdp:u1\ : LABEL IS "U(1,3)";
-    ATTRIBUTE Location OF \UART:SCB\ : LABEL IS "F(SCB,2)";
-    ATTRIBUTE Location OF \SPI:SCB\ : LABEL IS "F(SCB,0)";
-    ATTRIBUTE Location OF \EZI2C_1:SCB_IRQ\ : LABEL IS "[IntrContainer=(0)][IntrId=(10)]";
-    ATTRIBUTE Location OF \EZI2C_1:SCB\ : LABEL IS "F(SCB,1)";
-    ATTRIBUTE lib_model OF \SRV1:PWMUDB:runmode_enable\ : LABEL IS "macrocell5";
-    ATTRIBUTE Location OF \SRV1:PWMUDB:runmode_enable\ : LABEL IS "U(0,0)";
-    ATTRIBUTE lib_model OF \SRV1:PWMUDB:prevCompare1\ : LABEL IS "macrocell6";
+    ATTRIBUTE Location OF \SRV4:PWMUDB:sP16:pwmdp:u1\ : LABEL IS "U(1,1)";
+    ATTRIBUTE Location OF \UART:SCB\ : LABEL IS "F(SCB,0)";
+    ATTRIBUTE Location OF \ADC:IRQ\ : LABEL IS "[IntrContainer=(0)][IntrId=(17)]";
+    ATTRIBUTE Location OF \ADC:cy_psoc4_sar\ : LABEL IS "F(SARADC,0)";
+    ATTRIBUTE lib_model OF ADC_DMA : LABEL IS "drqcell3";
+    ATTRIBUTE Location OF ADC_DMA : LABEL IS "[DrqContainer=(0)][DrqId=(2)]";
+    ATTRIBUTE Location OF \IDAC0:cy_psoc4_idac\ : LABEL IS "F(CSIDAC8,0)";
+    ATTRIBUTE Location OF \IDAC1:cy_psoc4_idac\ : LABEL IS "F(CSIDAC8,1)";
+    ATTRIBUTE Location OF \IDAC2:cy_psoc4_idac\ : LABEL IS "F(CSIDAC7,1)";
+    ATTRIBUTE Location OF \IDAC3:cy_psoc4_idac\ : LABEL IS "F(CSIDAC7,0)";
+    ATTRIBUTE lib_model OF \SRV1:PWMUDB:runmode_enable\ : LABEL IS "macrocell6";
+    ATTRIBUTE Location OF \SRV1:PWMUDB:runmode_enable\ : LABEL IS "U(1,0)";
+    ATTRIBUTE lib_model OF \SRV1:PWMUDB:prevCompare1\ : LABEL IS "macrocell7";
     ATTRIBUTE Location OF \SRV1:PWMUDB:prevCompare1\ : LABEL IS "U(0,0)";
-    ATTRIBUTE lib_model OF \SRV1:PWMUDB:prevCompare2\ : LABEL IS "macrocell7";
+    ATTRIBUTE lib_model OF \SRV1:PWMUDB:prevCompare2\ : LABEL IS "macrocell8";
     ATTRIBUTE Location OF \SRV1:PWMUDB:prevCompare2\ : LABEL IS "U(0,0)";
-    ATTRIBUTE lib_model OF \SRV1:PWMUDB:status_0\ : LABEL IS "macrocell8";
+    ATTRIBUTE lib_model OF \SRV1:PWMUDB:status_0\ : LABEL IS "macrocell9";
     ATTRIBUTE Location OF \SRV1:PWMUDB:status_0\ : LABEL IS "U(0,0)";
-    ATTRIBUTE lib_model OF \SRV1:PWMUDB:status_1\ : LABEL IS "macrocell9";
+    ATTRIBUTE lib_model OF \SRV1:PWMUDB:status_1\ : LABEL IS "macrocell10";
     ATTRIBUTE Location OF \SRV1:PWMUDB:status_1\ : LABEL IS "U(0,0)";
-    ATTRIBUTE lib_model OF Net_3736 : LABEL IS "macrocell10";
-    ATTRIBUTE Location OF Net_3736 : LABEL IS "U(0,0)";
-    ATTRIBUTE lib_model OF Net_3789 : LABEL IS "macrocell11";
+    ATTRIBUTE lib_model OF Net_3736 : LABEL IS "macrocell11";
+    ATTRIBUTE Location OF Net_3736 : LABEL IS "U(1,0)";
+    ATTRIBUTE lib_model OF Net_3789 : LABEL IS "macrocell12";
     ATTRIBUTE Location OF Net_3789 : LABEL IS "U(0,0)";
-    ATTRIBUTE lib_model OF \SRV2:PWMUDB:runmode_enable\ : LABEL IS "macrocell12";
-    ATTRIBUTE Location OF \SRV2:PWMUDB:runmode_enable\ : LABEL IS "U(1,1)";
-    ATTRIBUTE lib_model OF \SRV2:PWMUDB:prevCompare1\ : LABEL IS "macrocell13";
-    ATTRIBUTE Location OF \SRV2:PWMUDB:prevCompare1\ : LABEL IS "U(1,1)";
-    ATTRIBUTE lib_model OF \SRV2:PWMUDB:prevCompare2\ : LABEL IS "macrocell14";
-    ATTRIBUTE Location OF \SRV2:PWMUDB:prevCompare2\ : LABEL IS "U(1,1)";
-    ATTRIBUTE lib_model OF \SRV2:PWMUDB:status_0\ : LABEL IS "macrocell15";
-    ATTRIBUTE Location OF \SRV2:PWMUDB:status_0\ : LABEL IS "U(1,1)";
-    ATTRIBUTE lib_model OF \SRV2:PWMUDB:status_1\ : LABEL IS "macrocell16";
-    ATTRIBUTE Location OF \SRV2:PWMUDB:status_1\ : LABEL IS "U(1,1)";
-    ATTRIBUTE lib_model OF Net_3842 : LABEL IS "macrocell17";
-    ATTRIBUTE Location OF Net_3842 : LABEL IS "U(1,1)";
-    ATTRIBUTE lib_model OF Net_3843 : LABEL IS "macrocell18";
-    ATTRIBUTE Location OF Net_3843 : LABEL IS "U(1,1)";
-    ATTRIBUTE lib_model OF \SRV3:PWMUDB:runmode_enable\ : LABEL IS "macrocell19";
+    ATTRIBUTE lib_model OF \SRV2:PWMUDB:runmode_enable\ : LABEL IS "macrocell13";
+    ATTRIBUTE Location OF \SRV2:PWMUDB:runmode_enable\ : LABEL IS "U(0,3)";
+    ATTRIBUTE lib_model OF \SRV2:PWMUDB:prevCompare1\ : LABEL IS "macrocell14";
+    ATTRIBUTE Location OF \SRV2:PWMUDB:prevCompare1\ : LABEL IS "U(1,3)";
+    ATTRIBUTE lib_model OF \SRV2:PWMUDB:prevCompare2\ : LABEL IS "macrocell15";
+    ATTRIBUTE Location OF \SRV2:PWMUDB:prevCompare2\ : LABEL IS "U(0,3)";
+    ATTRIBUTE lib_model OF \SRV2:PWMUDB:status_0\ : LABEL IS "macrocell16";
+    ATTRIBUTE Location OF \SRV2:PWMUDB:status_0\ : LABEL IS "U(1,3)";
+    ATTRIBUTE lib_model OF \SRV2:PWMUDB:status_1\ : LABEL IS "macrocell17";
+    ATTRIBUTE Location OF \SRV2:PWMUDB:status_1\ : LABEL IS "U(1,3)";
+    ATTRIBUTE lib_model OF Net_3842 : LABEL IS "macrocell18";
+    ATTRIBUTE Location OF Net_3842 : LABEL IS "U(0,3)";
+    ATTRIBUTE lib_model OF Net_3843 : LABEL IS "macrocell19";
+    ATTRIBUTE Location OF Net_3843 : LABEL IS "U(0,3)";
+    ATTRIBUTE lib_model OF \SRV3:PWMUDB:runmode_enable\ : LABEL IS "macrocell20";
     ATTRIBUTE Location OF \SRV3:PWMUDB:runmode_enable\ : LABEL IS "U(0,2)";
-    ATTRIBUTE lib_model OF \SRV3:PWMUDB:prevCompare1\ : LABEL IS "macrocell20";
+    ATTRIBUTE lib_model OF \SRV3:PWMUDB:prevCompare1\ : LABEL IS "macrocell21";
     ATTRIBUTE Location OF \SRV3:PWMUDB:prevCompare1\ : LABEL IS "U(0,2)";
-    ATTRIBUTE lib_model OF \SRV3:PWMUDB:prevCompare2\ : LABEL IS "macrocell21";
+    ATTRIBUTE lib_model OF \SRV3:PWMUDB:prevCompare2\ : LABEL IS "macrocell22";
     ATTRIBUTE Location OF \SRV3:PWMUDB:prevCompare2\ : LABEL IS "U(0,2)";
-    ATTRIBUTE lib_model OF \SRV3:PWMUDB:status_0\ : LABEL IS "macrocell22";
+    ATTRIBUTE lib_model OF \SRV3:PWMUDB:status_0\ : LABEL IS "macrocell23";
     ATTRIBUTE Location OF \SRV3:PWMUDB:status_0\ : LABEL IS "U(0,2)";
-    ATTRIBUTE lib_model OF \SRV3:PWMUDB:status_1\ : LABEL IS "macrocell23";
+    ATTRIBUTE lib_model OF \SRV3:PWMUDB:status_1\ : LABEL IS "macrocell24";
     ATTRIBUTE Location OF \SRV3:PWMUDB:status_1\ : LABEL IS "U(0,2)";
-    ATTRIBUTE lib_model OF Net_3896 : LABEL IS "macrocell24";
-    ATTRIBUTE Location OF Net_3896 : LABEL IS "U(0,2)";
-    ATTRIBUTE lib_model OF Net_3897 : LABEL IS "macrocell25";
+    ATTRIBUTE lib_model OF Net_3896 : LABEL IS "macrocell25";
+    ATTRIBUTE Location OF Net_3896 : LABEL IS "U(1,2)";
+    ATTRIBUTE lib_model OF Net_3897 : LABEL IS "macrocell26";
     ATTRIBUTE Location OF Net_3897 : LABEL IS "U(0,2)";
-    ATTRIBUTE lib_model OF \SRV4:PWMUDB:runmode_enable\ : LABEL IS "macrocell26";
-    ATTRIBUTE Location OF \SRV4:PWMUDB:runmode_enable\ : LABEL IS "U(0,3)";
-    ATTRIBUTE lib_model OF \SRV4:PWMUDB:prevCompare1\ : LABEL IS "macrocell27";
-    ATTRIBUTE Location OF \SRV4:PWMUDB:prevCompare1\ : LABEL IS "U(1,3)";
-    ATTRIBUTE lib_model OF \SRV4:PWMUDB:prevCompare2\ : LABEL IS "macrocell28";
-    ATTRIBUTE Location OF \SRV4:PWMUDB:prevCompare2\ : LABEL IS "U(1,3)";
-    ATTRIBUTE lib_model OF \SRV4:PWMUDB:status_0\ : LABEL IS "macrocell29";
-    ATTRIBUTE Location OF \SRV4:PWMUDB:status_0\ : LABEL IS "U(1,3)";
-    ATTRIBUTE lib_model OF \SRV4:PWMUDB:status_1\ : LABEL IS "macrocell30";
-    ATTRIBUTE Location OF \SRV4:PWMUDB:status_1\ : LABEL IS "U(1,3)";
-    ATTRIBUTE lib_model OF Net_3950 : LABEL IS "macrocell31";
-    ATTRIBUTE Location OF Net_3950 : LABEL IS "U(0,3)";
-    ATTRIBUTE lib_model OF Net_4003 : LABEL IS "macrocell32";
-    ATTRIBUTE Location OF Net_4003 : LABEL IS "U(1,3)";
+    ATTRIBUTE lib_model OF \SRV4:PWMUDB:runmode_enable\ : LABEL IS "macrocell27";
+    ATTRIBUTE Location OF \SRV4:PWMUDB:runmode_enable\ : LABEL IS "U(0,1)";
+    ATTRIBUTE lib_model OF \SRV4:PWMUDB:prevCompare1\ : LABEL IS "macrocell28";
+    ATTRIBUTE Location OF \SRV4:PWMUDB:prevCompare1\ : LABEL IS "U(1,1)";
+    ATTRIBUTE lib_model OF \SRV4:PWMUDB:prevCompare2\ : LABEL IS "macrocell29";
+    ATTRIBUTE Location OF \SRV4:PWMUDB:prevCompare2\ : LABEL IS "U(1,1)";
+    ATTRIBUTE lib_model OF \SRV4:PWMUDB:status_0\ : LABEL IS "macrocell30";
+    ATTRIBUTE Location OF \SRV4:PWMUDB:status_0\ : LABEL IS "U(1,1)";
+    ATTRIBUTE lib_model OF \SRV4:PWMUDB:status_1\ : LABEL IS "macrocell31";
+    ATTRIBUTE Location OF \SRV4:PWMUDB:status_1\ : LABEL IS "U(1,1)";
+    ATTRIBUTE lib_model OF Net_3950 : LABEL IS "macrocell32";
+    ATTRIBUTE Location OF Net_3950 : LABEL IS "U(0,1)";
+    ATTRIBUTE lib_model OF Net_4003 : LABEL IS "macrocell33";
+    ATTRIBUTE Location OF Net_4003 : LABEL IS "U(1,1)";
     COMPONENT controlcell
         PORT (
             control_0 : OUT std_ulogic;
@@ -974,6 +974,64 @@ ARCHITECTURE __DEFAULT__ OF \ARC-EMBED\ IS
             q : OUT std_ulogic;
             q_fixed : OUT std_ulogic);
     END COMPONENT;
+    COMPONENT p4csidac7cell
+        PORT (
+            en : IN std_ulogic);
+    END COMPONENT;
+    COMPONENT p4csidac8cell
+        PORT (
+            en : IN std_ulogic);
+    END COMPONENT;
+    COMPONENT p4sarcell
+        PORT (
+            clock : IN std_ulogic;
+            sample_done : OUT std_ulogic;
+            chan_id_valid : OUT std_ulogic;
+            chan_id_0 : OUT std_ulogic;
+            chan_id_1 : OUT std_ulogic;
+            chan_id_2 : OUT std_ulogic;
+            chan_id_3 : OUT std_ulogic;
+            data_valid : OUT std_ulogic;
+            data_0 : OUT std_ulogic;
+            data_1 : OUT std_ulogic;
+            data_2 : OUT std_ulogic;
+            data_3 : OUT std_ulogic;
+            data_4 : OUT std_ulogic;
+            data_5 : OUT std_ulogic;
+            data_6 : OUT std_ulogic;
+            data_7 : OUT std_ulogic;
+            data_8 : OUT std_ulogic;
+            data_9 : OUT std_ulogic;
+            data_10 : OUT std_ulogic;
+            data_11 : OUT std_ulogic;
+            eos_intr : OUT std_ulogic;
+            tr_sar_out : OUT std_ulogic;
+            irq : OUT std_ulogic;
+            sw_negvref : IN std_ulogic;
+            cfg_st_sel_0 : IN std_ulogic;
+            cfg_st_sel_1 : IN std_ulogic;
+            cfg_average : IN std_ulogic;
+            cfg_resolution : IN std_ulogic;
+            cfg_differential : IN std_ulogic;
+            trigger : IN std_ulogic;
+            data_hilo_sel : IN std_ulogic;
+            swctrl_0 : IN std_ulogic;
+            swctrl_1 : IN std_ulogic;
+            data_out_0 : IN std_ulogic;
+            data_out_1 : IN std_ulogic;
+            data_out_2 : IN std_ulogic;
+            data_out_3 : IN std_ulogic;
+            data_out_4 : IN std_ulogic;
+            data_out_5 : IN std_ulogic;
+            data_out_6 : IN std_ulogic;
+            data_out_7 : IN std_ulogic;
+            data_oe_0 : IN std_ulogic;
+            data_oe_1 : IN std_ulogic;
+            data_oe_2 : IN std_ulogic;
+            data_oe_3 : IN std_ulogic);
+    END COMPONENT;
+    COMPONENT p4sarmuxcell
+    END COMPONENT;
     COMPONENT p4usbcell
         PORT (
             dp : OUT std_ulogic;
@@ -1061,10 +1119,9 @@ BEGIN
             ff_div_16 => Net_336_ff12,
             ff_div_17 => Net_336_ff18,
             ff_div_18 => Net_336_ff16,
-            ff_div_2 => \SPI:Net_847_ff2\,
+            ff_div_10 => \ADC:Net_1845_ff10\,
             udb_div_0 => dclk_to_genclk,
-            ff_div_3 => \EZI2C_1:Net_847_ff3\,
-            ff_div_4 => \UART:Net_847_ff4\);
+            ff_div_2 => \UART:Net_847_ff2\);
 
     ENC1A:logicalport
         GENERIC MAP(
@@ -2530,198 +2587,15 @@ BEGIN
             out_clock_en => '1',
             out_reset => '0');
 
-    \SPI:ss_s\:logicalport
+    \ADC:Bypass\:logicalport
         GENERIC MAP(
-            drive_mode => "001",
-            ibuf_enabled => "1",
-            id => "8c8734ef-3644-4eed-bc55-360072b94fff/3446580a-3b9d-491c-8730-f7ea34ca86e3",
-            init_dr_st => "0",
-            input_buffer_sel => "00",
-            input_clk_en => 0,
-            input_sync => "0",
-            input_sync_mode => "0",
-            intr_mode => "00",
-            invert_in_clock => 0,
-            invert_in_clock_en => 0,
-            invert_in_reset => 0,
-            invert_out_clock => 0,
-            invert_out_clock_en => 0,
-            invert_out_reset => 0,
-            io_voltage => "",
-            layout_mode => "CONTIGUOUS",
-            oe_conn => "0",
-            oe_reset => 0,
-            oe_sync => "0",
-            output_clk_en => 0,
-            output_clock_mode => "0",
-            output_conn => "0",
-            output_mode => "0",
-            output_reset => 0,
-            output_sync => "0",
-            ovt_hyst_trim => "0",
-            ovt_needed => "0",
-            ovt_slew_control => "00",
-            pa_in_clock => -1,
-            pa_in_clock_en => -1,
-            pa_in_reset => -1,
-            pa_out_clock => -1,
-            pa_out_clock_en => -1,
-            pa_out_reset => -1,
-            pin_aliases => "",
-            pin_mode => "I",
-            por_state => 4,
-            port_alias_group => "",
-            port_alias_required => 0,
-            sio_group_cnt => 0,
-            sio_hifreq => "00000000",
-            sio_hyst => "1",
-            sio_ibuf => "00000000",
-            sio_info => "00",
-            sio_obuf => "00000000",
-            sio_refsel => "00000000",
-            sio_vohsel => "00000000",
-            sio_vtrip => "00000000",
-            slew_rate => "0",
-            spanning => 0,
-            sw_only => 0,
-            use_annotation => "0",
-            vtrip => "00",
-            width => 1,
-            in_clk_inv => 0,
-            in_clken_inv => 0,
-            in_clken_mode => 1,
-            in_rst_inv => 0,
-            out_clk_inv => 0,
-            out_clken_inv => 0,
-            out_clken_mode => 1,
-            out_rst_inv => 0)
-        PORT MAP(
-            in_clock_en => open,
-            in_reset => open,
-            out_clock_en => open,
-            out_reset => open);
-
-    \SPI:ss_s(0)\:iocell
-        GENERIC MAP(
-            in_sync_mode => 0,
-            out_sync_mode => 0,
-            oe_sync_mode => 0,
-            logicalport => "\SPI:ss_s\",
-            logicalport_pin_id => 0,
-            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
-        PORT MAP(
-            pa_out => \\\SPI:ss_s(0)\\__PA\,
-            oe => open,
-            fb => \SPI:Net_1297\,
-            pad_in => \SPI:ss_s(0)_PAD\,
-            in_clock => open,
-            in_clock_en => '1',
-            in_reset => '0',
-            out_clock => open,
-            out_clock_en => '1',
-            out_reset => '0');
-
-    \SPI:miso_s\:logicalport
-        GENERIC MAP(
-            drive_mode => "110",
+            drive_mode => "000",
             ibuf_enabled => "0",
-            id => "8c8734ef-3644-4eed-bc55-360072b94fff/52f31aa9-2f0a-497d-9a1f-1424095e13e6",
-            init_dr_st => "1",
-            input_buffer_sel => "00",
-            input_clk_en => 0,
-            input_sync => "0",
-            input_sync_mode => "0",
-            intr_mode => "00",
-            invert_in_clock => 0,
-            invert_in_clock_en => 0,
-            invert_in_reset => 0,
-            invert_out_clock => 0,
-            invert_out_clock_en => 0,
-            invert_out_reset => 0,
-            io_voltage => "",
-            layout_mode => "CONTIGUOUS",
-            oe_conn => "0",
-            oe_reset => 0,
-            oe_sync => "0",
-            output_clk_en => 0,
-            output_clock_mode => "0",
-            output_conn => "1",
-            output_mode => "0",
-            output_reset => 0,
-            output_sync => "0",
-            ovt_hyst_trim => "0",
-            ovt_needed => "0",
-            ovt_slew_control => "00",
-            pa_in_clock => -1,
-            pa_in_clock_en => -1,
-            pa_in_reset => -1,
-            pa_out_clock => -1,
-            pa_out_clock_en => -1,
-            pa_out_reset => -1,
-            pin_aliases => "",
-            pin_mode => "B",
-            por_state => 4,
-            port_alias_group => "",
-            port_alias_required => 0,
-            sio_group_cnt => 0,
-            sio_hifreq => "00000000",
-            sio_hyst => "1",
-            sio_ibuf => "00000000",
-            sio_info => "00",
-            sio_obuf => "00000000",
-            sio_refsel => "00000000",
-            sio_vohsel => "00000000",
-            sio_vtrip => "00000000",
-            slew_rate => "0",
-            spanning => 0,
-            sw_only => 0,
-            use_annotation => "0",
-            vtrip => "00",
-            width => 1,
-            in_clk_inv => 0,
-            in_clken_inv => 0,
-            in_clken_mode => 1,
-            in_rst_inv => 0,
-            out_clk_inv => 0,
-            out_clken_inv => 0,
-            out_clken_mode => 1,
-            out_rst_inv => 0)
-        PORT MAP(
-            in_clock_en => open,
-            in_reset => open,
-            out_clock_en => open,
-            out_reset => open);
-
-    \SPI:miso_s(0)\:iocell
-        GENERIC MAP(
-            in_sync_mode => 0,
-            out_sync_mode => 0,
-            oe_sync_mode => 0,
-            logicalport => "\SPI:miso_s\",
-            logicalport_pin_id => 0,
-            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
-        PORT MAP(
-            pa_out => \\\SPI:miso_s(0)\\__PA\,
-            oe => open,
-            pin_input => \SPI:miso_s_wire\,
-            pad_out => \SPI:miso_s(0)_PAD\,
-            pad_in => \SPI:miso_s(0)_PAD\,
-            in_clock => open,
-            in_clock_en => '1',
-            in_reset => '0',
-            out_clock => open,
-            out_clock_en => '1',
-            out_reset => '0');
-
-    \SPI:sclk_s\:logicalport
-        GENERIC MAP(
-            drive_mode => "001",
-            ibuf_enabled => "1",
-            id => "8c8734ef-3644-4eed-bc55-360072b94fff/4c15b41e-e284-4978-99e7-5aaee19bd0ce",
+            id => "0aae537b-8b0e-4c23-b711-15c0936dfcf4/16a808f6-2e13-45b9-bce0-b001c8655113",
             init_dr_st => "0",
             input_buffer_sel => "00",
             input_clk_en => 0,
-            input_sync => "0",
+            input_sync => "1",
             input_sync_mode => "0",
             intr_mode => "00",
             invert_in_clock => 0,
@@ -2751,7 +2625,7 @@ BEGIN
             pa_out_clock_en => -1,
             pa_out_reset => -1,
             pin_aliases => "",
-            pin_mode => "I",
+            pin_mode => "A",
             por_state => 4,
             port_alias_group => "",
             port_alias_required => 0,
@@ -2768,7 +2642,7 @@ BEGIN
             spanning => 0,
             sw_only => 0,
             use_annotation => "0",
-            vtrip => "00",
+            vtrip => "10",
             width => 1,
             in_clk_inv => 0,
             in_clken_inv => 0,
@@ -2784,19 +2658,17 @@ BEGIN
             out_clock_en => open,
             out_reset => open);
 
-    \SPI:sclk_s(0)\:iocell
+    \ADC:Bypass(0)\:iocell
         GENERIC MAP(
             in_sync_mode => 0,
             out_sync_mode => 0,
             oe_sync_mode => 0,
-            logicalport => "\SPI:sclk_s\",
+            logicalport => "\ADC:Bypass\",
             logicalport_pin_id => 0,
-            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000010")
         PORT MAP(
-            pa_out => \\\SPI:sclk_s(0)\\__PA\,
+            pa_out => \\\ADC:Bypass(0)\\__PA\,
             oe => open,
-            fb => \SPI:sclk_s_wire\,
-            pad_in => \SPI:sclk_s(0)_PAD\,
             in_clock => open,
             in_clock_en => '1',
             in_reset => '0',
@@ -2804,106 +2676,15 @@ BEGIN
             out_clock_en => '1',
             out_reset => '0');
 
-    \SPI:mosi_s\:logicalport
+    ADC0:logicalport
         GENERIC MAP(
-            drive_mode => "001",
-            ibuf_enabled => "1",
-            id => "8c8734ef-3644-4eed-bc55-360072b94fff/5e2b647c-52cb-4f09-80bd-87ed9563ab24",
-            init_dr_st => "0",
-            input_buffer_sel => "00",
-            input_clk_en => 0,
-            input_sync => "0",
-            input_sync_mode => "0",
-            intr_mode => "00",
-            invert_in_clock => 0,
-            invert_in_clock_en => 0,
-            invert_in_reset => 0,
-            invert_out_clock => 0,
-            invert_out_clock_en => 0,
-            invert_out_reset => 0,
-            io_voltage => "",
-            layout_mode => "CONTIGUOUS",
-            oe_conn => "0",
-            oe_reset => 0,
-            oe_sync => "0",
-            output_clk_en => 0,
-            output_clock_mode => "0",
-            output_conn => "0",
-            output_mode => "0",
-            output_reset => 0,
-            output_sync => "0",
-            ovt_hyst_trim => "0",
-            ovt_needed => "0",
-            ovt_slew_control => "00",
-            pa_in_clock => -1,
-            pa_in_clock_en => -1,
-            pa_in_reset => -1,
-            pa_out_clock => -1,
-            pa_out_clock_en => -1,
-            pa_out_reset => -1,
-            pin_aliases => "",
-            pin_mode => "I",
-            por_state => 4,
-            port_alias_group => "",
-            port_alias_required => 0,
-            sio_group_cnt => 0,
-            sio_hifreq => "00000000",
-            sio_hyst => "1",
-            sio_ibuf => "00000000",
-            sio_info => "00",
-            sio_obuf => "00000000",
-            sio_refsel => "00000000",
-            sio_vohsel => "00000000",
-            sio_vtrip => "00000000",
-            slew_rate => "0",
-            spanning => 0,
-            sw_only => 0,
-            use_annotation => "0",
-            vtrip => "00",
-            width => 1,
-            in_clk_inv => 0,
-            in_clken_inv => 0,
-            in_clken_mode => 1,
-            in_rst_inv => 0,
-            out_clk_inv => 0,
-            out_clken_inv => 0,
-            out_clken_mode => 1,
-            out_rst_inv => 0)
-        PORT MAP(
-            in_clock_en => open,
-            in_reset => open,
-            out_clock_en => open,
-            out_reset => open);
-
-    \SPI:mosi_s(0)\:iocell
-        GENERIC MAP(
-            in_sync_mode => 0,
-            out_sync_mode => 0,
-            oe_sync_mode => 0,
-            logicalport => "\SPI:mosi_s\",
-            logicalport_pin_id => 0,
-            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
-        PORT MAP(
-            pa_out => \\\SPI:mosi_s(0)\\__PA\,
-            oe => open,
-            fb => \SPI:mosi_s_wire\,
-            pad_in => \SPI:mosi_s(0)_PAD\,
-            in_clock => open,
-            in_clock_en => '1',
-            in_reset => '0',
-            out_clock => open,
-            out_clock_en => '1',
-            out_reset => '0');
-
-    \EZI2C_1:sda\:logicalport
-        GENERIC MAP(
-            drive_mode => "100",
-            ibuf_enabled => "1",
-            id => "7c22e3c5-da93-4267-9ea2-622856a53add/5382e105-1382-4a2e-b9f4-3bb2feba71e0",
+            drive_mode => "000",
+            ibuf_enabled => "0",
+            id => "77715107-f8d5-47e5-a629-0fb83101ac6b",
             init_dr_st => "1",
             input_buffer_sel => "00",
             input_clk_en => 0,
-            input_sync => "0",
+            input_sync => "1",
             input_sync_mode => "0",
             intr_mode => "00",
             invert_in_clock => 0,
@@ -2933,7 +2714,7 @@ BEGIN
             pa_out_clock_en => -1,
             pa_out_reset => -1,
             pin_aliases => "",
-            pin_mode => "B",
+            pin_mode => "A",
             por_state => 4,
             port_alias_group => "",
             port_alias_required => 0,
@@ -2950,7 +2731,7 @@ BEGIN
             spanning => 0,
             sw_only => 0,
             use_annotation => "0",
-            vtrip => "00",
+            vtrip => "10",
             width => 1,
             in_clk_inv => 0,
             in_clken_inv => 0,
@@ -2966,112 +2747,17 @@ BEGIN
             out_clock_en => open,
             out_reset => open);
 
-    \EZI2C_1:sda(0)\:iocell
+    ADC0(0):iocell
         GENERIC MAP(
             in_sync_mode => 0,
             out_sync_mode => 0,
             oe_sync_mode => 0,
-            logicalport => "\EZI2C_1:sda\",
+            logicalport => "ADC0",
             logicalport_pin_id => 0,
-            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000010")
         PORT MAP(
-            pa_out => \\\EZI2C_1:sda(0)\\__PA\,
+            pa_out => ADC0(0)__PA,
             oe => open,
-            fb => \EZI2C_1:sda_wire\,
-            pin_input => open,
-            pad_in => \EZI2C_1:sda(0)_PAD\,
-            in_clock => open,
-            in_clock_en => '1',
-            in_reset => '0',
-            out_clock => open,
-            out_clock_en => '1',
-            out_reset => '0');
-
-    \EZI2C_1:scl\:logicalport
-        GENERIC MAP(
-            drive_mode => "100",
-            ibuf_enabled => "1",
-            id => "7c22e3c5-da93-4267-9ea2-622856a53add/22863ebe-a37b-476f-b252-6e49a8c00b12",
-            init_dr_st => "1",
-            input_buffer_sel => "00",
-            input_clk_en => 0,
-            input_sync => "0",
-            input_sync_mode => "0",
-            intr_mode => "00",
-            invert_in_clock => 0,
-            invert_in_clock_en => 0,
-            invert_in_reset => 0,
-            invert_out_clock => 0,
-            invert_out_clock_en => 0,
-            invert_out_reset => 0,
-            io_voltage => "",
-            layout_mode => "CONTIGUOUS",
-            oe_conn => "0",
-            oe_reset => 0,
-            oe_sync => "0",
-            output_clk_en => 0,
-            output_clock_mode => "0",
-            output_conn => "0",
-            output_mode => "0",
-            output_reset => 0,
-            output_sync => "0",
-            ovt_hyst_trim => "0",
-            ovt_needed => "0",
-            ovt_slew_control => "00",
-            pa_in_clock => -1,
-            pa_in_clock_en => -1,
-            pa_in_reset => -1,
-            pa_out_clock => -1,
-            pa_out_clock_en => -1,
-            pa_out_reset => -1,
-            pin_aliases => "",
-            pin_mode => "B",
-            por_state => 4,
-            port_alias_group => "",
-            port_alias_required => 0,
-            sio_group_cnt => 0,
-            sio_hifreq => "00000000",
-            sio_hyst => "1",
-            sio_ibuf => "00000000",
-            sio_info => "00",
-            sio_obuf => "00000000",
-            sio_refsel => "00000000",
-            sio_vohsel => "00000000",
-            sio_vtrip => "00000000",
-            slew_rate => "0",
-            spanning => 0,
-            sw_only => 0,
-            use_annotation => "0",
-            vtrip => "00",
-            width => 1,
-            in_clk_inv => 0,
-            in_clken_inv => 0,
-            in_clken_mode => 1,
-            in_rst_inv => 0,
-            out_clk_inv => 0,
-            out_clken_inv => 0,
-            out_clken_mode => 1,
-            out_rst_inv => 0)
-        PORT MAP(
-            in_clock_en => open,
-            in_reset => open,
-            out_clock_en => open,
-            out_reset => open);
-
-    \EZI2C_1:scl(0)\:iocell
-        GENERIC MAP(
-            in_sync_mode => 0,
-            out_sync_mode => 0,
-            oe_sync_mode => 0,
-            logicalport => "\EZI2C_1:scl\",
-            logicalport_pin_id => 0,
-            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
-        PORT MAP(
-            pa_out => \\\EZI2C_1:scl(0)\\__PA\,
-            oe => open,
-            fb => \EZI2C_1:scl_wire\,
-            pin_input => open,
-            pad_in => \EZI2C_1:scl(0)_PAD\,
             in_clock => open,
             in_clock_en => '1',
             in_reset => '0',
@@ -4179,6 +3865,633 @@ BEGIN
             out_clock_en => '1',
             out_reset => '0');
 
+    ADC1:logicalport
+        GENERIC MAP(
+            drive_mode => "000",
+            ibuf_enabled => "0",
+            id => "d67c3329-b8ee-4735-8450-ac1a71744be7",
+            init_dr_st => "1",
+            input_buffer_sel => "00",
+            input_clk_en => 0,
+            input_sync => "1",
+            input_sync_mode => "0",
+            intr_mode => "00",
+            invert_in_clock => 0,
+            invert_in_clock_en => 0,
+            invert_in_reset => 0,
+            invert_out_clock => 0,
+            invert_out_clock_en => 0,
+            invert_out_reset => 0,
+            io_voltage => "",
+            layout_mode => "CONTIGUOUS",
+            oe_conn => "0",
+            oe_reset => 0,
+            oe_sync => "0",
+            output_clk_en => 0,
+            output_clock_mode => "0",
+            output_conn => "0",
+            output_mode => "0",
+            output_reset => 0,
+            output_sync => "0",
+            ovt_hyst_trim => "0",
+            ovt_needed => "0",
+            ovt_slew_control => "00",
+            pa_in_clock => -1,
+            pa_in_clock_en => -1,
+            pa_in_reset => -1,
+            pa_out_clock => -1,
+            pa_out_clock_en => -1,
+            pa_out_reset => -1,
+            pin_aliases => "",
+            pin_mode => "A",
+            por_state => 4,
+            port_alias_group => "",
+            port_alias_required => 0,
+            sio_group_cnt => 0,
+            sio_hifreq => "00000000",
+            sio_hyst => "1",
+            sio_ibuf => "00000000",
+            sio_info => "00",
+            sio_obuf => "00000000",
+            sio_refsel => "00000000",
+            sio_vohsel => "00000000",
+            sio_vtrip => "00000000",
+            slew_rate => "0",
+            spanning => 0,
+            sw_only => 0,
+            use_annotation => "0",
+            vtrip => "10",
+            width => 1,
+            in_clk_inv => 0,
+            in_clken_inv => 0,
+            in_clken_mode => 1,
+            in_rst_inv => 0,
+            out_clk_inv => 0,
+            out_clken_inv => 0,
+            out_clken_mode => 1,
+            out_rst_inv => 0)
+        PORT MAP(
+            in_clock_en => open,
+            in_reset => open,
+            out_clock_en => open,
+            out_reset => open);
+
+    ADC1(0):iocell
+        GENERIC MAP(
+            in_sync_mode => 0,
+            out_sync_mode => 0,
+            oe_sync_mode => 0,
+            logicalport => "ADC1",
+            logicalport_pin_id => 0,
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000010")
+        PORT MAP(
+            pa_out => ADC1(0)__PA,
+            oe => open,
+            in_clock => open,
+            in_clock_en => '1',
+            in_reset => '0',
+            out_clock => open,
+            out_clock_en => '1',
+            out_reset => '0');
+
+    ADC2:logicalport
+        GENERIC MAP(
+            drive_mode => "000",
+            ibuf_enabled => "0",
+            id => "af2f6d9f-5b2c-4297-8961-a602bfbb4292",
+            init_dr_st => "1",
+            input_buffer_sel => "00",
+            input_clk_en => 0,
+            input_sync => "1",
+            input_sync_mode => "0",
+            intr_mode => "00",
+            invert_in_clock => 0,
+            invert_in_clock_en => 0,
+            invert_in_reset => 0,
+            invert_out_clock => 0,
+            invert_out_clock_en => 0,
+            invert_out_reset => 0,
+            io_voltage => "",
+            layout_mode => "CONTIGUOUS",
+            oe_conn => "0",
+            oe_reset => 0,
+            oe_sync => "0",
+            output_clk_en => 0,
+            output_clock_mode => "0",
+            output_conn => "0",
+            output_mode => "0",
+            output_reset => 0,
+            output_sync => "0",
+            ovt_hyst_trim => "0",
+            ovt_needed => "0",
+            ovt_slew_control => "00",
+            pa_in_clock => -1,
+            pa_in_clock_en => -1,
+            pa_in_reset => -1,
+            pa_out_clock => -1,
+            pa_out_clock_en => -1,
+            pa_out_reset => -1,
+            pin_aliases => "",
+            pin_mode => "A",
+            por_state => 4,
+            port_alias_group => "",
+            port_alias_required => 0,
+            sio_group_cnt => 0,
+            sio_hifreq => "00000000",
+            sio_hyst => "1",
+            sio_ibuf => "00000000",
+            sio_info => "00",
+            sio_obuf => "00000000",
+            sio_refsel => "00000000",
+            sio_vohsel => "00000000",
+            sio_vtrip => "00000000",
+            slew_rate => "0",
+            spanning => 0,
+            sw_only => 0,
+            use_annotation => "0",
+            vtrip => "10",
+            width => 1,
+            in_clk_inv => 0,
+            in_clken_inv => 0,
+            in_clken_mode => 1,
+            in_rst_inv => 0,
+            out_clk_inv => 0,
+            out_clken_inv => 0,
+            out_clken_mode => 1,
+            out_rst_inv => 0)
+        PORT MAP(
+            in_clock_en => open,
+            in_reset => open,
+            out_clock_en => open,
+            out_reset => open);
+
+    ADC2(0):iocell
+        GENERIC MAP(
+            in_sync_mode => 0,
+            out_sync_mode => 0,
+            oe_sync_mode => 0,
+            logicalport => "ADC2",
+            logicalport_pin_id => 0,
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000010")
+        PORT MAP(
+            pa_out => ADC2(0)__PA,
+            oe => open,
+            in_clock => open,
+            in_clock_en => '1',
+            in_reset => '0',
+            out_clock => open,
+            out_clock_en => '1',
+            out_reset => '0');
+
+    ADC3:logicalport
+        GENERIC MAP(
+            drive_mode => "000",
+            ibuf_enabled => "0",
+            id => "c84eaef3-5228-44cb-ad77-04e922e7a668",
+            init_dr_st => "1",
+            input_buffer_sel => "00",
+            input_clk_en => 0,
+            input_sync => "1",
+            input_sync_mode => "0",
+            intr_mode => "00",
+            invert_in_clock => 0,
+            invert_in_clock_en => 0,
+            invert_in_reset => 0,
+            invert_out_clock => 0,
+            invert_out_clock_en => 0,
+            invert_out_reset => 0,
+            io_voltage => "",
+            layout_mode => "CONTIGUOUS",
+            oe_conn => "0",
+            oe_reset => 0,
+            oe_sync => "0",
+            output_clk_en => 0,
+            output_clock_mode => "0",
+            output_conn => "0",
+            output_mode => "0",
+            output_reset => 0,
+            output_sync => "0",
+            ovt_hyst_trim => "0",
+            ovt_needed => "0",
+            ovt_slew_control => "00",
+            pa_in_clock => -1,
+            pa_in_clock_en => -1,
+            pa_in_reset => -1,
+            pa_out_clock => -1,
+            pa_out_clock_en => -1,
+            pa_out_reset => -1,
+            pin_aliases => "",
+            pin_mode => "A",
+            por_state => 4,
+            port_alias_group => "",
+            port_alias_required => 0,
+            sio_group_cnt => 0,
+            sio_hifreq => "00000000",
+            sio_hyst => "1",
+            sio_ibuf => "00000000",
+            sio_info => "00",
+            sio_obuf => "00000000",
+            sio_refsel => "00000000",
+            sio_vohsel => "00000000",
+            sio_vtrip => "00000000",
+            slew_rate => "0",
+            spanning => 0,
+            sw_only => 0,
+            use_annotation => "0",
+            vtrip => "10",
+            width => 1,
+            in_clk_inv => 0,
+            in_clken_inv => 0,
+            in_clken_mode => 1,
+            in_rst_inv => 0,
+            out_clk_inv => 0,
+            out_clken_inv => 0,
+            out_clken_mode => 1,
+            out_rst_inv => 0)
+        PORT MAP(
+            in_clock_en => open,
+            in_reset => open,
+            out_clock_en => open,
+            out_reset => open);
+
+    ADC3(0):iocell
+        GENERIC MAP(
+            in_sync_mode => 0,
+            out_sync_mode => 0,
+            oe_sync_mode => 0,
+            logicalport => "ADC3",
+            logicalport_pin_id => 0,
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000010")
+        PORT MAP(
+            pa_out => ADC3(0)__PA,
+            oe => open,
+            in_clock => open,
+            in_clock_en => '1',
+            in_reset => '0',
+            out_clock => open,
+            out_clock_en => '1',
+            out_reset => '0');
+
+    DAC0:logicalport
+        GENERIC MAP(
+            drive_mode => "000",
+            ibuf_enabled => "0",
+            id => "050eff4e-bb17-43a8-a017-1b9848ca8b0d",
+            init_dr_st => "1",
+            input_buffer_sel => "00",
+            input_clk_en => 0,
+            input_sync => "1",
+            input_sync_mode => "0",
+            intr_mode => "00",
+            invert_in_clock => 0,
+            invert_in_clock_en => 0,
+            invert_in_reset => 0,
+            invert_out_clock => 0,
+            invert_out_clock_en => 0,
+            invert_out_reset => 0,
+            io_voltage => "",
+            layout_mode => "CONTIGUOUS",
+            oe_conn => "0",
+            oe_reset => 0,
+            oe_sync => "0",
+            output_clk_en => 0,
+            output_clock_mode => "0",
+            output_conn => "0",
+            output_mode => "0",
+            output_reset => 0,
+            output_sync => "0",
+            ovt_hyst_trim => "0",
+            ovt_needed => "0",
+            ovt_slew_control => "00",
+            pa_in_clock => -1,
+            pa_in_clock_en => -1,
+            pa_in_reset => -1,
+            pa_out_clock => -1,
+            pa_out_clock_en => -1,
+            pa_out_reset => -1,
+            pin_aliases => "",
+            pin_mode => "A",
+            por_state => 4,
+            port_alias_group => "",
+            port_alias_required => 0,
+            sio_group_cnt => 0,
+            sio_hifreq => "00000000",
+            sio_hyst => "1",
+            sio_ibuf => "00000000",
+            sio_info => "00",
+            sio_obuf => "00000000",
+            sio_refsel => "00000000",
+            sio_vohsel => "00000000",
+            sio_vtrip => "00000000",
+            slew_rate => "0",
+            spanning => 0,
+            sw_only => 0,
+            use_annotation => "1",
+            vtrip => "10",
+            width => 1,
+            in_clk_inv => 0,
+            in_clken_inv => 0,
+            in_clken_mode => 1,
+            in_rst_inv => 0,
+            out_clk_inv => 0,
+            out_clken_inv => 0,
+            out_clken_mode => 1,
+            out_rst_inv => 0)
+        PORT MAP(
+            in_clock_en => open,
+            in_reset => open,
+            out_clock_en => open,
+            out_reset => open);
+
+    DAC0(0):iocell
+        GENERIC MAP(
+            in_sync_mode => 0,
+            out_sync_mode => 0,
+            oe_sync_mode => 0,
+            logicalport => "DAC0",
+            logicalport_pin_id => 0,
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000010")
+        PORT MAP(
+            pa_out => DAC0(0)__PA,
+            oe => open,
+            in_clock => open,
+            pin_input => __ONE__,
+            in_clock_en => '1',
+            in_reset => '0',
+            out_clock => open,
+            out_clock_en => '1',
+            out_reset => '0');
+
+    DAC1:logicalport
+        GENERIC MAP(
+            drive_mode => "000",
+            ibuf_enabled => "0",
+            id => "ea127f09-17eb-4f47-b0a9-daf1fbda35b2",
+            init_dr_st => "1",
+            input_buffer_sel => "00",
+            input_clk_en => 0,
+            input_sync => "1",
+            input_sync_mode => "0",
+            intr_mode => "00",
+            invert_in_clock => 0,
+            invert_in_clock_en => 0,
+            invert_in_reset => 0,
+            invert_out_clock => 0,
+            invert_out_clock_en => 0,
+            invert_out_reset => 0,
+            io_voltage => "",
+            layout_mode => "CONTIGUOUS",
+            oe_conn => "0",
+            oe_reset => 0,
+            oe_sync => "0",
+            output_clk_en => 0,
+            output_clock_mode => "0",
+            output_conn => "0",
+            output_mode => "0",
+            output_reset => 0,
+            output_sync => "0",
+            ovt_hyst_trim => "0",
+            ovt_needed => "0",
+            ovt_slew_control => "00",
+            pa_in_clock => -1,
+            pa_in_clock_en => -1,
+            pa_in_reset => -1,
+            pa_out_clock => -1,
+            pa_out_clock_en => -1,
+            pa_out_reset => -1,
+            pin_aliases => "",
+            pin_mode => "A",
+            por_state => 4,
+            port_alias_group => "",
+            port_alias_required => 0,
+            sio_group_cnt => 0,
+            sio_hifreq => "00000000",
+            sio_hyst => "1",
+            sio_ibuf => "00000000",
+            sio_info => "00",
+            sio_obuf => "00000000",
+            sio_refsel => "00000000",
+            sio_vohsel => "00000000",
+            sio_vtrip => "00000000",
+            slew_rate => "0",
+            spanning => 0,
+            sw_only => 0,
+            use_annotation => "1",
+            vtrip => "10",
+            width => 1,
+            in_clk_inv => 0,
+            in_clken_inv => 0,
+            in_clken_mode => 1,
+            in_rst_inv => 0,
+            out_clk_inv => 0,
+            out_clken_inv => 0,
+            out_clken_mode => 1,
+            out_rst_inv => 0)
+        PORT MAP(
+            in_clock_en => open,
+            in_reset => open,
+            out_clock_en => open,
+            out_reset => open);
+
+    DAC1(0):iocell
+        GENERIC MAP(
+            in_sync_mode => 0,
+            out_sync_mode => 0,
+            oe_sync_mode => 0,
+            logicalport => "DAC1",
+            logicalport_pin_id => 0,
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000010")
+        PORT MAP(
+            pa_out => DAC1(0)__PA,
+            oe => open,
+            in_clock => open,
+            pin_input => __ONE__,
+            in_clock_en => '1',
+            in_reset => '0',
+            out_clock => open,
+            out_clock_en => '1',
+            out_reset => '0');
+
+    DAC2:logicalport
+        GENERIC MAP(
+            drive_mode => "000",
+            ibuf_enabled => "0",
+            id => "f1144c2e-eaed-41ae-ad98-ee6df96c88d3",
+            init_dr_st => "1",
+            input_buffer_sel => "00",
+            input_clk_en => 0,
+            input_sync => "1",
+            input_sync_mode => "0",
+            intr_mode => "00",
+            invert_in_clock => 0,
+            invert_in_clock_en => 0,
+            invert_in_reset => 0,
+            invert_out_clock => 0,
+            invert_out_clock_en => 0,
+            invert_out_reset => 0,
+            io_voltage => "",
+            layout_mode => "CONTIGUOUS",
+            oe_conn => "0",
+            oe_reset => 0,
+            oe_sync => "0",
+            output_clk_en => 0,
+            output_clock_mode => "0",
+            output_conn => "0",
+            output_mode => "0",
+            output_reset => 0,
+            output_sync => "0",
+            ovt_hyst_trim => "0",
+            ovt_needed => "0",
+            ovt_slew_control => "00",
+            pa_in_clock => -1,
+            pa_in_clock_en => -1,
+            pa_in_reset => -1,
+            pa_out_clock => -1,
+            pa_out_clock_en => -1,
+            pa_out_reset => -1,
+            pin_aliases => "",
+            pin_mode => "A",
+            por_state => 4,
+            port_alias_group => "",
+            port_alias_required => 0,
+            sio_group_cnt => 0,
+            sio_hifreq => "00000000",
+            sio_hyst => "1",
+            sio_ibuf => "00000000",
+            sio_info => "00",
+            sio_obuf => "00000000",
+            sio_refsel => "00000000",
+            sio_vohsel => "00000000",
+            sio_vtrip => "00000000",
+            slew_rate => "0",
+            spanning => 0,
+            sw_only => 0,
+            use_annotation => "1",
+            vtrip => "10",
+            width => 1,
+            in_clk_inv => 0,
+            in_clken_inv => 0,
+            in_clken_mode => 1,
+            in_rst_inv => 0,
+            out_clk_inv => 0,
+            out_clken_inv => 0,
+            out_clken_mode => 1,
+            out_rst_inv => 0)
+        PORT MAP(
+            in_clock_en => open,
+            in_reset => open,
+            out_clock_en => open,
+            out_reset => open);
+
+    DAC2(0):iocell
+        GENERIC MAP(
+            in_sync_mode => 0,
+            out_sync_mode => 0,
+            oe_sync_mode => 0,
+            logicalport => "DAC2",
+            logicalport_pin_id => 0,
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000010")
+        PORT MAP(
+            pa_out => DAC2(0)__PA,
+            oe => open,
+            in_clock => open,
+            pin_input => __ONE__,
+            in_clock_en => '1',
+            in_reset => '0',
+            out_clock => open,
+            out_clock_en => '1',
+            out_reset => '0');
+
+    DAC3:logicalport
+        GENERIC MAP(
+            drive_mode => "000",
+            ibuf_enabled => "0",
+            id => "cc500d67-a6eb-41c9-bbb9-1ef953d28ee5",
+            init_dr_st => "1",
+            input_buffer_sel => "00",
+            input_clk_en => 0,
+            input_sync => "1",
+            input_sync_mode => "0",
+            intr_mode => "00",
+            invert_in_clock => 0,
+            invert_in_clock_en => 0,
+            invert_in_reset => 0,
+            invert_out_clock => 0,
+            invert_out_clock_en => 0,
+            invert_out_reset => 0,
+            io_voltage => "",
+            layout_mode => "CONTIGUOUS",
+            oe_conn => "0",
+            oe_reset => 0,
+            oe_sync => "0",
+            output_clk_en => 0,
+            output_clock_mode => "0",
+            output_conn => "0",
+            output_mode => "0",
+            output_reset => 0,
+            output_sync => "0",
+            ovt_hyst_trim => "0",
+            ovt_needed => "0",
+            ovt_slew_control => "00",
+            pa_in_clock => -1,
+            pa_in_clock_en => -1,
+            pa_in_reset => -1,
+            pa_out_clock => -1,
+            pa_out_clock_en => -1,
+            pa_out_reset => -1,
+            pin_aliases => "",
+            pin_mode => "A",
+            por_state => 4,
+            port_alias_group => "",
+            port_alias_required => 0,
+            sio_group_cnt => 0,
+            sio_hifreq => "00000000",
+            sio_hyst => "1",
+            sio_ibuf => "00000000",
+            sio_info => "00",
+            sio_obuf => "00000000",
+            sio_refsel => "00000000",
+            sio_vohsel => "00000000",
+            sio_vtrip => "00000000",
+            slew_rate => "0",
+            spanning => 0,
+            sw_only => 0,
+            use_annotation => "1",
+            vtrip => "10",
+            width => 1,
+            in_clk_inv => 0,
+            in_clken_inv => 0,
+            in_clken_mode => 1,
+            in_rst_inv => 0,
+            out_clk_inv => 0,
+            out_clken_inv => 0,
+            out_clken_mode => 1,
+            out_rst_inv => 0)
+        PORT MAP(
+            in_clock_en => open,
+            in_reset => open,
+            out_clock_en => open,
+            out_reset => open);
+
+    DAC3(0):iocell
+        GENERIC MAP(
+            in_sync_mode => 0,
+            out_sync_mode => 0,
+            oe_sync_mode => 0,
+            logicalport => "DAC3",
+            logicalport_pin_id => 0,
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000010")
+        PORT MAP(
+            pa_out => DAC3(0)__PA,
+            oe => open,
+            in_clock => open,
+            pin_input => __ONE__,
+            in_clock_en => '1',
+            in_reset => '0',
+            out_clock => open,
+            out_clock_en => '1',
+            out_reset => '0');
+
     \SRV1:PWMUDB:status_2\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1)",
@@ -4215,7 +4528,7 @@ BEGIN
             main_0 => \SRV4:PWMUDB:runmode_enable\,
             main_1 => \SRV4:PWMUDB:tc_i\);
 
-    \QuadDec1:cy_m0s8_tcpwm_1\:m0s8tcpwmcell
+    \QD0:cy_m0s8_tcpwm_1\:m0s8tcpwmcell
         GENERIC MAP(
             cy_registers => "")
         PORT MAP(
@@ -4232,11 +4545,11 @@ BEGIN
             line_out_compl => Net_117,
             interrupt => Net_112);
 
-    \QuadDec_2:cy_m0s8_tcpwm_1\:m0s8tcpwmcell
+    \QD1:cy_m0s8_tcpwm_1\:m0s8tcpwmcell
         GENERIC MAP(
             cy_registers => "")
         PORT MAP(
-            clock => Net_336_ff17,
+            clock => Net_336_ff16,
             capture => '0',
             count => Net_65,
             reload => '0',
@@ -4249,11 +4562,11 @@ BEGIN
             line_out_compl => Net_126,
             interrupt => Net_121);
 
-    \QuadDec3:cy_m0s8_tcpwm_1\:m0s8tcpwmcell
+    \QD2:cy_m0s8_tcpwm_1\:m0s8tcpwmcell
         GENERIC MAP(
             cy_registers => "")
         PORT MAP(
-            clock => Net_336_ff16,
+            clock => Net_336_ff17,
             capture => '0',
             count => Net_28,
             reload => '0',
@@ -4266,7 +4579,7 @@ BEGIN
             line_out_compl => Net_135,
             interrupt => Net_130);
 
-    \QuadDec_4:cy_m0s8_tcpwm_1\:m0s8tcpwmcell
+    \QD4:cy_m0s8_tcpwm_1\:m0s8tcpwmcell
         GENERIC MAP(
             cy_registers => "")
         PORT MAP(
@@ -4283,7 +4596,7 @@ BEGIN
             line_out_compl => Net_144,
             interrupt => Net_139);
 
-    \M1PWM:cy_m0s8_tcpwm_1\:m0s8tcpwmcell
+    \M0PWM:cy_m0s8_tcpwm_1\:m0s8tcpwmcell
         GENERIC MAP(
             cy_registers => "")
         PORT MAP(
@@ -4300,7 +4613,14 @@ BEGIN
             line_out_compl => Net_465,
             interrupt => Net_445);
 
-    \M2PWM:cy_m0s8_tcpwm_1\:m0s8tcpwmcell
+    __ONE__:macrocell
+        GENERIC MAP(
+            eqn_main => "1'b0",
+            clken_mode => 1)
+        PORT MAP(
+            q => __ONE__);
+
+    \M1PWM:cy_m0s8_tcpwm_1\:m0s8tcpwmcell
         GENERIC MAP(
             cy_registers => "")
         PORT MAP(
@@ -4317,7 +4637,7 @@ BEGIN
             line_out_compl => Net_408,
             interrupt => Net_1546);
 
-    \M3PWM:cy_m0s8_tcpwm_1\:m0s8tcpwmcell
+    \M2PWM:cy_m0s8_tcpwm_1\:m0s8tcpwmcell
         GENERIC MAP(
             cy_registers => "")
         PORT MAP(
@@ -4334,7 +4654,7 @@ BEGIN
             line_out_compl => Net_419,
             interrupt => Net_1600);
 
-    \M4PWM:cy_m0s8_tcpwm_1\:m0s8tcpwmcell
+    \M3PWM:cy_m0s8_tcpwm_1\:m0s8tcpwmcell
         GENERIC MAP(
             cy_registers => "")
         PORT MAP(
@@ -4972,7 +5292,7 @@ BEGIN
             cy_registers => "",
             scb_mode => 2)
         PORT MAP(
-            clock => \UART:Net_847_ff4\,
+            clock => \UART:Net_847_ff2\,
             interrupt => Net_2139,
             rx => \UART:rx_wire\,
             tx => \UART:tx_wire\,
@@ -4992,64 +5312,89 @@ BEGIN
             tx_req => Net_2142,
             rx_req => Net_2141);
 
-    \SPI:SCB\:m0s8scbcell
-        GENERIC MAP(
-            cy_registers => "",
-            scb_mode => 1)
-        PORT MAP(
-            clock => \SPI:Net_847_ff2\,
-            interrupt => Net_2068,
-            rx => open,
-            tx => \SPI:tx_wire\,
-            cts => open,
-            rts => \SPI:rts_wire\,
-            mosi_m => \SPI:mosi_m_wire\,
-            miso_m => open,
-            select_m_3 => \SPI:select_m_wire_3\,
-            select_m_2 => \SPI:select_m_wire_2\,
-            select_m_1 => \SPI:select_m_wire_1\,
-            select_m_0 => \SPI:select_m_wire_0\,
-            sclk_m => \SPI:sclk_m_wire\,
-            mosi_s => \SPI:mosi_s_wire\,
-            miso_s => \SPI:miso_s_wire\,
-            select_s => \SPI:Net_1297\,
-            sclk_s => \SPI:sclk_s_wire\,
-            tx_req => Net_2071,
-            rx_req => Net_2070);
-
-    \EZI2C_1:SCB_IRQ\:interrupt
+    \ADC:IRQ\:interrupt
         GENERIC MAP(
             int_type => "10")
         PORT MAP(
-            interrupt => Net_2177,
+            interrupt => \ADC:Net_3112\,
             clock => ClockBlock_HFCLK);
 
-    \EZI2C_1:SCB\:m0s8scbcell
+    \ADC:cy_psoc4_sar\:p4sarcell
+        GENERIC MAP(
+            cy_registers => "")
+        PORT MAP(
+            clock => \ADC:Net_1845_ff10\,
+            sample_done => Net_4683,
+            chan_id_valid => \ADC:Net_3108\,
+            chan_id_3 => \ADC:Net_3109_3\,
+            chan_id_2 => \ADC:Net_3109_2\,
+            chan_id_1 => \ADC:Net_3109_1\,
+            chan_id_0 => \ADC:Net_3109_0\,
+            data_valid => \ADC:Net_3110\,
+            data_11 => \ADC:Net_3111_11\,
+            data_10 => \ADC:Net_3111_10\,
+            data_9 => \ADC:Net_3111_9\,
+            data_8 => \ADC:Net_3111_8\,
+            data_7 => \ADC:Net_3111_7\,
+            data_6 => \ADC:Net_3111_6\,
+            data_5 => \ADC:Net_3111_5\,
+            data_4 => \ADC:Net_3111_4\,
+            data_3 => \ADC:Net_3111_3\,
+            data_2 => \ADC:Net_3111_2\,
+            data_1 => \ADC:Net_3111_1\,
+            data_0 => \ADC:Net_3111_0\,
+            tr_sar_out => Net_4395,
+            irq => \ADC:Net_3112\,
+            sw_negvref => open,
+            cfg_st_sel_1 => open,
+            cfg_st_sel_0 => open,
+            cfg_average => open,
+            cfg_resolution => open,
+            cfg_differential => open,
+            trigger => open,
+            data_hilo_sel => open);
+
+    \ADC:cy_psoc4_sarmux_8\:p4sarmuxcell
         GENERIC MAP(
             cy_registers => "",
-            scb_mode => 0)
+            input_mode => "0000",
+            muxin_width => 4);
+
+    ADC_DMA:drqcell
+        GENERIC MAP(
+            priority => "11")
         PORT MAP(
-            clock => \EZI2C_1:Net_847_ff3\,
-            interrupt => Net_2177,
-            rx => open,
-            tx => \EZI2C_1:tx_wire\,
-            cts => open,
-            rts => \EZI2C_1:rts_wire\,
-            mosi_m => \EZI2C_1:mosi_m_wire\,
-            miso_m => open,
-            select_m_3 => \EZI2C_1:select_m_wire_3\,
-            select_m_2 => \EZI2C_1:select_m_wire_2\,
-            select_m_1 => \EZI2C_1:select_m_wire_1\,
-            select_m_0 => \EZI2C_1:select_m_wire_0\,
-            sclk_m => \EZI2C_1:sclk_m_wire\,
-            mosi_s => open,
-            miso_s => \EZI2C_1:miso_s_wire\,
-            select_s => open,
-            sclk_s => open,
-            scl => \EZI2C_1:scl_wire\,
-            sda => \EZI2C_1:sda_wire\,
-            tx_req => Net_2180,
-            rx_req => Net_2179);
+            dmareq => Net_4395,
+            termout => Net_4437,
+            clock => ClockBlock_HFCLK);
+
+    \IDAC0:cy_psoc4_idac\:p4csidac8cell
+        GENERIC MAP(
+            cy_registers => "",
+            resolution => 8)
+        PORT MAP(
+            en => __ONE__);
+
+    \IDAC1:cy_psoc4_idac\:p4csidac8cell
+        GENERIC MAP(
+            cy_registers => "",
+            resolution => 8)
+        PORT MAP(
+            en => __ONE__);
+
+    \IDAC2:cy_psoc4_idac\:p4csidac7cell
+        GENERIC MAP(
+            cy_registers => "",
+            resolution => 7)
+        PORT MAP(
+            en => __ONE__);
+
+    \IDAC3:cy_psoc4_idac\:p4csidac7cell
+        GENERIC MAP(
+            cy_registers => "",
+            resolution => 7)
+        PORT MAP(
+            en => __ONE__);
 
     \SRV1:PWMUDB:runmode_enable\:macrocell
         GENERIC MAP(
