@@ -1,5 +1,0 @@
-C:\Users\LAIR\Documents\GitHub\ARC-Controller\PSoC-Code\ARC-EMBED.cydsn\ARC-EMBED.cyprj|fbe57605-4721-40e0-931d-37f5cb17a4eb
-C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|49b156e3-c461-4a79-ba82-933c2eb87912
-C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|d01491a4-970a-4413-8522-eac369af0219
-C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|9cf48d73-f5d6-4f12-b9c9-aebb4bd0f60e
-C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|ccc6849c-1836-4fe3-b328-4128f4eab43e
