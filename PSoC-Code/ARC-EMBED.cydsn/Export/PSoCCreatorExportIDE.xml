@@ -63,9 +63,6 @@
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\QD2.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\QD2.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\QD2_PM.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\QD4.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\QD4.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\QD4_PM.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\ENC1A.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\ENC1A.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\ENC1A_aliases.h</File>
@@ -315,39 +312,41 @@
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\ADC4.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\ADC4_aliases.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\ADC4_PM.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_1.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_1.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_1_I2C.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_1_I2C_INT.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_1_I2C.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_1_I2C_BOOT.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_1_I2C_SLAVE.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_1_PM.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_1_BOOT.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_1_PINS.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_1_I2C_PVT.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_1_PVT.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_1_BOOT.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\ADC8.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\ADC8.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\ADC8_aliases.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\ADC8_PM.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_1_SCBCLK.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_1_SCBCLK.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_1_sda.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_1_sda.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_1_sda_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_1_sda_PM.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_1_scl.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_1_scl.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_1_scl_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_1_scl_PM.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_1_SCB_IRQ.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_1_SCB_IRQ.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\ADCBAT.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\ADCBAT.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\ADCBAT_aliases.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\ADCBAT_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\QD3.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\QD3.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\QD3_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_BOOT.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_PINS.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_PVT.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_EZI2C.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_EZI2C_INT.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_EZI2C.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_EZI2C_PVT.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_EZI2C_BOOT.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_BOOT.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_SCBCLK.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_SCBCLK.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_sda.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_sda.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_sda_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_sda_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_scl.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_scl.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_scl_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_scl_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_SCB_IRQ.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_SCB_IRQ.h</File>
         </Files>
       </Folder>
       <Folder BuildType="STRICT" Path="C:\Users\LAIR\Documents\GitHub\ARC-Controller\PSoC-Code\ARC-EMBED.cydsn\Export\ARM_GCC_Generic">

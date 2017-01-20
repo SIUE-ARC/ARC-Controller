@@ -151,7 +151,7 @@
       </registers>
     </peripheral>
     <peripheral>
-      <name>I2C_1</name>
+      <name>I2C</name>
       <description>Serial Communication Block</description>
       <baseAddress>0x0</baseAddress>
       <addressBlock>
@@ -24901,7 +24901,7 @@
       </registers>
     </peripheral>
     <peripheral>
-      <name>QD4</name>
+      <name>QD3</name>
       <description>No description available</description>
       <baseAddress>0x0</baseAddress>
       <addressBlock>
