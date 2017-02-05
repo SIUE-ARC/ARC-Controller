@@ -1,0 +1,29 @@
+EESchema-LIBRARY Version 2.3
+#encoding utf-8
+#
+# C-VAR
+#
+DEF ~C-VAR C 0 10 N Y 1 F N
+F0 "C" 25 105 50 H V L CNN
+F1 "C-VAR" 25 -100 50 H I L CNN
+F2 "" 38 -150 50 H V C CNN
+F3 "" 0 0 50 H V C CNN
+$FPLIST
+ C?
+ C_????_*
+ C_????
+ SMD*_c
+ Capacitor*
+$ENDFPLIST
+DRAW
+P 2 0 1 20 -80 -30 80 -30 N
+P 2 0 1 20 -80 30 80 30 N
+P 2 0 1 6 -60 -70 60 70 N
+P 2 0 1 6 60 70 40 60 N
+P 2 0 1 6 60 70 55 50 N
+X ~ 1 0 150 110 D 40 40 1 1 P
+X ~ 2 0 -150 110 U 40 40 1 1 P
+ENDDRAW
+ENDDEF
+#
+#End Library

@@ -1,0 +1,108 @@
+EESchema-LIBRARY Version 2.3
+#encoding utf-8
+#
+# comp
+#
+DEF comp U 0 40 Y Y 1 F N
+F0 "U" -50 -300 39 H V C CNN
+F1 "comp" -50 300 39 H V C CNN
+F2 "" -600 -400 39 H I C CNN
+F3 "" -600 -400 39 H I C CNN
+DRAW
+P 2 0 1 0 -100 100 -100 -100 N
+P 2 0 1 0 -100 100 -100 250 N
+P 4 0 1 0 -100 -100 -100 -250 150 0 -100 250 N
+X + ~ -300 100 200 R 50 50 1 1 I
+X - ~ -300 -100 200 R 50 50 1 1 I
+X ~ ~ 350 0 200 L 50 50 1 1 O
+ENDDRAW
+ENDDEF
+#
+# control_logic
+#
+DEF control_logic U 0 40 Y Y 1 F N
+F0 "U" -200 -350 60 H V C CNN
+F1 "control_logic" 0 400 60 H V C CNN
+F2 "" -1100 -650 60 H I C CNN
+F3 "" -1100 -650 60 H I C CNN
+DRAW
+S -250 350 250 -300 0 1 0 N
+P 2 0 1 0 300 -300 400 -200 N
+X b ~ -450 250 200 R 50 50 1 1 B
+X clk ~ -450 150 200 R 50 50 1 1 I C
+X clk_b ~ 450 -150 200 L 50 50 1 1 O
+X clk_c ~ 450 250 200 L 50 50 1 1 O
+X eoc ~ 450 50 200 L 50 50 1 1 O
+X rst ~ -450 50 200 R 50 50 1 1 I
+X soc ~ 450 -50 200 L 50 50 1 1 O
+X switches ~ 450 -250 200 L 50 50 1 1 O
+X ud ~ 450 150 200 L 50 50 1 1 O
+ENDDRAW
+ENDDEF
+#
+# counter
+#
+DEF counter U 0 40 Y Y 1 F N
+F0 "U" 250 -350 60 H V C CNN
+F1 "counter" -150 350 60 H V C CNN
+F2 "" -300 -250 60 H I C CNN
+F3 "" -300 -250 60 H I C CNN
+DRAW
+S -300 300 300 -300 0 1 0 N
+X b ~ -500 -200 200 R 50 50 1 1 I
+X clk ~ -500 200 200 R 50 50 1 1 I C
+X D<5:0> ~ 500 200 200 L 50 50 1 1 O
+X eoc ~ -500 100 200 R 50 50 1 1 I
+X rst ~ -500 0 200 R 50 50 1 1 I
+X ud ~ -500 -100 200 R 50 50 1 1 I
+ENDDRAW
+ENDDEF
+#
+# d-register
+#
+DEF d-register F 0 40 Y Y 1 F N
+F0 "F" -100 -200 60 H V C CNN
+F1 "d-register" 0 200 60 H V C CNN
+F2 "" -350 -300 60 H I C CNN
+F3 "" -350 -300 60 H I C CNN
+DRAW
+S -150 150 150 -150 0 1 0 N
+X clk ~ -350 0 200 R 50 50 1 1 I C
+X D ~ -350 100 200 R 50 50 1 1 I
+X Q ~ 350 100 200 L 50 50 1 1 O
+X rst ~ -350 -100 200 R 50 50 1 1 I
+ENDDRAW
+ENDDEF
+#
+# opamp
+#
+DEF opamp U 0 40 Y Y 1 F N
+F0 "U" -50 -300 39 H V C CNN
+F1 "opamp" -50 300 39 H V C CNN
+F2 "" -600 -400 39 H I C CNN
+F3 "" -600 -400 39 H I C CNN
+DRAW
+P 2 0 1 0 -100 100 -100 -100 N
+P 2 0 1 0 -100 100 -100 250 N
+P 4 0 1 0 -100 -100 -100 -250 150 0 -100 250 N
+X + ~ -300 -100 200 R 50 50 1 1 I
+X - ~ -300 100 200 R 50 50 1 1 I
+X ~ ~ 350 0 200 L 50 50 1 1 O
+ENDDRAW
+ENDDEF
+#
+# switch
+#
+DEF switch S 0 40 Y Y 1 F N
+F0 "S" 350 350 60 H V C CNN
+F1 "switch" 300 150 60 H V C CNN
+F2 "" 0 0 60 H I C CNN
+F3 "" 0 0 60 H I C CNN
+DRAW
+P 2 0 1 0 250 200 350 300 N
+X ~ ~ 50 200 200 R 50 50 1 1 B
+X ~ ~ 550 200 200 L 50 50 1 1 B
+ENDDRAW
+ENDDEF
+#
+#End Library
