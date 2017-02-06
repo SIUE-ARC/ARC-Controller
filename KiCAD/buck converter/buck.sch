@@ -197,17 +197,6 @@ F 3 "" H 7500 4150 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L CP1_Small C7
-U 1 1 58964A17
-P 7800 4150
-F 0 "C7" H 7810 4220 50  0000 L CNN
-F 1 "22uF" H 7810 4070 50  0000 L CNN
-F 2 "Capacitors_SMD:CP_Elec_6.3x5.3" H 7800 4150 50  0001 C CNN
-F 3 "" H 7800 4150 50  0000 C CNN
-	1    7800 4150
-	1    0    0    -1  
-$EndComp
-$Comp
 L CP1_Small C4
 U 1 1 58964A61
 P 5600 2700
@@ -297,9 +286,6 @@ $EndComp
 Wire Wire Line
 	5200 4000 5200 4700
 Connection ~ 7500 3900
-Connection ~ 7800 3900
-Wire Wire Line
-	7800 4050 7800 3900
 Wire Wire Line
 	7500 3900 7500 4050
 Wire Wire Line
@@ -326,17 +312,6 @@ F 1 "GND" H 7500 4100 50  0000 C CNN
 F 2 "" H 7500 4250 50  0000 C CNN
 F 3 "" H 7500 4250 50  0000 C CNN
 	1    7500 4250
-	1    0    0    -1  
-$EndComp
-$Comp
-L GND #PWR07
-U 1 1 58966331
-P 7800 4250
-F 0 "#PWR07" H 7800 4000 50  0001 C CNN
-F 1 "GND" H 7800 4100 50  0000 C CNN
-F 2 "" H 7800 4250 50  0000 C CNN
-F 3 "" H 7800 4250 50  0000 C CNN
-	1    7800 4250
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -496,4 +471,14 @@ F 3 "" H 6900 5100 50  0000 C CNN
 	1    6900 5100
 	1    0    0    -1  
 $EndComp
+Text Label 6400 3800 0    60   ~ 0
+SENSE
+Text Label 6900 3700 0    60   ~ 0
+MODE
+Text Label 6400 4400 0    60   ~ 0
+GATE
+Text Label 4850 3800 0    60   ~ 0
+Ith
+Text Label 4550 3700 0    60   ~ 0
+RUN/SS
 $EndSCHEMATC
