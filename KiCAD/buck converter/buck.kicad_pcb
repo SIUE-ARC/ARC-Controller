@@ -14,7 +14,7 @@
 
   (page A4)
   (layers
-    (0 F.Cu signal)
+    (0 F.Cu signal hide)
     (31 B.Cu signal)
     (32 B.Adhes user)
     (33 F.Adhes user)
@@ -145,7 +145,7 @@
     (tags "capacitor 0805")
     (path /5896494D)
     (attr smd)
-    (fp_text reference C1 (at -3.175 0 180) (layer F.SilkS)
+    (fp_text reference C1 (at -3.302 0 180) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_text value 10nF (at 0 2.1 180) (layer F.Fab) hide
@@ -530,7 +530,7 @@
     (tags "resistor 1206")
     (path /58962F52)
     (attr smd)
-    (fp_text reference R1 (at -1.905 1.905) (layer F.SilkS)
+    (fp_text reference R1 (at -3.937 -0.127 90) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_text value 20m (at 0 2.3) (layer F.Fab) hide
