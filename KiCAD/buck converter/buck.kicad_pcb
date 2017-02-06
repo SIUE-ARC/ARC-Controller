@@ -3,7 +3,7 @@
   (general
     (links 29)
     (no_connects 1)
-    (area 106.68 82.14614 159.00642 115.4424)
+    (area 109.652999 88.824999 151.967001 113.867001)
     (thickness 1.6)
     (drawings 13)
     (tracks 65)
@@ -14,7 +14,7 @@
 
   (page A4)
   (layers
-    (0 F.Cu signal hide)
+    (0 F.Cu signal)
     (31 B.Cu signal)
     (32 B.Adhes user)
     (33 F.Adhes user)
@@ -243,7 +243,7 @@
     (descr "SMT capacitor, aluminium electrolytic, 6.3x5.8")
     (path /58964A61)
     (attr smd)
-    (fp_text reference C4 (at -3.81 -4.445 180) (layer F.SilkS)
+    (fp_text reference C4 (at 4.572 -2.667 180) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_text value 150uF (at 0 -4.56 180) (layer F.Fab) hide
@@ -324,7 +324,7 @@
     (descr "SMT capacitor, aluminium electrolytic, 6.3x5.3")
     (path /5896497F)
     (attr smd)
-    (fp_text reference C6 (at -0.16 -4.445) (layer F.SilkS)
+    (fp_text reference C6 (at -4.478 -1.905) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_text value 22uF (at 0 -4.5593) (layer F.Fab) hide
