@@ -1,8 +1,8 @@
 (export (version D)
   (design
-    (source "C:/Users/Bryan Orabutt/Documents/KiCad/buck converter/buck.sch")
-    (date "2/6/2017 9:13:56 AM")
-    (tool "Eeschema 4.0.3-stable")
+    (source "C:/Users/LAIR/Documents/GitHub/ARC-Controller/KiCAD/buck converter/buck.sch")
+    (date "2/6/2017 11:09:39 AM")
+    (tool "Eeschema 4.0.5")
     (sheet (number 1) (name /) (tstamps /)
       (title_block
         (title)
@@ -36,7 +36,7 @@
     (comp (ref L1)
       (value 22uH)
       (footprint Buck:inductor_th_10mm)
-      (libsource (lib device) (part INDUCTOR_SMALL))
+      (libsource (lib buck-cache) (part INDUCTOR_SMALL))
       (sheetpath (names /) (tstamps /))
       (tstamp 5896391B))
     (comp (ref R4)
@@ -156,20 +156,21 @@
         (pin (num 1) (name ~) (type passive))
         (pin (num 2) (name ~) (type passive))))
     (libpart (lib device) (part D_Schottky_Small)
-      (description "Diode Schottky")
+      (description "Schottky diode, small symbol")
       (footprints
         (fp Diode_*)
-        (fp D-Pak_TO252AA)
+        (fp D-*)
         (fp *SingleDiode)
+        (fp *_Diode_*)
         (fp *SingleDiode*)
-        (fp *_Diode_*))
+        (fp D_*))
       (fields
         (field (name Reference) D)
         (field (name Value) D_Schottky_Small))
       (pins
         (pin (num 1) (name K) (type passive))
         (pin (num 2) (name A) (type passive))))
-    (libpart (lib device) (part INDUCTOR_SMALL)
+    (libpart (lib buck-cache) (part INDUCTOR_SMALL)
       (footprints
         (fp Choke_*)
         (fp *Coil*))
@@ -193,7 +194,7 @@
         (pin (num 7) (name SENSE) (type input))
         (pin (num 8) (name MODE) (type input))))
     (libpart (lib device) (part Q_PMOS_DGS)
-      (description "Transistor P-MOSFET (general)")
+      (description "Transistor P-MOSFET with substrate diode (general)")
       (fields
         (field (name Reference) Q)
         (field (name Value) Q_PMOS_DGS))
@@ -202,7 +203,7 @@
         (pin (num 2) (name G) (type input))
         (pin (num 3) (name S) (type passive))))
     (libpart (lib device) (part R_Small)
-      (description Resistor)
+      (description "Resistor, small symbol")
       (footprints
         (fp Resistor_*)
         (fp R_*))
@@ -215,10 +216,12 @@
   (libraries
     (library (logical conn)
       (uri "C:\\Program Files\\KiCad\\share\\kicad\\library\\conn.lib"))
+    (library (logical regulators)
+      (uri C:\Users\LAIR\Documents\GitHub\ARC-Controller\KiCAD\Libraries\regulators.lib))
     (library (logical device)
       (uri "C:\\Program Files\\KiCad\\share\\kicad\\library\\device.lib"))
-    (library (logical regulators)
-      (uri "C:\\Users\\Bryan Orabutt\\Documents\\KiCad\\Libraries\\regulators.lib")))
+    (library (logical buck-cache)
+      (uri "C:\\Users\\LAIR\\Documents\\GitHub\\ARC-Controller\\KiCAD\\buck converter\\buck-cache.lib")))
   (nets
     (net (code 1) (name GND)
       (node (ref P2) (pin 2))
