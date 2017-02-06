@@ -347,6 +347,44 @@
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_scl_PM.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_SCB_IRQ.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_SCB_IRQ.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Transmitter0.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Transmitter0.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Transmitter0_SPI_UART.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Transmitter0_SPI_UART.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Transmitter0_SPI_UART_INT.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Transmitter0_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Transmitter0_UART.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Transmitter0_BOOT.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Transmitter0_UART_BOOT.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Transmitter0_PINS.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Transmitter0_SPI_UART_PVT.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Transmitter0_PVT.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Transmitter0_BOOT.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Transmitter1.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Transmitter1.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Transmitter1_SPI_UART.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Transmitter1_SPI_UART.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Transmitter1_SPI_UART_INT.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Transmitter1_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Transmitter1_UART.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Transmitter1_BOOT.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Transmitter1_UART_BOOT.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Transmitter1_PINS.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Transmitter1_SPI_UART_PVT.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Transmitter1_PVT.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Transmitter1_BOOT.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Transmitter0_SCBCLK.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Transmitter0_SCBCLK.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Transmitter0_tx.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Transmitter0_tx.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Transmitter0_tx_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Transmitter0_tx_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Transmitter1_SCBCLK.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Transmitter1_SCBCLK.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Transmitter1_tx.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Transmitter1_tx.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Transmitter1_tx_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Transmitter1_tx_PM.c</File>
         </Files>
       </Folder>
       <Folder BuildType="STRICT" Path="C:\Users\LAIR\Documents\GitHub\ARC-Controller\PSoC-Code\ARC-EMBED.cydsn\Export\ARM_GCC_Generic">
