@@ -17,7 +17,7 @@ int main()
 
     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
 
-    for(;;)
+    while(1)
     {
         /* Place your application code here. */
     }
