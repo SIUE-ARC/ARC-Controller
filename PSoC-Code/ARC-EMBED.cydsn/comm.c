@@ -23,16 +23,16 @@ char readUART()
         UART_BUFF[i] = c;
         i++;
     }
-    while(c && (i < RXBUFF_MAX));
+    while((c != TERMINATOR) && (i < RXBUFF_MAX));
     
-    if(c && (i == RXBUFF_MAX))
+    if((c != TERMINATOR) && (i == RXBUFF_MAX))
     {
         error_UART = 1;
         return -1;
     }
     
     if(i == 1) return 0;
-    else return commandLookup(UART_BUFF);
+    else return commandLookup(UART_BUFF, i);
 }
 
 char writeUART(byte* data, byte size)
@@ -47,5 +47,10 @@ char writeUART(byte* data, byte size)
     }
     
     return 0;
+}
+
+char commandLookup(byte* data, byte size)
+{
+    return writeUART(data, size);
 }
 /* [] END OF FILE */
