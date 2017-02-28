@@ -18,10 +18,10 @@
 #define     TERMINATOR      13
 
 flag error_UART;
-byte UART_BUFF[RXBUFF_MAX];
+char UART_BUFF[RXBUFF_MAX];
 
 char readUART();
-char writeUART(byte* data, byte size);
+char writeUART(char data[], byte size);
 char commandLookup(byte* data, byte size);
 
 /* [] END OF FILE */

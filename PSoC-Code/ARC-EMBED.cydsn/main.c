@@ -22,11 +22,12 @@
 
 int main()
 {
+    int i;
     CyGlobalIntEnable; /* Enable global interrupts. */
     UART_Start();
     
-    byte* s = "Hello World!\r\n\0";
-    writeUART(s, strlen(s));
+    for(i = 0; i < 100000; i++);
+    writeUART("Hello World!", 12);
 
     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
 
