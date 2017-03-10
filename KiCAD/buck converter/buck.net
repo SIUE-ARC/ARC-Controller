@@ -1,8 +1,8 @@
 (export (version D)
   (design
-    (source "C:/Users/LAIR/Documents/GitHub/ARC-Controller/KiCAD/buck converter/buck.sch")
-    (date "2/6/2017 2:31:53 PM")
-    (tool "Eeschema 4.0.5")
+    (source "C:/Users/Bryan Orabutt/Documents/GitHub/ARC-Controller/KiCAD/buck converter/buck.sch")
+    (date "3/9/2017 8:55:48 PM")
+    (tool "Eeschema 4.0.3-stable")
     (sheet (number 1) (name /) (tstamps /)
       (title_block
         (title)
@@ -35,8 +35,8 @@
       (tstamp 589631E9))
     (comp (ref L1)
       (value 22uH)
-      (footprint Buck:inductor_th_10mm)
-      (libsource (lib buck-cache) (part INDUCTOR_SMALL))
+      (footprint Buck:14mm-Inductor)
+      (libsource (lib device) (part INDUCTOR_SMALL))
       (sheetpath (names /) (tstamps /))
       (tstamp 5896391B))
     (comp (ref R4)
@@ -114,7 +114,7 @@
     (comp (ref JP1)
       (value BURST)
       (footprint Connectors:PINHEAD1-3)
-      (libsource (lib device) (part Jumper_NC_Dual))
+      (libsource (lib buck-cache) (part Jumper_NC_Dual))
       (sheetpath (names /) (tstamps /))
       (tstamp 5898D624)))
   (libparts
@@ -162,21 +162,20 @@
         (pin (num 1) (name ~) (type passive))
         (pin (num 2) (name ~) (type passive))))
     (libpart (lib device) (part D_Schottky_Small)
-      (description "Schottky diode, small symbol")
+      (description "Diode Schottky")
       (footprints
         (fp Diode_*)
-        (fp D-*)
+        (fp D-Pak_TO252AA)
         (fp *SingleDiode)
-        (fp *_Diode_*)
         (fp *SingleDiode*)
-        (fp D_*))
+        (fp *_Diode_*))
       (fields
         (field (name Reference) D)
         (field (name Value) D_Schottky_Small))
       (pins
         (pin (num 1) (name K) (type passive))
         (pin (num 2) (name A) (type passive))))
-    (libpart (lib buck-cache) (part INDUCTOR_SMALL)
+    (libpart (lib device) (part INDUCTOR_SMALL)
       (footprints
         (fp Choke_*)
         (fp *Coil*))
@@ -186,8 +185,7 @@
       (pins
         (pin (num 1) (name 1) (type input))
         (pin (num 2) (name 2) (type input))))
-    (libpart (lib device) (part Jumper_NC_Dual)
-      (description "Dual Jumper, normally closed")
+    (libpart (lib buck-cache) (part Jumper_NC_Dual)
       (fields
         (field (name Reference) JP)
         (field (name Value) Jumper_NC_Dual))
@@ -209,7 +207,7 @@
         (pin (num 7) (name SENSE) (type input))
         (pin (num 8) (name MODE) (type input))))
     (libpart (lib device) (part Q_PMOS_DGS)
-      (description "Transistor P-MOSFET with substrate diode (general)")
+      (description "Transistor P-MOSFET (general)")
       (fields
         (field (name Reference) Q)
         (field (name Value) Q_PMOS_DGS))
@@ -218,7 +216,7 @@
         (pin (num 2) (name G) (type input))
         (pin (num 3) (name S) (type passive))))
     (libpart (lib device) (part R_Small)
-      (description "Resistor, small symbol")
+      (description Resistor)
       (footprints
         (fp Resistor_*)
         (fp R_*))
@@ -229,14 +227,14 @@
         (pin (num 1) (name ~) (type passive))
         (pin (num 2) (name ~) (type passive)))))
   (libraries
+    (library (logical buck-cache)
+      (uri "C:\\Users\\Bryan Orabutt\\Documents\\GitHub\\ARC-Controller\\KiCAD\\buck converter\\buck-cache.lib"))
     (library (logical conn)
       (uri "C:\\Program Files\\KiCad\\share\\kicad\\library\\conn.lib"))
     (library (logical device)
       (uri "C:\\Program Files\\KiCad\\share\\kicad\\library\\device.lib"))
     (library (logical regulators)
-      (uri C:\Users\LAIR\Documents\GitHub\ARC-Controller\KiCAD\Libraries\regulators.lib))
-    (library (logical buck-cache)
-      (uri "C:\\Users\\LAIR\\Documents\\GitHub\\ARC-Controller\\KiCAD\\buck converter\\buck-cache.lib")))
+      (uri "C:\\Users\\Bryan Orabutt\\Documents\\GitHub\\ARC-Controller\\KiCAD\\Libraries\\regulators.lib")))
   (nets
     (net (code 1) (name GND)
       (node (ref D2) (pin 2))
