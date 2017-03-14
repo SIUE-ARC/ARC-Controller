@@ -16,6 +16,7 @@
 #define     RXBUFF_MAX      64
 #define     TXBUFF_MAX      64
 #define     TERMINATOR      13
+#define     OVERFLOW        1
 
 flag error_UART;
 char UART_BUFF[RXBUFF_MAX];
