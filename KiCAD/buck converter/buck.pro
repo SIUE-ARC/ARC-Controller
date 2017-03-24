@@ -1,4 +1,4 @@
-update=2/6/2017 11:09:15 AM
+update=3/23/2017 7:47:37 PM
 version=1
 last_client=kicad
 [cvpcb]
@@ -117,3 +117,4 @@ LibName36=psoc4
 LibName37=regulators
 LibName38=roadrunner
 LibName39=kicad-libraries-master/tinkerforge
+LibName40=C:/Users/Bryan Orabutt/Documents/KiCad/Libraries/FET
