@@ -11,6 +11,7 @@
 */
 
 #include <project.h>
+#include "motors.h"
 #include "typedefs.h"
 
 #define     RXBUFF_MAX      64
@@ -19,10 +20,10 @@
 #define     OVERFLOW        1
 
 flag error_UART;
-char UART_BUFF[RXBUFF_MAX];
+byte UART_BUFF[RXBUFF_MAX];
 
-char readUART();
-char writeUART(char data[], byte size);
-char commandLookup(byte* data, byte size);
+byte readUART();
+byte writeUART(byte data[], byte size);
+byte commandLookup(byte* data, byte size);
 
 /* [] END OF FILE */

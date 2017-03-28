@@ -11,7 +11,7 @@
 */
 #include "comm.h"
 
-char readUART()
+byte readUART()
 {
     byte i = 0;
     char c = 0;
@@ -19,7 +19,7 @@ char readUART()
     
     do
     {
-        c = (char) UART_UartGetChar();
+        c = (byte) UART_UartGetChar();
         if(c)
         {
             UART_BUFF[i] = c;
@@ -33,7 +33,7 @@ char readUART()
     return writeUART(UART_BUFF, i);
 }
 
-char writeUART(char* data, byte size)
+byte writeUART(byte* data, byte size)
 {
     byte j;
     
@@ -45,7 +45,7 @@ char writeUART(char* data, byte size)
     return 0;
 }
 
-char commandLookup(byte* data, byte size)
+byte commandLookup(byte* data, byte size)
 {
     return writeUART(data, size);
 }

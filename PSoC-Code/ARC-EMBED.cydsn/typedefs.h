@@ -10,8 +10,15 @@
  * ========================================
 */
 
+#define     DEBUGGING
+#define     TRUE    1
+#define     FALSE   0
+
 typedef unsigned char byte;
+typedef unsigned short hword;
+typedef unsigned int  word;
 typedef unsigned char flag;
+typedef unsigned char boolean;
 
 
 /* [] END OF FILE */
