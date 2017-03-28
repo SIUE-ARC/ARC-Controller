@@ -291,10 +291,6 @@
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\ADCBAT.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\ADCBAT_aliases.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\ADCBAT_PM.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\LED.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\LED.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\LED_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\LED_PM.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_SCBCLK.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_SCBCLK.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_sda.c</File>
