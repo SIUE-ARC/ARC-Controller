@@ -38,7 +38,7 @@
         <Files Root="C:\Users\LAIR\Documents\GitHub\ARC-Controller\PSoC-Code\ARC-EMBED.cydsn">
           <File BuildType="BUILD" Toolchain="">.\main.c</File>
           <File BuildType="BUILD" Toolchain="">.\comm.h</File>
-          <File BuildType="BUILD" Toolchain="">.\typedefs.h</File>
+          <File BuildType="BUILD" Toolchain="">.\globaldefs.h</File>
           <File BuildType="BUILD" Toolchain="">.\comm.c</File>
           <File BuildType="BUILD" Toolchain="">.\motors.h</File>
           <File BuildType="BUILD" Toolchain="">.\motors.c</File>
@@ -124,10 +124,6 @@
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\PWM4.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\PWM4_aliases.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\PWM4_PM.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\M2DIR.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\M2DIR.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\M2DIR_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\M2DIR_PM.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_PM.c</File>
@@ -140,18 +136,6 @@
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_EZI2C_PVT.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_EZI2C_BOOT.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_BOOT.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\M1DIR.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\M1DIR.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\M1DIR_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\M1DIR_PM.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\M3DIR.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\M3DIR.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\M3DIR_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\M3DIR_PM.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\M0DIR.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\M0DIR.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\M0DIR_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\M0DIR_PM.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\SRV_CLK.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\SRV_CLK.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\UART.c</File>
@@ -368,6 +352,38 @@
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\M1PWM.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\M1PWM.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\M1PWM_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\M1DIRA.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\M1DIRA.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\M1DIRA_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\M1DIRA_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\M0DIRB.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\M0DIRB.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\M0DIRB_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\M0DIRB_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\M1DIRB.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\M1DIRB.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\M1DIRB_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\M1DIRB_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\M0DIRA.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\M0DIRA.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\M0DIRA_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\M0DIRA_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\M2DIRA.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\M2DIRA.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\M2DIRA_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\M2DIRA_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\M2DIRB.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\M2DIRB.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\M2DIRB_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\M2DIRB_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\M3DIRA.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\M3DIRA.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\M3DIRA_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\M3DIRA_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\M3DIRB.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\M3DIRB.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\M3DIRB_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\M3DIRB_PM.c</File>
         </Files>
       </Folder>
       <Folder BuildType="STRICT" Path="C:\Users\LAIR\Documents\GitHub\ARC-Controller\PSoC-Code\ARC-EMBED.cydsn\Export\ARM_GCC_Generic">

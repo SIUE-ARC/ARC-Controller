@@ -24,6 +24,7 @@ int main()
 {
     CyGlobalIntEnable; /* Enable global interrupts. */
     UART_Start();
+    writeUART("Hello, world!\r\n", strlen("Hello, world!\r\n"));
 
     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
 

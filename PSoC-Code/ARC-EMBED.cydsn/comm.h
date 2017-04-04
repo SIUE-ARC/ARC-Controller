@@ -11,27 +11,35 @@
 */
 
 #include <project.h>
+#include <stdlib.h>
 #include "motors.h"
-#include "typedefs.h"
+#include "globaldefs.h"
 
 #define     RXBUFF_MAX      64
 #define     TXBUFF_MAX      64
 #define     TERMINATOR      13
 #define     OVERFLOW        1
+
 #define     MOTOREN         'a'
-#define     MOTORSPD        'b'
-#define     MOTORDIR        'c'
-#define     SERVOEN         'd'
-#define     SERVOPW         'e'
-#define     COMMEN          'f'
-#define     ANALOGR         'g'
-#define     ANALOGW         'h'
+#define     SETMOTOR        'b'
+#define     SERVOEN         'c'
+#define     SERVOPW         'd'
+#define     COMMEN          'e'
+#define     ANALOGR         'f'
+#define     ANALOGW         'g'
+
+#define     UART            0
+#define     USB             1
+#define     I2C             3
 
 flag error_UART;
 byte UART_BUFF[RXBUFF_MAX];
+volatile byte mnum, mdir, mspd;
+volatile byte snum;
+volatile hword spw;
 
 byte readUART();
 byte writeUART(byte data[], byte size);
-byte commandLookup(byte* data, byte size);
+byte commandLookup(byte* data);
 
 /* [] END OF FILE */
