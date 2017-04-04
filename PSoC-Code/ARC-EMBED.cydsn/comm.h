@@ -18,6 +18,14 @@
 #define     TXBUFF_MAX      64
 #define     TERMINATOR      13
 #define     OVERFLOW        1
+#define     MOTOREN         'a'
+#define     MOTORSPD        'b'
+#define     MOTORDIR        'c'
+#define     SERVOEN         'd'
+#define     SERVOPW         'e'
+#define     COMMEN          'f'
+#define     ANALOGR         'g'
+#define     ANALOGW         'h'
 
 flag error_UART;
 byte UART_BUFF[RXBUFF_MAX];
