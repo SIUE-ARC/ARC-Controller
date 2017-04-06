@@ -53,12 +53,26 @@ byte commandLookup(byte* data)
     switch(comm)
     {
         case MOTOREN:
-        #ifdef DEBUGGING
-            writeUART("Enabling motor ", strlen("Enabling motor "));
+            if(moten[atoi(params[0])])
+            {
+                #ifdef DEBUGGING
+                writeUART("Disabling motor ", strlen("Disabling motor "));
+                #endif
+                stopMotor((byte)atoi(params[0]));
+                moten[atoi(params[0])] = 0;
+            }
+            else
+            {
+                #ifdef DEBUGGING
+                writeUART("Enabling motor ", strlen("Enabling motor "));
+                #endif
+                startMotor((byte)atoi(params[0]));
+                moten[atoi(params[0])] = 1;
+            }
+            #ifdef DEBUGGING
             writeUART(&params[0], 1);
             writeUART("\r\n", 2);
-        #endif
-            startMotor((byte)atoi(params[0]));
+            #endif
             break;
         case SETMOTOR:
         #ifdef DEBUGGING
@@ -71,29 +85,43 @@ byte commandLookup(byte* data)
             writeUART(&params[4], strlen(&params[4]));
             writeUART("\r\n", 2);
         #endif
-            mnum = (byte)atoi(params[0]);
-            mdir = (byte)atoi(params[2]);
+            mnum = (byte)atoi(&params[0]);
+            mdir = (byte)atoi(&params[2]);
             mspd = (byte)atoi(&params[4]);
             setMotor(mnum, mdir, mspd);
             break;
         case SERVOEN:
-        #ifdef DEBUGGING
-            writeUART("Enabling servo ", strlen("Enabling servo "));
+            if(srven[atoi(params[0])])
+            {
+                #ifdef DEBUGGING
+                writeUART("Disabling servo ", strlen("Disabling servo "));
+                #endif
+                stopServo((byte)atoi(params[0]));
+                srven[atoi(params[0])] = 0;
+            }
+            else
+            {
+                #ifdef DEBUGGING
+                writeUART("Enabling servo ", strlen("Enabling servo "));
+                #endif
+                startServo((byte)atoi(params[0]));
+                srven[atoi(params[0])] = 1;
+            }
+            #ifdef DEBUGGING
             writeUART(&params[0], 1);
             writeUART("\r\n", 2);
-        #endif
-            startServo((byte)atoi(params[0]));
+            #endif
             break;
         case SERVOPW:
-            snum = params[0];
-            spw = (hword) atoi(&params[2]);
+            snum = (byte)atoi(params[0]);
+            spw = (hword)atoi(&params[2]);
             setServo(snum, spw);
         #ifdef DEBUGGING
             writeUART("Setting servo ", strlen("Setting servo "));
-            writeUART(itoa(params[0], &params[1], 10), 1);
+            writeUART(&params[0], 1);
             writeUART("\r\n", 2);
             writeUART("Pulse Width: ", strlen("Pulse Width: "));
-            writeUART(itoa(spw, &params[10], 10), 1);
+            writeUART(&params[2], 4);
         #endif
             break;
         case COMMEN:

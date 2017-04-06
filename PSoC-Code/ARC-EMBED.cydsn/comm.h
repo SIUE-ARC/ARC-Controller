@@ -33,6 +33,8 @@
 #define     I2C             3
 
 flag error_UART;
+volatile flag moten[4];
+volatile flag srven[4];
 byte UART_BUFF[RXBUFF_MAX];
 volatile byte mnum, mdir, mspd;
 volatile byte snum;

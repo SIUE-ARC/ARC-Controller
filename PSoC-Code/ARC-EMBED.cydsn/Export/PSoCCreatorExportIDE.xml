@@ -195,10 +195,6 @@
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\ADC5.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\ADC5_aliases.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\ADC5_PM.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\SRV4CTL.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\SRV4CTL.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\SRV4CTL_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\SRV4CTL_PM.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\ADC4.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\ADC4.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\ADC4_aliases.h</File>
@@ -384,6 +380,14 @@
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\M3DIRB.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\M3DIRB_aliases.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\M3DIRB_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\SRV0CTL.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\SRV0CTL.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\SRV0CTL_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\SRV0CTL_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Pin_1.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Pin_1.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Pin_1_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\Pin_1_PM.c</File>
         </Files>
       </Folder>
       <Folder BuildType="STRICT" Path="C:\Users\LAIR\Documents\GitHub\ARC-Controller\PSoC-Code\ARC-EMBED.cydsn\Export\ARM_GCC_Generic">
