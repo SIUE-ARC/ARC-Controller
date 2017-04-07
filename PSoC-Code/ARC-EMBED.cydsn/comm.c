@@ -11,6 +11,11 @@
 */
 #include "comm.h"
 
+/* readUart(void)
+ * This function will grab non-null bytes from the UART buffer until the software
+ * UART_BUFF is full, or a comman terminator is received. Once a command terminator
+ * is received the command lookup function will be called on the software buffer.
+*/
 byte readUART()
 {
     byte i = 0;
@@ -19,32 +24,42 @@ byte readUART()
     
     do
     {
-        c = (byte) UART_UartGetChar();
-        if(c)
+        c = (byte) UART_UartGetChar(); //read a byte
+        if(c) //determine if byte is good
         {
             UART_BUFF[i] = c;
             i++;
         }
     }
-    while((c != TERMINATOR) && (i < RXBUFF_MAX));
+    while((c != TERMINATOR) && (i < RXBUFF_MAX)); //wait for overflow or terminator
     
     if(i == RXBUFF_MAX) return OVERFLOW;
     
     return commandLookup(UART_BUFF);
 }
 
+/* writeUART(byte*, byte)
+ * byte* data: a pointer to the memory buffer where the data to be written is located.
+ * byte size: the size of the memory buffer to be written
+ * This function will write a provided data buffer to the UART.
+ * returns 0 when successful.
+*/
 byte writeUART(byte* data, byte size)
 {
-    byte j;
-    
-    for(j = 0; j < size; j++)
+    for(i = 0; i < size; i++)
     {
-        UART_UartPutChar(data[j]);   
+        UART_UartPutChar(data[i]);   
     }
     
     return 0;
 }
 
+/* commandLookup(byte*)
+ * byte* data: a pointer to the buffer containing the commands and parameters to be parsed.
+ * This function will read the UART_BUFF and parse out the commands and parameter elements.
+ * It will then call the appropriate function for the command that was specified.
+ * returns 0 when successful.
+*/
 byte commandLookup(byte* data)
 {
     byte comm = data[0];
