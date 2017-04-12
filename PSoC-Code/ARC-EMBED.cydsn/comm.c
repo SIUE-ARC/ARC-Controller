@@ -20,7 +20,6 @@ byte readUART()
 {
     byte i = 0;
     char c = 0;
-    error_UART = 0;
     
     do
     {
@@ -64,25 +63,26 @@ byte commandLookup(byte* data)
 {
     byte comm = data[0];
     byte* params = &data[2];
+    i = params[0];
     
     switch(comm)
     {
         case MOTOREN:
-            if(moten[atoi(params[0])])
+            if(moten[i])
             {
                 #ifdef DEBUGGING
                 writeUART("Disabling motor ", strlen("Disabling motor "));
                 #endif
-                stopMotor((byte)atoi(params[0]));
-                moten[atoi(params[0])] = 0;
+                stopMotor((byte)i);
+                moten[i] = 0;
             }
             else
             {
                 #ifdef DEBUGGING
                 writeUART("Enabling motor ", strlen("Enabling motor "));
                 #endif
-                startMotor((byte)atoi(params[0]));
-                moten[atoi(params[0])] = 1;
+                startMotor((byte)i);
+                moten[i] = 1;
             }
             #ifdef DEBUGGING
             writeUART(&params[0], 1);
@@ -148,5 +148,48 @@ byte commandLookup(byte* data)
     }
     
     return 0;
+}
+
+void disableComm(byte interface)
+{
+    switch(interface)
+    {
+        case UART:
+            if(commen[UART])
+            {
+                UART_Stop();
+                commen[UART] = 0;
+            }
+            else
+            {
+                UART_Start();
+                commen[UART] = 1;
+            }
+            break;
+        case I2C:
+            if(commen[I2C])
+            {
+                I2C_Stop();
+                commen[I2C] = 0;
+            }
+            else
+            {
+                I2C_Start();
+                commen[I2C] = 1;
+            }
+            break;
+        case USB:
+            if(commen[USB])
+            {
+                USBFS_Stop();
+                commen[USB] = 0;
+            }
+            else
+            {
+                USBFS_Start(USBFS_DEVICE, USBFS_5V_OPERATION);
+                commen[USB] = 1;
+            }
+            break;
+    }
 }
 /* [] END OF FILE */

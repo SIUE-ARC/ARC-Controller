@@ -20,11 +20,18 @@
  * repeat
 */
 
+void init()
+{
+    ADC_DMA_Start((void*)ADC_SAR_CHAN0_RESULT_PTR, &adc_chan);
+    UART_Start();
+    USBFS_Start(USBFS_DEVICE, USBFS_5V_OPERATION);
+    I2C_Start();
+    writeUART("Hello, world!\r\n", strlen("Hello, world!\r\n"));
+}
+
 int main()
 {
     CyGlobalIntEnable; /* Enable global interrupts. */
-    UART_Start();
-    writeUART("Hello, world!\r\n", strlen("Hello, world!\r\n"));
 
     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
 

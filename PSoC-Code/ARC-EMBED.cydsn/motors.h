@@ -18,6 +18,13 @@
 #define     MAXSPD      255 //max pulse width for a motor PWM
 #define     MINSPD      0 //min pulse width for a motor PWM
 
+#define     DEFAULT_Kp  0
+#define     DEFAULT_Ki  0
+#define     DEFAULT_Kd  0
+
+double kp[4], ki[4], kd[4]; //PID coefficients for each motor
+double target[4]; //PID targets for each motor
+
 void setServo(byte num, hword pw);
 void stopServo(byte num);
 void startServo(byte num);

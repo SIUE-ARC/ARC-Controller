@@ -13,7 +13,19 @@
 #include <project.h>
 #include <stdlib.h>
 #include "motors.h"
+#include "analog.h"
 #include "globaldefs.h"
+
+/* USB device number. */
+#define     USBFS_DEVICE    0u
+
+/* Active endpoints of USB device. */
+#define     IN_EP_NUM       1u
+#define     OUT_EP_NUM      2u
+
+/* Size of SRAM buffer to store endpoint data. */
+#define     BUFFER_SIZE     64u
+
 
 #define     RXBUFF_MAX      64
 #define     TXBUFF_MAX      64
@@ -30,12 +42,14 @@
 
 #define     UART            0
 #define     USB             1
-#define     I2C             3
+#define     I2C             2
 
-flag error_UART;
 volatile flag moten[4];
 volatile flag srven[4];
+volatile flag commen[3];
+
 byte UART_BUFF[RXBUFF_MAX];
+
 volatile byte mnum, mdir, mspd;
 volatile byte snum;
 volatile hword spw;
@@ -43,5 +57,7 @@ volatile hword spw;
 byte readUART();
 byte writeUART(byte data[], byte size);
 byte commandLookup(byte* data);
+void disableComm(byte interface);
+void enableComm(byte interface);
 
 /* [] END OF FILE */

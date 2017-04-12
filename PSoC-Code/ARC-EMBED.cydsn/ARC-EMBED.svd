@@ -7,54 +7,6 @@
   <width>32</width>
   <peripherals>
     <peripheral>
-      <name>IDAC3</name>
-      <description>IDAC</description>
-      <baseAddress>0x0</baseAddress>
-      <addressBlock>
-        <offset>0</offset>
-        <size>0x0</size>
-        <usage>registers</usage>
-      </addressBlock>
-      <registers>
-        <register>
-          <name>CSD_IDAC_POLARITY</name>
-          <description> CSD IDAC Polarity</description>
-          <addressOffset>0x40290004</addressOffset>
-          <size>32</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-        </register>
-        <register>
-          <name>CSD_IDAC</name>
-          <description> CSD IDAC register</description>
-          <addressOffset>0x40290008</addressOffset>
-          <size>32</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-        </register>
-        <register>
-          <name>CSD_TRIM1</name>
-          <description> CSD IDAC TRIM1</description>
-          <addressOffset>0x4029FF00</addressOffset>
-          <size>32</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-        </register>
-        <register>
-          <name>CSD_TRIM2</name>
-          <description> CSD IDAC TRIM2</description>
-          <addressOffset>0x4029FF04</addressOffset>
-          <size>32</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-        </register>
-      </registers>
-    </peripheral>
-    <peripheral>
       <name>IDAC2</name>
       <description>IDAC</description>
       <baseAddress>0x0</baseAddress>
@@ -103,7 +55,55 @@
       </registers>
     </peripheral>
     <peripheral>
-      <name>IDAC0</name>
+      <name>IDAC3</name>
+      <description>IDAC</description>
+      <baseAddress>0x0</baseAddress>
+      <addressBlock>
+        <offset>0</offset>
+        <size>0x0</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>CSD_IDAC_POLARITY</name>
+          <description> CSD IDAC Polarity</description>
+          <addressOffset>0x40290004</addressOffset>
+          <size>32</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+        </register>
+        <register>
+          <name>CSD_IDAC</name>
+          <description> CSD IDAC register</description>
+          <addressOffset>0x40290008</addressOffset>
+          <size>32</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+        </register>
+        <register>
+          <name>CSD_TRIM1</name>
+          <description> CSD IDAC TRIM1</description>
+          <addressOffset>0x4029FF00</addressOffset>
+          <size>32</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+        </register>
+        <register>
+          <name>CSD_TRIM2</name>
+          <description> CSD IDAC TRIM2</description>
+          <addressOffset>0x4029FF04</addressOffset>
+          <size>32</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
+      <name>IDAC1</name>
       <description>IDAC</description>
       <baseAddress>0x0</baseAddress>
       <addressBlock>
@@ -151,7 +151,7 @@
       </registers>
     </peripheral>
     <peripheral>
-      <name>IDAC1</name>
+      <name>IDAC0</name>
       <description>IDAC</description>
       <baseAddress>0x0</baseAddress>
       <addressBlock>
@@ -24840,7 +24840,7 @@
         <register>
           <name>M3PWM_COMPARE_Reg_</name>
           <description>UDB.D0 - Assigned Compare Value</description>
-          <addressOffset>0x400F0020</addressOffset>
+          <addressOffset>0x400F0022</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -24849,7 +24849,7 @@
         <register>
           <name>M3PWM_Control_Reg</name>
           <description>UDB Control Register - Assigned Control Register Value</description>
-          <addressOffset>0x400F0070</addressOffset>
+          <addressOffset>0x400F0072</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -24881,7 +24881,7 @@
         <register>
           <name>M3PWM_STATUS_MASK</name>
           <description>UDB Status bits Interrupt Mask Enable Register</description>
-          <addressOffset>0x400F0080</addressOffset>
+          <addressOffset>0x400F0082</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -24927,7 +24927,7 @@
         <register>
           <name>M3PWM_STATUS_AUX_CTRL</name>
           <description>UDB Auxilliary Control Register</description>
-          <addressOffset>0x400F0090</addressOffset>
+          <addressOffset>0x400F0092</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -25288,7 +25288,7 @@
         <register>
           <name>M1PWM_COMPARE_Reg_</name>
           <description>UDB.D0 - Assigned Compare Value</description>
-          <addressOffset>0x400F0021</addressOffset>
+          <addressOffset>0x400F0024</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -25297,7 +25297,7 @@
         <register>
           <name>M1PWM_Control_Reg</name>
           <description>UDB Control Register - Assigned Control Register Value</description>
-          <addressOffset>0x400F0071</addressOffset>
+          <addressOffset>0x400F0074</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -25329,7 +25329,7 @@
         <register>
           <name>M1PWM_STATUS_MASK</name>
           <description>UDB Status bits Interrupt Mask Enable Register</description>
-          <addressOffset>0x400F0081</addressOffset>
+          <addressOffset>0x400F0084</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -25375,7 +25375,7 @@
         <register>
           <name>M1PWM_STATUS_AUX_CTRL</name>
           <description>UDB Auxilliary Control Register</description>
-          <addressOffset>0x400F0091</addressOffset>
+          <addressOffset>0x400F0094</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -25512,7 +25512,7 @@
         <register>
           <name>M0PWM_COMPARE_Reg_</name>
           <description>UDB.D0 - Assigned Compare Value</description>
-          <addressOffset>0x400F0027</addressOffset>
+          <addressOffset>0x400F0025</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -25521,7 +25521,7 @@
         <register>
           <name>M0PWM_Control_Reg</name>
           <description>UDB Control Register - Assigned Control Register Value</description>
-          <addressOffset>0x400F0077</addressOffset>
+          <addressOffset>0x400F0075</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -25553,7 +25553,7 @@
         <register>
           <name>M0PWM_STATUS_MASK</name>
           <description>UDB Status bits Interrupt Mask Enable Register</description>
-          <addressOffset>0x400F0087</addressOffset>
+          <addressOffset>0x400F0085</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -25599,7 +25599,7 @@
         <register>
           <name>M0PWM_STATUS_AUX_CTRL</name>
           <description>UDB Auxilliary Control Register</description>
-          <addressOffset>0x400F0097</addressOffset>
+          <addressOffset>0x400F0095</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -26984,486 +26984,6 @@
           </fields>
         </register>
         <register>
-          <name>CHAN_CONFIG8</name>
-          <description>Channel8 configuration register</description>
-          <addressOffset>0x403A00A0</addressOffset>
-          <size>32</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>PIN_ADDR</name>
-              <description>Address of the pin to be sampled by this channel</description>
-              <lsb>0</lsb>
-              <msb>2</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>PORT_ADDR</name>
-              <description>Address of the port that contains the pin to be sampled by this channel</description>
-              <lsb>4</lsb>
-              <msb>6</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>DIFFERENTIAL_EN</name>
-              <description>Differential enable for this channel</description>
-              <lsb>8</lsb>
-              <msb>8</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>RESOLUTION</name>
-              <description>Resolution for this channel</description>
-              <lsb>9</lsb>
-              <msb>9</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>AVG_EN</name>
-              <description>Averaging enable for this channel. If set the AVG_CNT and AVG_SHIFT settings are used for sampling the addressed pin(s).</description>
-              <lsb>10</lsb>
-              <msb>10</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>SAMPLE_TIME_SEL</name>
-              <description>Sample time select: select which of the 4 global sample times to use for this channel.</description>
-              <lsb>12</lsb>
-              <msb>13</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>DSI_OUT_EN</name>
-              <description>DSI data output enable for this channel</description>
-              <lsb>31</lsb>
-              <msb>31</msb>
-              <access>read-write</access>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>CHAN_CONFIG9</name>
-          <description>Channel9 configuration register</description>
-          <addressOffset>0x403A00A4</addressOffset>
-          <size>32</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>PIN_ADDR</name>
-              <description>Address of the pin to be sampled by this channel</description>
-              <lsb>0</lsb>
-              <msb>2</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>PORT_ADDR</name>
-              <description>Address of the port that contains the pin to be sampled by this channel</description>
-              <lsb>4</lsb>
-              <msb>6</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>DIFFERENTIAL_EN</name>
-              <description>Differential enable for this channel</description>
-              <lsb>8</lsb>
-              <msb>8</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>RESOLUTION</name>
-              <description>Resolution for this channel</description>
-              <lsb>9</lsb>
-              <msb>9</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>AVG_EN</name>
-              <description>Averaging enable for this channel. If set the AVG_CNT and AVG_SHIFT settings are used for sampling the addressed pin(s).</description>
-              <lsb>10</lsb>
-              <msb>10</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>SAMPLE_TIME_SEL</name>
-              <description>Sample time select: select which of the 4 global sample times to use for this channel.</description>
-              <lsb>12</lsb>
-              <msb>13</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>DSI_OUT_EN</name>
-              <description>DSI data output enable for this channel</description>
-              <lsb>31</lsb>
-              <msb>31</msb>
-              <access>read-write</access>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>CHAN_CONFIG10</name>
-          <description>Channel10 configuration register</description>
-          <addressOffset>0x403A00A8</addressOffset>
-          <size>32</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>PIN_ADDR</name>
-              <description>Address of the pin to be sampled by this channel</description>
-              <lsb>0</lsb>
-              <msb>2</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>PORT_ADDR</name>
-              <description>Address of the port that contains the pin to be sampled by this channel</description>
-              <lsb>4</lsb>
-              <msb>6</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>DIFFERENTIAL_EN</name>
-              <description>Differential enable for this channel</description>
-              <lsb>8</lsb>
-              <msb>8</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>RESOLUTION</name>
-              <description>Resolution for this channel</description>
-              <lsb>9</lsb>
-              <msb>9</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>AVG_EN</name>
-              <description>Averaging enable for this channel. If set the AVG_CNT and AVG_SHIFT settings are used for sampling the addressed pin(s).</description>
-              <lsb>10</lsb>
-              <msb>10</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>SAMPLE_TIME_SEL</name>
-              <description>Sample time select: select which of the 4 global sample times to use for this channel.</description>
-              <lsb>12</lsb>
-              <msb>13</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>DSI_OUT_EN</name>
-              <description>DSI data output enable for this channel</description>
-              <lsb>31</lsb>
-              <msb>31</msb>
-              <access>read-write</access>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>CHAN_CONFIG11</name>
-          <description>Channel11 configuration register</description>
-          <addressOffset>0x403A00AC</addressOffset>
-          <size>32</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>PIN_ADDR</name>
-              <description>Address of the pin to be sampled by this channel</description>
-              <lsb>0</lsb>
-              <msb>2</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>PORT_ADDR</name>
-              <description>Address of the port that contains the pin to be sampled by this channel</description>
-              <lsb>4</lsb>
-              <msb>6</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>DIFFERENTIAL_EN</name>
-              <description>Differential enable for this channel</description>
-              <lsb>8</lsb>
-              <msb>8</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>RESOLUTION</name>
-              <description>Resolution for this channel</description>
-              <lsb>9</lsb>
-              <msb>9</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>AVG_EN</name>
-              <description>Averaging enable for this channel. If set the AVG_CNT and AVG_SHIFT settings are used for sampling the addressed pin(s).</description>
-              <lsb>10</lsb>
-              <msb>10</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>SAMPLE_TIME_SEL</name>
-              <description>Sample time select: select which of the 4 global sample times to use for this channel.</description>
-              <lsb>12</lsb>
-              <msb>13</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>DSI_OUT_EN</name>
-              <description>DSI data output enable for this channel</description>
-              <lsb>31</lsb>
-              <msb>31</msb>
-              <access>read-write</access>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>CHAN_CONFIG12</name>
-          <description>Channel12 configuration register</description>
-          <addressOffset>0x403A00B0</addressOffset>
-          <size>32</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>PIN_ADDR</name>
-              <description>Address of the pin to be sampled by this channel</description>
-              <lsb>0</lsb>
-              <msb>2</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>PORT_ADDR</name>
-              <description>Address of the port that contains the pin to be sampled by this channel</description>
-              <lsb>4</lsb>
-              <msb>6</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>DIFFERENTIAL_EN</name>
-              <description>Differential enable for this channel</description>
-              <lsb>8</lsb>
-              <msb>8</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>RESOLUTION</name>
-              <description>Resolution for this channel</description>
-              <lsb>9</lsb>
-              <msb>9</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>AVG_EN</name>
-              <description>Averaging enable for this channel. If set the AVG_CNT and AVG_SHIFT settings are used for sampling the addressed pin(s).</description>
-              <lsb>10</lsb>
-              <msb>10</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>SAMPLE_TIME_SEL</name>
-              <description>Sample time select: select which of the 4 global sample times to use for this channel.</description>
-              <lsb>12</lsb>
-              <msb>13</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>DSI_OUT_EN</name>
-              <description>DSI data output enable for this channel</description>
-              <lsb>31</lsb>
-              <msb>31</msb>
-              <access>read-write</access>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>CHAN_CONFIG13</name>
-          <description>Channel13 configuration register</description>
-          <addressOffset>0x403A00B4</addressOffset>
-          <size>32</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>PIN_ADDR</name>
-              <description>Address of the pin to be sampled by this channel</description>
-              <lsb>0</lsb>
-              <msb>2</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>PORT_ADDR</name>
-              <description>Address of the port that contains the pin to be sampled by this channel</description>
-              <lsb>4</lsb>
-              <msb>6</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>DIFFERENTIAL_EN</name>
-              <description>Differential enable for this channel</description>
-              <lsb>8</lsb>
-              <msb>8</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>RESOLUTION</name>
-              <description>Resolution for this channel</description>
-              <lsb>9</lsb>
-              <msb>9</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>AVG_EN</name>
-              <description>Averaging enable for this channel. If set the AVG_CNT and AVG_SHIFT settings are used for sampling the addressed pin(s).</description>
-              <lsb>10</lsb>
-              <msb>10</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>SAMPLE_TIME_SEL</name>
-              <description>Sample time select: select which of the 4 global sample times to use for this channel.</description>
-              <lsb>12</lsb>
-              <msb>13</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>DSI_OUT_EN</name>
-              <description>DSI data output enable for this channel</description>
-              <lsb>31</lsb>
-              <msb>31</msb>
-              <access>read-write</access>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>CHAN_CONFIG14</name>
-          <description>Channel14 configuration register</description>
-          <addressOffset>0x403A00B8</addressOffset>
-          <size>32</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>PIN_ADDR</name>
-              <description>Address of the pin to be sampled by this channel</description>
-              <lsb>0</lsb>
-              <msb>2</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>PORT_ADDR</name>
-              <description>Address of the port that contains the pin to be sampled by this channel</description>
-              <lsb>4</lsb>
-              <msb>6</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>DIFFERENTIAL_EN</name>
-              <description>Differential enable for this channel</description>
-              <lsb>8</lsb>
-              <msb>8</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>RESOLUTION</name>
-              <description>Resolution for this channel</description>
-              <lsb>9</lsb>
-              <msb>9</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>AVG_EN</name>
-              <description>Averaging enable for this channel. If set the AVG_CNT and AVG_SHIFT settings are used for sampling the addressed pin(s).</description>
-              <lsb>10</lsb>
-              <msb>10</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>SAMPLE_TIME_SEL</name>
-              <description>Sample time select: select which of the 4 global sample times to use for this channel.</description>
-              <lsb>12</lsb>
-              <msb>13</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>DSI_OUT_EN</name>
-              <description>DSI data output enable for this channel</description>
-              <lsb>31</lsb>
-              <msb>31</msb>
-              <access>read-write</access>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>CHAN_CONFIG15</name>
-          <description>Channel15 configuration register</description>
-          <addressOffset>0x403A00BC</addressOffset>
-          <size>32</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>PIN_ADDR</name>
-              <description>Address of the pin to be sampled by this channel</description>
-              <lsb>0</lsb>
-              <msb>2</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>PORT_ADDR</name>
-              <description>Address of the port that contains the pin to be sampled by this channel</description>
-              <lsb>4</lsb>
-              <msb>6</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>DIFFERENTIAL_EN</name>
-              <description>Differential enable for this channel</description>
-              <lsb>8</lsb>
-              <msb>8</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>RESOLUTION</name>
-              <description>Resolution for this channel</description>
-              <lsb>9</lsb>
-              <msb>9</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>AVG_EN</name>
-              <description>Averaging enable for this channel. If set the AVG_CNT and AVG_SHIFT settings are used for sampling the addressed pin(s).</description>
-              <lsb>10</lsb>
-              <msb>10</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>SAMPLE_TIME_SEL</name>
-              <description>Sample time select: select which of the 4 global sample times to use for this channel.</description>
-              <lsb>12</lsb>
-              <msb>13</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>DSI_OUT_EN</name>
-              <description>DSI data output enable for this channel</description>
-              <lsb>31</lsb>
-              <msb>31</msb>
-              <access>read-write</access>
-            </field>
-          </fields>
-        </register>
-        <register>
           <name>CHAN_WORK0</name>
           <description>Channel0 working data register</description>
           <addressOffset>0x403A0100</addressOffset>
@@ -27642,206 +27162,6 @@
           <name>CHAN_WORK7</name>
           <description>Channel7 working data register</description>
           <addressOffset>0x403A011C</addressOffset>
-          <size>32</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>WORK</name>
-              <description>SAR conversion working data of the channel</description>
-              <lsb>0</lsb>
-              <msb>15</msb>
-              <access>read-only</access>
-            </field>
-            <field>
-              <name>CHAN_WORK_VALID_MIR</name>
-              <description>Mirror bit of corresponding bit in SAR_CHAN_WORK_VALID register</description>
-              <lsb>31</lsb>
-              <msb>31</msb>
-              <access>read-only</access>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>CHAN_WORK8</name>
-          <description>Channel8 working data register</description>
-          <addressOffset>0x403A0120</addressOffset>
-          <size>32</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>WORK</name>
-              <description>SAR conversion working data of the channel</description>
-              <lsb>0</lsb>
-              <msb>15</msb>
-              <access>read-only</access>
-            </field>
-            <field>
-              <name>CHAN_WORK_VALID_MIR</name>
-              <description>Mirror bit of corresponding bit in SAR_CHAN_WORK_VALID register</description>
-              <lsb>31</lsb>
-              <msb>31</msb>
-              <access>read-only</access>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>CHAN_WORK9</name>
-          <description>Channel9 working data register</description>
-          <addressOffset>0x403A0124</addressOffset>
-          <size>32</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>WORK</name>
-              <description>SAR conversion working data of the channel</description>
-              <lsb>0</lsb>
-              <msb>15</msb>
-              <access>read-only</access>
-            </field>
-            <field>
-              <name>CHAN_WORK_VALID_MIR</name>
-              <description>Mirror bit of corresponding bit in SAR_CHAN_WORK_VALID register</description>
-              <lsb>31</lsb>
-              <msb>31</msb>
-              <access>read-only</access>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>CHAN_WORK10</name>
-          <description>Channel10 working data register</description>
-          <addressOffset>0x403A0128</addressOffset>
-          <size>32</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>WORK</name>
-              <description>SAR conversion working data of the channel</description>
-              <lsb>0</lsb>
-              <msb>15</msb>
-              <access>read-only</access>
-            </field>
-            <field>
-              <name>CHAN_WORK_VALID_MIR</name>
-              <description>Mirror bit of corresponding bit in SAR_CHAN_WORK_VALID register</description>
-              <lsb>31</lsb>
-              <msb>31</msb>
-              <access>read-only</access>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>CHAN_WORK11</name>
-          <description>Channel11 working data register</description>
-          <addressOffset>0x403A012C</addressOffset>
-          <size>32</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>WORK</name>
-              <description>SAR conversion working data of the channel</description>
-              <lsb>0</lsb>
-              <msb>15</msb>
-              <access>read-only</access>
-            </field>
-            <field>
-              <name>CHAN_WORK_VALID_MIR</name>
-              <description>Mirror bit of corresponding bit in SAR_CHAN_WORK_VALID register</description>
-              <lsb>31</lsb>
-              <msb>31</msb>
-              <access>read-only</access>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>CHAN_WORK12</name>
-          <description>Channel12 working data register</description>
-          <addressOffset>0x403A0130</addressOffset>
-          <size>32</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>WORK</name>
-              <description>SAR conversion working data of the channel</description>
-              <lsb>0</lsb>
-              <msb>15</msb>
-              <access>read-only</access>
-            </field>
-            <field>
-              <name>CHAN_WORK_VALID_MIR</name>
-              <description>Mirror bit of corresponding bit in SAR_CHAN_WORK_VALID register</description>
-              <lsb>31</lsb>
-              <msb>31</msb>
-              <access>read-only</access>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>CHAN_WORK13</name>
-          <description>Channel13 working data register</description>
-          <addressOffset>0x403A0134</addressOffset>
-          <size>32</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>WORK</name>
-              <description>SAR conversion working data of the channel</description>
-              <lsb>0</lsb>
-              <msb>15</msb>
-              <access>read-only</access>
-            </field>
-            <field>
-              <name>CHAN_WORK_VALID_MIR</name>
-              <description>Mirror bit of corresponding bit in SAR_CHAN_WORK_VALID register</description>
-              <lsb>31</lsb>
-              <msb>31</msb>
-              <access>read-only</access>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>CHAN_WORK14</name>
-          <description>Channel14 working data register</description>
-          <addressOffset>0x403A0138</addressOffset>
-          <size>32</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>WORK</name>
-              <description>SAR conversion working data of the channel</description>
-              <lsb>0</lsb>
-              <msb>15</msb>
-              <access>read-only</access>
-            </field>
-            <field>
-              <name>CHAN_WORK_VALID_MIR</name>
-              <description>Mirror bit of corresponding bit in SAR_CHAN_WORK_VALID register</description>
-              <lsb>31</lsb>
-              <msb>31</msb>
-              <access>read-only</access>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>CHAN_WORK15</name>
-          <description>Channel15 working data register</description>
-          <addressOffset>0x403A013C</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -28140,318 +27460,6 @@
           <name>CHAN_RESULT7</name>
           <description>Channel7 result data register</description>
           <addressOffset>0x403A019C</addressOffset>
-          <size>32</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>RESULT</name>
-              <description>SAR conversion result of the channel. The data is copied here from the WORK field after all enabled channels in this scan have been sampled.</description>
-              <lsb>0</lsb>
-              <msb>15</msb>
-              <access>read-only</access>
-            </field>
-            <field>
-              <name>SATURATE_INTR_MIR</name>
-              <description>Mirror bit of corresponding bit in SAR_SATURATE_INTR register</description>
-              <lsb>29</lsb>
-              <msb>29</msb>
-              <access>read-only</access>
-            </field>
-            <field>
-              <name>RANGE_INTR_MIR</name>
-              <description>Mirror bit of corresponding bit in SAR_RANGE_INTR register</description>
-              <lsb>30</lsb>
-              <msb>30</msb>
-              <access>read-only</access>
-            </field>
-            <field>
-              <name>CHAN_RESULT_VALID_MIR</name>
-              <description>Mirror bit of corresponding bit in SAR_SATURATE_INTR register</description>
-              <lsb>31</lsb>
-              <msb>31</msb>
-              <access>read-only</access>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>CHAN_RESULT8</name>
-          <description>Channel8 result data register</description>
-          <addressOffset>0x403A01A0</addressOffset>
-          <size>32</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>RESULT</name>
-              <description>SAR conversion result of the channel. The data is copied here from the WORK field after all enabled channels in this scan have been sampled.</description>
-              <lsb>0</lsb>
-              <msb>15</msb>
-              <access>read-only</access>
-            </field>
-            <field>
-              <name>SATURATE_INTR_MIR</name>
-              <description>Mirror bit of corresponding bit in SAR_SATURATE_INTR register</description>
-              <lsb>29</lsb>
-              <msb>29</msb>
-              <access>read-only</access>
-            </field>
-            <field>
-              <name>RANGE_INTR_MIR</name>
-              <description>Mirror bit of corresponding bit in SAR_RANGE_INTR register</description>
-              <lsb>30</lsb>
-              <msb>30</msb>
-              <access>read-only</access>
-            </field>
-            <field>
-              <name>CHAN_RESULT_VALID_MIR</name>
-              <description>Mirror bit of corresponding bit in SAR_SATURATE_INTR register</description>
-              <lsb>31</lsb>
-              <msb>31</msb>
-              <access>read-only</access>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>CHAN_RESULT9</name>
-          <description>Channel9 result data register</description>
-          <addressOffset>0x403A01A4</addressOffset>
-          <size>32</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>RESULT</name>
-              <description>SAR conversion result of the channel. The data is copied here from the WORK field after all enabled channels in this scan have been sampled.</description>
-              <lsb>0</lsb>
-              <msb>15</msb>
-              <access>read-only</access>
-            </field>
-            <field>
-              <name>SATURATE_INTR_MIR</name>
-              <description>Mirror bit of corresponding bit in SAR_SATURATE_INTR register</description>
-              <lsb>29</lsb>
-              <msb>29</msb>
-              <access>read-only</access>
-            </field>
-            <field>
-              <name>RANGE_INTR_MIR</name>
-              <description>Mirror bit of corresponding bit in SAR_RANGE_INTR register</description>
-              <lsb>30</lsb>
-              <msb>30</msb>
-              <access>read-only</access>
-            </field>
-            <field>
-              <name>CHAN_RESULT_VALID_MIR</name>
-              <description>Mirror bit of corresponding bit in SAR_SATURATE_INTR register</description>
-              <lsb>31</lsb>
-              <msb>31</msb>
-              <access>read-only</access>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>CHAN_RESULT10</name>
-          <description>Channel10 result data register</description>
-          <addressOffset>0x403A01A8</addressOffset>
-          <size>32</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>RESULT</name>
-              <description>SAR conversion result of the channel. The data is copied here from the WORK field after all enabled channels in this scan have been sampled.</description>
-              <lsb>0</lsb>
-              <msb>15</msb>
-              <access>read-only</access>
-            </field>
-            <field>
-              <name>SATURATE_INTR_MIR</name>
-              <description>Mirror bit of corresponding bit in SAR_SATURATE_INTR register</description>
-              <lsb>29</lsb>
-              <msb>29</msb>
-              <access>read-only</access>
-            </field>
-            <field>
-              <name>RANGE_INTR_MIR</name>
-              <description>Mirror bit of corresponding bit in SAR_RANGE_INTR register</description>
-              <lsb>30</lsb>
-              <msb>30</msb>
-              <access>read-only</access>
-            </field>
-            <field>
-              <name>CHAN_RESULT_VALID_MIR</name>
-              <description>Mirror bit of corresponding bit in SAR_SATURATE_INTR register</description>
-              <lsb>31</lsb>
-              <msb>31</msb>
-              <access>read-only</access>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>CHAN_RESULT11</name>
-          <description>Channel11 result data register</description>
-          <addressOffset>0x403A01AC</addressOffset>
-          <size>32</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>RESULT</name>
-              <description>SAR conversion result of the channel. The data is copied here from the WORK field after all enabled channels in this scan have been sampled.</description>
-              <lsb>0</lsb>
-              <msb>15</msb>
-              <access>read-only</access>
-            </field>
-            <field>
-              <name>SATURATE_INTR_MIR</name>
-              <description>Mirror bit of corresponding bit in SAR_SATURATE_INTR register</description>
-              <lsb>29</lsb>
-              <msb>29</msb>
-              <access>read-only</access>
-            </field>
-            <field>
-              <name>RANGE_INTR_MIR</name>
-              <description>Mirror bit of corresponding bit in SAR_RANGE_INTR register</description>
-              <lsb>30</lsb>
-              <msb>30</msb>
-              <access>read-only</access>
-            </field>
-            <field>
-              <name>CHAN_RESULT_VALID_MIR</name>
-              <description>Mirror bit of corresponding bit in SAR_SATURATE_INTR register</description>
-              <lsb>31</lsb>
-              <msb>31</msb>
-              <access>read-only</access>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>CHAN_RESULT12</name>
-          <description>Channel12 result data register</description>
-          <addressOffset>0x403A01B0</addressOffset>
-          <size>32</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>RESULT</name>
-              <description>SAR conversion result of the channel. The data is copied here from the WORK field after all enabled channels in this scan have been sampled.</description>
-              <lsb>0</lsb>
-              <msb>15</msb>
-              <access>read-only</access>
-            </field>
-            <field>
-              <name>SATURATE_INTR_MIR</name>
-              <description>Mirror bit of corresponding bit in SAR_SATURATE_INTR register</description>
-              <lsb>29</lsb>
-              <msb>29</msb>
-              <access>read-only</access>
-            </field>
-            <field>
-              <name>RANGE_INTR_MIR</name>
-              <description>Mirror bit of corresponding bit in SAR_RANGE_INTR register</description>
-              <lsb>30</lsb>
-              <msb>30</msb>
-              <access>read-only</access>
-            </field>
-            <field>
-              <name>CHAN_RESULT_VALID_MIR</name>
-              <description>Mirror bit of corresponding bit in SAR_SATURATE_INTR register</description>
-              <lsb>31</lsb>
-              <msb>31</msb>
-              <access>read-only</access>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>CHAN_RESULT13</name>
-          <description>Channel13 result data register</description>
-          <addressOffset>0x403A01B4</addressOffset>
-          <size>32</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>RESULT</name>
-              <description>SAR conversion result of the channel. The data is copied here from the WORK field after all enabled channels in this scan have been sampled.</description>
-              <lsb>0</lsb>
-              <msb>15</msb>
-              <access>read-only</access>
-            </field>
-            <field>
-              <name>SATURATE_INTR_MIR</name>
-              <description>Mirror bit of corresponding bit in SAR_SATURATE_INTR register</description>
-              <lsb>29</lsb>
-              <msb>29</msb>
-              <access>read-only</access>
-            </field>
-            <field>
-              <name>RANGE_INTR_MIR</name>
-              <description>Mirror bit of corresponding bit in SAR_RANGE_INTR register</description>
-              <lsb>30</lsb>
-              <msb>30</msb>
-              <access>read-only</access>
-            </field>
-            <field>
-              <name>CHAN_RESULT_VALID_MIR</name>
-              <description>Mirror bit of corresponding bit in SAR_SATURATE_INTR register</description>
-              <lsb>31</lsb>
-              <msb>31</msb>
-              <access>read-only</access>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>CHAN_RESULT14</name>
-          <description>Channel14 result data register</description>
-          <addressOffset>0x403A01B8</addressOffset>
-          <size>32</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>RESULT</name>
-              <description>SAR conversion result of the channel. The data is copied here from the WORK field after all enabled channels in this scan have been sampled.</description>
-              <lsb>0</lsb>
-              <msb>15</msb>
-              <access>read-only</access>
-            </field>
-            <field>
-              <name>SATURATE_INTR_MIR</name>
-              <description>Mirror bit of corresponding bit in SAR_SATURATE_INTR register</description>
-              <lsb>29</lsb>
-              <msb>29</msb>
-              <access>read-only</access>
-            </field>
-            <field>
-              <name>RANGE_INTR_MIR</name>
-              <description>Mirror bit of corresponding bit in SAR_RANGE_INTR register</description>
-              <lsb>30</lsb>
-              <msb>30</msb>
-              <access>read-only</access>
-            </field>
-            <field>
-              <name>CHAN_RESULT_VALID_MIR</name>
-              <description>Mirror bit of corresponding bit in SAR_SATURATE_INTR register</description>
-              <lsb>31</lsb>
-              <msb>31</msb>
-              <access>read-only</access>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>CHAN_RESULT15</name>
-          <description>Channel15 result data register</description>
-          <addressOffset>0x403A01BC</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
