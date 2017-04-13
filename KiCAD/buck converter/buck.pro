@@ -1,4 +1,4 @@
-update=3/23/2017 7:47:37 PM
+update=4/13/2017 4:31:40 PM
 version=1
 last_client=kicad
 [cvpcb]
@@ -118,3 +118,13 @@ LibName37=regulators
 LibName38=roadrunner
 LibName39=kicad-libraries-master/tinkerforge
 LibName40=C:/Users/Bryan Orabutt/Documents/KiCad/Libraries/FET
+[schematic_editor]
+version=1
+PageLayoutDescrFile=
+PlotDirectoryName=
+SubpartIdSeparator=0
+SubpartFirstId=65
+NetFmtName=
+SpiceForceRefPrefix=0
+SpiceUseNetNumbers=0
+LabSize=60
