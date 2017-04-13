@@ -26,6 +26,7 @@ void init()
     UART_Start();
     USBFS_Start(USBFS_DEVICE, USBFS_5V_OPERATION);
     I2C_Start();
+    resolution = PI*wheel_diam/encoder_res;
     writeUART("Hello, world!\r\n", strlen("Hello, world!\r\n"));
 }
 

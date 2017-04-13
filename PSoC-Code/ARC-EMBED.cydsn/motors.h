@@ -18,12 +18,25 @@
 #define     MAXSPD      255 //max pulse width for a motor PWM
 #define     MINSPD      0 //min pulse width for a motor PWM
 
-#define     DEFAULT_Kp  0
-#define     DEFAULT_Ki  0
-#define     DEFAULT_Kd  0
+#define     DEFAULT_Kp  0 //default P coefficient
+#define     DEFAULT_Ki  0 //default I coefficient
+#define     DEFAULT_Kd  0 //default D coefficient
 
-double kp[4], ki[4], kd[4]; //PID coefficients for each motor
-double target[4]; //PID targets for each motor
+#define     DT          10 //wait time for encoder reads (ms)
+#define     DT_MS       (((double)DT)/1000 )//wait time for encoder reads (s) - this is used in PID - 
+
+unsigned int encoder_res; //encoder ticks/rev
+double wheel_diam; //wheel diameter
+double resolution; //encoder resoltion unit/tick
+
+volatile double kp[4], ki[4], kd[4]; //PID coefficients for each motor
+volatile double sp[4]; //PID set points for each motor
+volatile double pv[4]; //PID process variables
+volatile byte pw[4]; //PID process outputs (pulse widths for speed control)
+volatile double iterm[4]; //accumulated I-term error
+volatile double lastin[4]; //last input received
+volatile double err[4]; //the computed error term
+volatile double dInp[4]; //change in input state
 
 void setServo(byte num, hword pw);
 void stopServo(byte num);

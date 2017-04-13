@@ -13,6 +13,7 @@
 #define     DEBUGGING
 #define     TRUE    1
 #define     FALSE   0
+#define     PI      3.14159265359
 
 typedef unsigned char byte;
 typedef unsigned short hword;

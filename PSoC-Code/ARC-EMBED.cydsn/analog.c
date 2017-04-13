@@ -11,6 +11,12 @@
 */
 #include "analog.h"
 
+/* setDac(byte, byte)
+ * byte num: the DAC number to be set.
+ * byte val: the value to write to the DAC reg.
+ * This funciton writes a value to the chosen DAC register.
+ * NOTE: DAC2 and DAC3 are 7-bit
+*/
 void setDAC(byte num, byte val)
 {
     switch(num)
@@ -30,6 +36,10 @@ void setDAC(byte num, byte val)
     }
 }
 
+/* enableDac(byte)
+ * byte num: the DAC number to toggle
+ * Enables/Disables a selected DAC.
+*/
 void enableDAC(byte num)
 {
     switch(num)
@@ -85,6 +95,11 @@ void enableDAC(byte num)
     }   
 }
 
+/* disableADC(void)
+ * This function disables the SAR ADC.
+ * NOTE: This disables all channels; Since the channels are multiplexed
+ * disabling a channel is the same as not using it, making it redundant.
+*/
 void disableADC()
 {
     if(adcen)

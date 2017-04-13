@@ -281,6 +281,45 @@ void startMotor(byte num)
 */
 void pid(byte num)
 {
-    //todo
+    /* Collect input
+     * Read the quadrature decoder register, wait a fixed time and read again.
+     * Velocity = dx/dt, we have constant dt so compute dx.
+     * dx = x(t) - x(t-1) = (QD reg count) - (prev QD reg count)
+     * compute velocity = dx*(encoder resolution)/dt
+    */
+    pv[num] = QD0_ReadCounter();
+    CyDelay(DT);
+    pv[num] = QD0_ReadCounter() - pv[num];
+    
+    pv[num] = pv[num]*resolution/(DT_MS);
+    
+    /* Compute PID error terms
+     * err = current error (P term error)
+     * iterm = accumulated error (I term error)
+     * dInp = rate of change in error (D term error)
+    */
+    err[num] = sp[num] - pv[num];
+    iterm[num] += ki[num] * err[num];
+    if(iterm[num] > MAXSPD)
+        iterm[num] = MAXSPD;
+    else if(iterm[num] < MINSPD)
+        iterm[num] = MINSPD;
+    
+    dInp[num] = pv[num] - lastin[num];
+    
+    /* Compute PID output
+     * Output is sum of weighted errors.
+     * Keep output within register limits.
+    */
+    pw[num] = kp[num]*err[num] + iterm[num] - kd[num]*dInp[num];
+    if(pw[num] > MAXSPD)
+        pw[num] = MAXSPD;
+    else if(pw[num] < MINSPD)
+        pw[num] = MINSPD;
+        
+    /* Save input
+     * Previous input needed to compute error rate of change for D term.
+    */
+    lastin[num] = pv[num];
 }
 /* [] END OF FILE */
