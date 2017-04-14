@@ -95,12 +95,12 @@ void enableDAC(byte num)
     }   
 }
 
-/* disableADC(void)
+/* enableADC(void)
  * This function disables the SAR ADC.
  * NOTE: This disables all channels; Since the channels are multiplexed
  * disabling a channel is the same as not using it, making it redundant.
 */
-void disableADC()
+void enableADC()
 {
     if(adcen)
     {

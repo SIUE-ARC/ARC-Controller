@@ -19,5 +19,5 @@ flag adcen; //ADC denable flag
 
 void setDAC(byte num, byte val);
 void enableDAC(byte num);
-void disableADC();
+void enableADC();
 /* [] END OF FILE */

@@ -63,7 +63,8 @@ byte commandLookup(byte* data)
 {
     byte comm = data[0];
     byte* params = &data[2];
-    i = params[0];
+    byte adc_samp[2];
+    i = (byte) atoi(&params[0]);
     
     switch(comm)
     {
@@ -72,6 +73,8 @@ byte commandLookup(byte* data)
             {
                 #ifdef DEBUGGING
                 writeUART("Disabling motor ", strlen("Disabling motor "));
+                writeUART(&params[0], 1);
+                writeUART("\r\n", 2);
                 #endif
                 stopMotor((byte)i);
                 moten[i] = 0;
@@ -80,14 +83,12 @@ byte commandLookup(byte* data)
             {
                 #ifdef DEBUGGING
                 writeUART("Enabling motor ", strlen("Enabling motor "));
+                writeUART(&params[0], 1);
+                writeUART("\r\n", 2);
                 #endif
                 startMotor((byte)i);
                 moten[i] = 1;
             }
-            #ifdef DEBUGGING
-            writeUART(&params[0], 1);
-            writeUART("\r\n", 2);
-            #endif
             break;
         case SETMOTOR:
         #ifdef DEBUGGING
@@ -100,27 +101,27 @@ byte commandLookup(byte* data)
             writeUART(&params[4], strlen(&params[4]));
             writeUART("\r\n", 2);
         #endif
-            mnum = (byte)atoi(&params[0]);
+            mnum = i;
             mdir = (byte)atoi(&params[2]);
-            mspd = (byte)atoi(&params[4]);
+            mspd = (double) atof(&params[4]);
             setMotor(mnum, mdir, mspd);
             break;
         case SERVOEN:
-            if(srven[atoi(params[0])])
+            if(srven[i])
             {
                 #ifdef DEBUGGING
                 writeUART("Disabling servo ", strlen("Disabling servo "));
                 #endif
-                stopServo((byte)atoi(params[0]));
-                srven[atoi(params[0])] = 0;
+                stopServo(i);
+                srven[i] = 0;
             }
             else
             {
                 #ifdef DEBUGGING
                 writeUART("Enabling servo ", strlen("Enabling servo "));
                 #endif
-                startServo((byte)atoi(params[0]));
-                srven[atoi(params[0])] = 1;
+                startServo(i);
+                srven[i] = 1;
             }
             #ifdef DEBUGGING
             writeUART(&params[0], 1);
@@ -128,7 +129,7 @@ byte commandLookup(byte* data)
             #endif
             break;
         case SERVOPW:
-            snum = (byte)atoi(params[0]);
+            snum = i;
             spw = (hword)atoi(&params[2]);
             setServo(snum, spw);
         #ifdef DEBUGGING
@@ -142,11 +143,73 @@ byte commandLookup(byte* data)
         case COMMEN:
             break;
         case ANALOGR:
+        #ifdef DEBUGGING
+            writeUART("ADC Channel ", strlen("ADC Channel "));
+            writeUART(&params[0], 1);
+            writeUART(": ", 2);
+        #endif
+            itoa(adc_chan[i], adc_samp, 10);
+            writeUART(adc_samp, 2);
+        #ifdef DEBUGGING
+            writeUART("\r\n", 2);
+        #endif
             break;
         case ANALOGW:
+        #ifdef DEBUGGING
+            writeUART("Setting DAC", strlen("Setting DAC"));
+            writeUART(&params[0], 1);
+            writeUART(": ", 2);
+            writeUART(&params[2], 3);
+            writeUART("\r\n", 2);
+        #endif
+            setDAC(i, (byte)atoi(&params[2]));
+            break;
+        case DACEN:
+            if(dacen[i])
+            {
+                #ifdef DEBUGGING
+                writeUART("Disabling DAC ", strlen("Disabling DAC "));
+                #endif
+                enableDAC(i);
+                dacen[i] = 0;
+            }
+            else
+            {
+                #ifdef DEBUGGING
+                writeUART("Enabling DAC ", strlen("Enabling DAC "));
+                #endif
+                enableDAC(i);
+                dacen[i] = 1;
+            }
+            #ifdef DEBUGGING
+            writeUART(&params[0], 1);
+            writeUART("\r\n", 2);
+            #endif
+            break;
+        case ADCEN:
+            if(adcen)
+            {
+                #ifdef DEBUGGING
+                writeUART("Disabling ADC", strlen("Disabling ADC"));
+                writeUART("\r\n", 2);
+                #endif
+                enableADC(i);
+                adcen = 0;
+            }
+            else
+            {
+                #ifdef DEBUGGING
+                writeUART("Enabling ADC", strlen("Enabling ADC"));
+                writeUART("\r\n", 2);
+                #endif
+                enableADC(i);
+                adcen = 1;
+            }
             break;
     }
     
+    for(i = 0; i < BUFFER_SIZE; i++)
+        UART_BUFF[i] = 0;
     return 0;
 }
 

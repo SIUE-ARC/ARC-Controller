@@ -118,12 +118,13 @@ void startServo(byte num)
  * This function writes a pulse width to a chosen PWM register to
  * control motor speed.
 */
-void setMotor(byte num, byte dir, byte pw)
+void setMotor(byte num, byte dir, double target)
 {
     switch(num)
     {
         case 0:
-            M0PWM_WriteCompare(pw);
+            //M0PWM_WriteCompare(pw);
+            sp[num] = target;
             if(dir) 
             {
                 M0DIRA_DR |= M0DIRA_MASK;
@@ -144,7 +145,8 @@ void setMotor(byte num, byte dir, byte pw)
             }
             break;
         case 1:
-            M1PWM_WriteCompare(pw);
+            //M1PWM_WriteCompare(pw);
+            sp[num] = target;
             if(dir) 
             {
                 M1DIRA_DR |= M1DIRA_MASK;
@@ -165,7 +167,8 @@ void setMotor(byte num, byte dir, byte pw)
             }
             break;
         case 2:
-            M2PWM_WriteCompare(pw);
+            //M2PWM_WriteCompare(pw);
+            sp[num] = target;
             if(dir) 
             {
                 M2DIRA_DR |= M2DIRA_MASK;
@@ -186,7 +189,8 @@ void setMotor(byte num, byte dir, byte pw)
             }
             break;
         case 3:
-            M3PWM_WriteCompare(pw);
+            //M3PWM_WriteCompare(pw);
+            sp[num] = target;
             if(dir) 
             {
                 M3DIRA_DR |= M3DIRA_MASK;

@@ -41,7 +41,7 @@ volatile double dInp[4]; //change in input state
 void setServo(byte num, hword pw);
 void stopServo(byte num);
 void startServo(byte num);
-void setMotor(byte num, byte dir, byte pw);
+void setMotor(byte num, byte dir, double target);
 void stopMotor(byte num);
 void startMotor(byte num);
 void pid(byte num);
