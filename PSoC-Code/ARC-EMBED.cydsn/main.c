@@ -22,7 +22,7 @@
 
 void init()
 {
-    ADC_DMA_Start((void*)ADC_SAR_CHAN0_RESULT_PTR, &adc_chan);
+    ADC_DMA_Start((void*)ADC_SAR_CHAN0_RESULT_PTR, adc_chan);
     UART_Start();
     USBFS_Start(USBFS_DEVICE, USBFS_5V_OPERATION);
     I2C_Start();

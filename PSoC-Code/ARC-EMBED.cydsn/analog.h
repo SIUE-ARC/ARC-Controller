@@ -13,7 +13,7 @@
 #include <stdlib.h>
 #include "globaldefs.h"
 
-hword adc_chan[8]; //membuffer containing the DMA controlled ADC samples
+hword adc_chan[9]; //membuffer containing the DMA controlled ADC samples
 flag dacen[4]; //DAC enable flags
 flag adcen; //ADC denable flag
 
