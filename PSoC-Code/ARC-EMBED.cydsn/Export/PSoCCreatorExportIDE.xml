@@ -215,34 +215,6 @@
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\ADC3_PM.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\ADC_DMA.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\ADC_DMA.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\IDAC0.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\IDAC0.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\IDAC0_PM.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\IDAC1.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\IDAC1.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\IDAC1_PM.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\IDAC2.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\IDAC2.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\IDAC2_PM.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\IDAC3.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\IDAC3.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\IDAC3_PM.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\DAC0.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\DAC0.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\DAC0_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\DAC0_PM.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\DAC1.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\DAC1.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\DAC1_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\DAC1_PM.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\DAC2.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\DAC2.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\DAC2_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\DAC2_PM.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\DAC3.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\DAC3.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\DAC3_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\DAC3_PM.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\USBFS.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\USBFS.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\USBFS_audio.c</File>
@@ -269,10 +241,6 @@
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\ADC8.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\ADC8_aliases.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\ADC8_PM.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\ADCBAT.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\ADCBAT.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\ADCBAT_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\ADCBAT_PM.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_SCBCLK.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_SCBCLK.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\I2C_sda.c</File>

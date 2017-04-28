@@ -38,8 +38,6 @@
 #define     SERVOPW         'd'
 #define     COMMEN          'e'
 #define     ANALOGR         'f'
-#define     ANALOGW         'g'
-#define     DACEN           'h'
 #define     ADCEN           'j'
 
 #define     UART            0

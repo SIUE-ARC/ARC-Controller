@@ -254,7 +254,7 @@ void startMotor(byte num)
 {
     #ifdef DEBUGGING
     writeUART("Motor ", strlen("Motor "));
-    writeUART(num+48, 1);
+    writeUART(&num, 1);
     writeUART("started.\r\n", strlen("started.\r\n"));
     #endif
     switch(num)

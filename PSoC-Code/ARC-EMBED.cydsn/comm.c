@@ -154,38 +154,6 @@ byte commandLookup(byte* data)
             writeUART("\r\n", 2);
         #endif
             break;
-        case ANALOGW:
-        #ifdef DEBUGGING
-            writeUART("Setting DAC", strlen("Setting DAC"));
-            writeUART(&params[0], 1);
-            writeUART(": ", 2);
-            writeUART(&params[2], 3);
-            writeUART("\r\n", 2);
-        #endif
-            setDAC(i, (byte)atoi(&params[2]));
-            break;
-        case DACEN:
-            if(dacen[i])
-            {
-                #ifdef DEBUGGING
-                writeUART("Disabling DAC ", strlen("Disabling DAC "));
-                #endif
-                enableDAC(i);
-                dacen[i] = 0;
-            }
-            else
-            {
-                #ifdef DEBUGGING
-                writeUART("Enabling DAC ", strlen("Enabling DAC "));
-                #endif
-                enableDAC(i);
-                dacen[i] = 1;
-            }
-            #ifdef DEBUGGING
-            writeUART(&params[0], 1);
-            writeUART("\r\n", 2);
-            #endif
-            break;
         case ADCEN:
             if(adcen)
             {

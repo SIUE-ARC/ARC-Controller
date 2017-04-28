@@ -28,6 +28,7 @@ void init()
     I2C_Start();
     resolution = PI*wheel_diam/encoder_res;
     writeUART("Hello, world!\r\n", strlen("Hello, world!\r\n"));
+    adc_chan[0] = 42;
 }
 
 int main()
